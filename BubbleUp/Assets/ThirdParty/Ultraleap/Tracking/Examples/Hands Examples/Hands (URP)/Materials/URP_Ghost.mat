@@ -21,8 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: URP_Ghost
-  m_Shader: {fileID: -6465566751694194690, guid: 78a3fb661fd7a534782a8666999bf706,
-    type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 78a3fb661fd7a534782a8666999bf706, type: 3}
   m_ShaderKeywords: _ENABLE_FOG_ON_TRANSPARENT _SURFACE_TYPE_TRANSPARENT
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -121,7 +120,7 @@ Material:
     m_Floats:
     - Boolean_406BA3CD: 1
     - Boolean_77D5DE36: 1
-    - Vector1_1E32011B: 2.25
+    - Vector1_1E32011B: 4.03
     - Vector1_FC6907FD: 1
     - _AddPrecomputedVelocity: 0
     - _AlphaCutoffEnable: 0
@@ -179,8 +178,9 @@ Material:
     m_Colors:
     - Color_64F859CC: {r: 0.8941188, g: 1.146152, b: 1.146152, a: 1}
     - Color_694FDA6: {r: 1, g: 1, b: 1, a: 0.30588236}
-    - Color_6C516763: {r: 0.8941188, g: 1.146152, b: 1.146152, a: 1}
+    - Color_6C516763: {r: 33.64764, g: 83.46362, b: 83.46362, a: 1}
     - Color_9A4C367A: {r: 1, g: 1, b: 1, a: 0.04705882}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
+  m_BuildTextureStacks: []
