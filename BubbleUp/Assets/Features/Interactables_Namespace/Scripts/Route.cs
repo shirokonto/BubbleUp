@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Waypoints : MonoBehaviour
+public class Route : MonoBehaviour
 {
     [Range(0f, 0.5f)]
     [SerializeField] private float wayPointSize = 1f;
