@@ -14,6 +14,7 @@ public class BubbleBehaviour : MonoBehaviour
     private int _wrongItemCounter = 3;
     //add minimizebubble float for minimizeBubbleitem
     private Vector3 _scaleChange;
+    private int hit = 0;
 
     private void Awake()
     {
@@ -32,13 +33,22 @@ public class BubbleBehaviour : MonoBehaviour
             }
             else
             {
+                hit += 1;
+                Debug.Log(hit);
                 _temporaryCount -= 1;
                 transform.localScale -= _scaleChange;
+                
                 //_wrongItemCounter.Equals(0) ? Debug.Log("GAME OVER") : _wrongItemCounter -=1;
                 //var result = x > y ? "x is greater than y" : "x is less than y";
                 //Console.WriteLine((_wrongItemCounter == 0) ? _wrongItemCounter true : false);
 
                 Debug.Log("( - ) TemporaryCount: " + _temporaryCount + " :-( ");
+                
+                //Destroy(this.gameObject);
+            }
+            if(hit == 3)
+            {
+                Destroy(this.gameObject);
             }
             collision.gameObject.SetActive(false);
         }
@@ -46,4 +56,5 @@ public class BubbleBehaviour : MonoBehaviour
         //adblocker and co.
             
     }
+   
 }
