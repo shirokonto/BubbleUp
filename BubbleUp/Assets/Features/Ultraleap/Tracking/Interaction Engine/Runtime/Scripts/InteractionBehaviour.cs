@@ -1402,7 +1402,6 @@ namespace Leap.Unity.Interaction
         public void BeginGrasp(List<InteractionController> controllers)
         {
             _justGrasped = true;
-
             // End suspension by ending the grasp on the suspending hand,
             // calling EndGrasp immediately.
             if (isSuspended)

@@ -1,21 +1,26 @@
 using System.Collections;
-using System.Collections.Generic;
+using Leap.Unity.Interaction;
 using UnityEngine;
+using static Leap.Unity.Interaction.InteractionControllerSet;
 
-public class HandBehaviour : MonoBehaviour
+namespace Features.Hands_Namespace.Scripts
 {
-    private void OnCollisionEnter(Collision collision)
+    public class HandBehaviour : MonoBehaviour
     {
-        if (collision.gameObject.CompareTag("InfoObject"))
+        private void OnCollisionEnter(Collision collision)
         {
-            Debug.Log("Touched left hand");
-            collision.gameObject.GetComponent<Collider>().enabled = false;
-            StartCoroutine(DeactivateGameObject(10, collision));
+            if (collision.gameObject.CompareTag("InfoObject"))
+            {
+                Debug.Log("Touched left hand");
+                collision.gameObject.GetComponent<Collider>().enabled = false;
+                StartCoroutine(DeactivateGameObject(10, collision));
+            }
         }
-    }
     
-    private IEnumerator DeactivateGameObject(float duration, Collision collision) {
-        yield return new WaitForSeconds(duration);
-        collision.gameObject.SetActive(false);
+        private IEnumerator DeactivateGameObject(float duration, Collision collision) {
+            yield return new WaitForSeconds(duration);
+            collision.gameObject.SetActive(false);
+        }
+        
     }
 }
