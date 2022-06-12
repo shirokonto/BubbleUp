@@ -11,7 +11,7 @@ public class BubbleBehaviour : MonoBehaviour
     private int _temporaryCount;
     private float _maximizeBubble = -0.03f;
 
-    private int _wrongItemCounter = 3;
+    //private int _wrongItemCounter = 3;
     //add minimizebubble float for minimizeBubbleitem
     private Vector3 _scaleChange;
     private int hit = 0;

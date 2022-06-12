@@ -7,6 +7,7 @@
  ******************************************************************************/
 
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Leap.Unity.Interaction
@@ -24,7 +25,6 @@ namespace Leap.Unity.Interaction
     [AddComponentMenu("")]
     public class ContactBone : MonoBehaviour
     {
-
         /// <summary>
         /// ContactBones minimally require references to their InteractionControllerBase,
         /// their Rigidbody, and strictly one (1) collider.
@@ -49,6 +49,16 @@ namespace Leap.Unity.Interaction
         new
 #endif
         public Collider collider;
+        
+        /// <summary>
+        /// The gameObject which the ContactBone has collided with.
+        /// </summary>
+        public GameObject collidedObject;
+        
+        /// <summary>
+        /// The tag name of the gameObject which the ContactBone has collided with.
+        /// </summary>
+        public string collidedObjectTag;
 
         /// <summary>
         /// Soft contact logic requires knowing the "width" of a ContactBone along its axis.
@@ -130,6 +140,9 @@ namespace Leap.Unity.Interaction
         {
             if (collision.rigidbody != null)
             {
+                collidedObject = collision.gameObject;
+                collidedObjectTag = collision.gameObject.tag;
+
                 IInteractionBehaviour interactionObj;
                 if (interactionController.manager.interactionObjectBodies.TryGetValue(collision.rigidbody, out interactionObj))
                 {
@@ -167,11 +180,18 @@ namespace Leap.Unity.Interaction
             }
         }
 
+        public List<IInteractionBehaviour> GetContactingInteractionBehaviours()
+        {
+            
+            return contactingInteractionBehaviours.Keys.ToList();
+        }
+
         private void OnCollisionStay(Collision collision)
         {
             if (collision.rigidbody == null) { return; }
 
             IInteractionBehaviour interactionObj;
+            collidedObjectTag = "";
             float timeEntered = 0;
             if (interactionController.manager.interactionObjectBodies.TryGetValue(collision.rigidbody, out interactionObj))
             {
@@ -191,7 +211,7 @@ namespace Leap.Unity.Interaction
         void OnCollisionExit(Collision collision)
         {
             if (collision.rigidbody == null) { return; }
-
+            collidedObjectTag = "";
             IInteractionBehaviour interactionObj;
             if (interactionController.manager.interactionObjectBodies.TryGetValue(collision.rigidbody, out interactionObj))
             {

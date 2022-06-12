@@ -1576,10 +1576,6 @@ namespace Leap.Unity.Interaction
 
         public void NotifyContactBoneCollisionEnter(ContactBone contactBone, IInteractionBehaviour interactionObj)
         {
-            if(interactionObj.gameObject.CompareTag("InfoObject"))
-            {
-                Debug.Log("TOUCHED InfoObject ");
-            }
             int count;
             if (_contactBehaviours.TryGetValue(interactionObj, out count))
             {
