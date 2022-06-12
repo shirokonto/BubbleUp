@@ -11,7 +11,7 @@ public class BubbleBehaviour : MonoBehaviour
     private int _temporaryCount;
     private float _maximizeBubble = -0.03f;
 
-    private int _wrongItemCounter = 3;
+    //private int _wrongItemCounter = 3;
     //add minimizebubble float for minimizeBubbleitem
     private Vector3 _scaleChange;
     private int hit = 0;
@@ -29,12 +29,12 @@ public class BubbleBehaviour : MonoBehaviour
             if (collision.gameObject.transform.name.Contains(correctInfoType))
             {
                 _temporaryCount += 1;
-                Debug.Log("( + ) TemporaryCount: " + _temporaryCount + " Nice!!! ");
+                //Debug.Log("( + ) TemporaryCount: " + _temporaryCount + " Nice!!! ");
             }
             else
             {
                 hit += 1;
-                Debug.Log(hit);
+                //Debug.Log(hit);
                 _temporaryCount -= 1;
                 transform.localScale -= _scaleChange;
                 
@@ -42,7 +42,7 @@ public class BubbleBehaviour : MonoBehaviour
                 //var result = x > y ? "x is greater than y" : "x is less than y";
                 //Console.WriteLine((_wrongItemCounter == 0) ? _wrongItemCounter true : false);
 
-                Debug.Log("( - ) TemporaryCount: " + _temporaryCount + " :-( ");
+                //Debug.Log("( - ) TemporaryCount: " + _temporaryCount + " :-( ");
                 
                 //Destroy(this.gameObject);
             }
