@@ -1580,10 +1580,6 @@ namespace Leap.Unity.Interaction
             {
                 Debug.Log("TOUCHED InfoObject ");
             }
-            if(interactionObj.gameObject.CompareTag("Player"))
-            {
-                Debug.Log("TOUCHED Player");
-            }
             int count;
             if (_contactBehaviours.TryGetValue(interactionObj, out count))
             {
