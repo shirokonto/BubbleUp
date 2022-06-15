@@ -10,6 +10,7 @@ public class BubbleBehaviour : MonoBehaviour
     [SerializeField] private string correctInfoType; //will be set before the game starts via character view
     private int _temporaryCount;
     private float _maximizeBubble = -0.03f;
+    public ParticleSystem bubblePop;
 
     //private int _wrongItemCounter = 3;
     //add minimizebubble float for minimizeBubbleitem
@@ -48,7 +49,10 @@ public class BubbleBehaviour : MonoBehaviour
             }
             if(hit == 3)
             {
+                bubblePop.Play();
                 Destroy(this.gameObject);
+                Debug.Log("Bubble Pop!");
+                
             }
             collision.gameObject.SetActive(false);
         }
