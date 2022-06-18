@@ -31,10 +31,7 @@ public class BubbleBehaviour : MonoBehaviour
             }
             if(_hit == 3)
             {
-                bubblePop.Play();
                 Destroy(this.gameObject);
-                Debug.Log("Bubble Pop!");
-                
             }
             collision.gameObject.SetActive(false);
         }
