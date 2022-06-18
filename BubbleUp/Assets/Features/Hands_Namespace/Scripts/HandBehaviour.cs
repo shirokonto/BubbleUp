@@ -32,7 +32,8 @@ namespace Features.Hands_Namespace.Scripts
             
             if (_interactionHand != null && _interactionHand.contactBones != null && _interactionHand.contactBones.Length != 0)
             {
-                foreach (var gameObj in GetItemsByContactingInteractionBehaviours()){ //foreach (var elem in _filteredTags){  
+                var filteredGameObjects = GetItemsByContactingInteractionBehaviours();
+                foreach (var gameObj in filteredGameObjects){ //foreach (var elem in _filteredTags){  
                   
                     //TODO: Problem is that the tag "InfoObject" never leaves the filteredTags list --> so it will always go into the if statement
                     if (gameObj.CompareTag("InfoObject")) //if (elem.CompareTag("InfoObject"))
@@ -45,6 +46,8 @@ namespace Features.Hands_Namespace.Scripts
                     {
                         //TODO: do this implementation in virus behaviour: set hand for two seconds still
                     }
+
+                    filteredGameObjects.Remove(gameObj);
                 }
             }
         }
