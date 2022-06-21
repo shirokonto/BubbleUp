@@ -13,6 +13,7 @@ public class BubbleBehaviour : MonoBehaviour
     private Vector3 _scaleChange;
     private int _hit = 0;
     public bool adBlockerEnabled;
+    public ParticleSystem bubblePop;
 
     private void Start()
     {
