@@ -37,7 +37,7 @@ namespace Features.Hands_Namespace.Scripts
                     //TODO: Problem is that the tag "InfoObject" never leaves the filteredTags list --> so it will always go into the if statement
                     if (gameObj.CompareTag("InfoObject")) //if (elem.CompareTag("InfoObject"))
                     {
-                        gameObj.GetComponent<InfoItemBehaviour>().PrintInfoItemColor();
+                        //gameObj.GetComponent<InfoItemBehaviour>().PrintInfoItemColor();
                         gameObj.GetComponent<InfoItemBehaviour>().DisableItem();
                         String hand = _interactionHand.isLeft ? "left hand" : "right hand";
                         Debug.Log("Info Object was touched by " + hand);

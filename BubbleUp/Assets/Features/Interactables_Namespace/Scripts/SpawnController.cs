@@ -9,6 +9,8 @@ public class SpawnController : MonoBehaviour
 {
     [Header("Incoming Objects")] 
     [SerializeField] private List<GameObject> incomingInfoObjects;
+    [SerializeField] private List<GameObject> incomingBlockerObjects;
+    [SerializeField] private List<GameObject> incomingPowerUpObjects;
     [SerializeField] private List<GameObject> spawnRoutes;
     [SerializeField] private GameObject origSpawnRoute;
     [SerializeField][Range(0.01f, 1f)] private float minRespawnTime;

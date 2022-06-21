@@ -35,4 +35,9 @@ public class ItemMover : MonoBehaviour
         transform.position =
             Vector3.MoveTowards(transform.position, position, moveSpeed * Time.deltaTime);
     }
+
+    public void SetMoveSpeed(float modifiedMoveSpeed)
+    {
+        moveSpeed = modifiedMoveSpeed;
+    }
 }

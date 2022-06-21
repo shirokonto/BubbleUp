@@ -13,7 +13,7 @@ namespace Features.Interactables_Namespace.Scripts
         public void DisableItem()
         {
             gameObject.GetComponent<SphereCollider>().enabled = false;
-            Destroy(this, 10);
+            gameObject.SetActive(false);
         }
     }
 }
