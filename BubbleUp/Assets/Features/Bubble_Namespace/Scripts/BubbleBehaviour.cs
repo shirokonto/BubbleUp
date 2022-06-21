@@ -8,14 +8,18 @@ using Vector3 = UnityEngine.Vector3;
 public class BubbleBehaviour : MonoBehaviour
 {
     [SerializeField] private string correctInfoType; //will be set before the game starts via character view
+    [SerializeField] private string wrongInfoType;
     private float _maximizeBubble = -0.03f;
-    public ParticleSystem bubblePop;
-    private Vector3 _scaleChange;
+    private Vector3 _scaleChangeMax;
+    private float _minimizeBubble = 0.03f;
+    private Vector3 _scaleChangeMin;
     private int _hit = 0;
+    public ParticleSystem bubblePop;
 
     private void Awake()
     {
-        _scaleChange = new Vector3(_maximizeBubble, _maximizeBubble, _maximizeBubble);
+        _scaleChangeMax = new Vector3(0.03f, 0.03f, 0.03f);
+        //_scaleChangeMin = new Vector3(0.03f, 0.03f, 0.03f);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -25,13 +29,24 @@ public class BubbleBehaviour : MonoBehaviour
             if (!collision.gameObject.transform.name.Contains(correctInfoType))
             {
                 _hit += 1;
-                transform.localScale -= _scaleChange;
-                
+                transform.localScale += _scaleChangeMax;
+               
+
                 //_wrongItemCounter.Equals(0) ? Debug.Log("GAME OVER") : _wrongItemCounter -=1;
             }
-            if(_hit == 3)
+           /* if (!collision.gameObject.transform.name.Contains(wrongInfoType))
             {
+                
+                transform.localScale -= _scaleChangeMin;
+
+            }
+           */
+         
+            if (_hit == 3)
+            {
+
                 Destroy(this.gameObject);
+                bubblePop.Play();
             }
             collision.gameObject.SetActive(false);
         }
@@ -39,5 +54,6 @@ public class BubbleBehaviour : MonoBehaviour
         //adblocker and co.
             
     }
+
    
 }
