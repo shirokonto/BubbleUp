@@ -171,11 +171,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2995730630345664405, guid: a53006bdf7b8e35489bc14cdc6e89276, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.0115
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2995730630345664405, guid: a53006bdf7b8e35489bc14cdc6e89276, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.0097
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2995730630345664405, guid: a53006bdf7b8e35489bc14cdc6e89276, type: 3}
       propertyPath: m_LocalRotation.w
@@ -207,6 +207,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2995730630345664409, guid: a53006bdf7b8e35489bc14cdc6e89276, type: 3}
       propertyPath: m_Name
+      value: Bubble
+      objectReference: {fileID: 0}
+    - target: {fileID: 2995730630345664409, guid: a53006bdf7b8e35489bc14cdc6e89276, type: 3}
+      propertyPath: m_TagString
       value: Bubble
       objectReference: {fileID: 0}
     m_RemovedComponents: []

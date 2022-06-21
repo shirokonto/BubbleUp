@@ -5,6 +5,13 @@ TagManager:
   serializedVersion: 2
   tags:
   - InfoObject
+  - Ad
+  - AdBlocker
+  - Virus
+  - AntiVirus
+  - MinimizeBubble
+  - SlowMo
+  - Bubble
   layers:
   - Default
   - TransparentFX
