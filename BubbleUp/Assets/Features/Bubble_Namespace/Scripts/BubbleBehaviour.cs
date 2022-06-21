@@ -40,6 +40,7 @@ public class BubbleBehaviour : MonoBehaviour
         if(_hit == 3)
         {
             Destroy(this.gameObject);
+            bubblePop.Play();
         }
         infoItem.SetActive(false);
     }
