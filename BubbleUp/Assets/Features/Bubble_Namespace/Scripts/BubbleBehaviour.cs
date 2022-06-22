@@ -1,13 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
-using Leap.Unity;
+using DataStructures.Variables;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Vector3 = UnityEngine.Vector3;
 
 public class BubbleBehaviour : MonoBehaviour
 {
     [SerializeField] private string correctInfoType; //will be set before the game starts via character view
+    [SerializeField] private BoolVariable bubbleIsPopped; 
     private const float BUBBLE_SCALING = 0.03f;
     public ParticleSystem bubblePop;
     private Vector3 _scaleChange;
@@ -17,6 +15,7 @@ public class BubbleBehaviour : MonoBehaviour
     private void Start()
     {
         _scaleChange = new Vector3(BUBBLE_SCALING, BUBBLE_SCALING, BUBBLE_SCALING);
+        bubbleIsPopped.Set(false);
     }
     
     private void OnCollisionEnter(Collision collision)
@@ -39,6 +38,7 @@ public class BubbleBehaviour : MonoBehaviour
         }
         if(_hit == 3)
         {
+            bubbleIsPopped.Set(true);
             Destroy(this.gameObject);
             bubblePop.Play();
         }
