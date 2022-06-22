@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using DataStructures.Variables;
 using UnityEngine;
 using Utilities.Event_Namespace;
@@ -10,17 +11,18 @@ namespace Features.Character_Namespace.Scripts
         [Header("Events")]
         //[SerializeField] private GameEvent raiseEndScreen;
         [SerializeField] private BoolVariable bubbleIsPopped;
-        [SerializeField] private Rigidbody rigidBody;
-        
+
         //References getter and setter
         public Animator Animator { get; set; }
+        public Rigidbody Rigidbody { get; set; }
         private static readonly int IsFalling = Animator.StringToHash("IsFalling");
+
 
         private void Awake()
         {
             bubbleIsPopped.Set(false);
             Animator = GetComponent<Animator>();
-            rigidBody = GetComponent<Rigidbody>();
+            Rigidbody = GetComponent<Rigidbody>();
         }
         
         // Update is called once per frame
@@ -30,7 +32,14 @@ namespace Features.Character_Namespace.Scripts
             if (bubbleIsPopped.Get())
             {
                 Animator.SetBool(IsFalling, true);
+                StartCoroutine(SetDelayedFall());
             } 
         }
+        private IEnumerator SetDelayedFall()
+        {
+            yield return new WaitForSeconds(0.5f);
+            Rigidbody.useGravity = true;
+        }
     }
+    
 }
