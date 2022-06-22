@@ -22,37 +22,19 @@ namespace Features.Character_Namespace.Scripts
             bubbleIsPopped.Set(false);
             Animator = GetComponent<Animator>();
             rigidBody = GetComponent<Rigidbody>();
-            //Animator.SetBool(IsFalling, false);
         }
         
-        
-
         // Update is called once per frame
         void Update()
         {
-            Debug.Log("Animatorbool: " + Animator.GetBool(IsFalling));
+            Animator.SetBool(IsFalling, false);
+            Debug.Log("Animator bool: " + Animator.GetBool(IsFalling));
             //Animator.SetBool(IsFalling, false);
             Debug.Log("bubble popped in character: " + bubbleIsPopped.Get());
-            if (bubbleIsPopped)
+            if (bubbleIsPopped.Get())
             {
                 Animator.SetBool(IsFalling, true);
-                //rigidBody.useGravity = true;
-                //raiseEndScreen.Raise();
-            }
+            } 
         }
-        //if bubbleBurst is activated --> raiseEndScreen.Raise();
-        
-        /*private void OnTriggerEnter(Collider trigger)
-        {
-            if (trigger.gameObject.layer == 6)
-            {
-                raiseEndScreen.Raise();
-            }
-            /*if (trigger.TryGetComponent(typeof(SeekTriggerBehaviour), out Component seekTriggerBehaviour))
-            {
-                seekAnimatorState.SetNextState(seekTriggerBehaviour as SeekTriggerBehaviour);
-                RequestState(seekAnimatorState);
-            }
-        }*/
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using DataStructures.Variables;
 using UnityEngine;
 using Vector3 = UnityEngine.Vector3;
@@ -17,10 +18,15 @@ namespace Features.Bubble_Namespace.Scripts
 
         private void Awake()
         {
-            bubbleIsPopped.Set(false);
+            
             _scaleChange = new Vector3(BUBBLE_SCALING, BUBBLE_SCALING, BUBBLE_SCALING);
         }
-    
+
+        private void Start()
+        {
+            bubbleIsPopped.Set(false);
+        }
+
         private void OnCollisionEnter(Collision collision)
         {
             switch (collision.gameObject.tag)
