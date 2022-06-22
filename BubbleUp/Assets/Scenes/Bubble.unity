@@ -141,8 +141,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   correctInfoType: InfoObjectPink
-  wrongInfoType: InfoObjectGreen
   bubblePop: {fileID: 2053911444}
+  adBlockerEnabled: 0
 --- !u!1001 &1185497705
 PrefabInstance:
   m_ObjectHideFlags: 0
