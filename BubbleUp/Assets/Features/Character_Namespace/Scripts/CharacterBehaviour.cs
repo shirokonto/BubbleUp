@@ -30,6 +30,7 @@ namespace Features.Character_Namespace.Scripts
             if (bubbleIsPopped.Get())
             {
                 Animator.SetBool(IsFalling, true);
+                rigidBody.useGravity = true;
             } 
         }
     }
