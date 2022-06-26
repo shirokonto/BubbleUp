@@ -12,6 +12,13 @@ public class Menu : MonoBehaviour
 
     public static bool isGameOver;
     public GameObject GameOverScreen;
+
+    public GameObject TutorialUI;
+
+    public GameObject LeapMotionUI;
+
+    public GameObject MainMenuUI;
+
     public AudioSource AudioSource;
 
     public Animator transition;
@@ -53,10 +60,7 @@ public class Menu : MonoBehaviour
 
     public void Play()
     {
-
         SceneManager.LoadScene("Character_Selection");
-
-
     }
 
 
@@ -78,6 +82,30 @@ public class Menu : MonoBehaviour
         PauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
+    }
+
+    public void Tutorial()
+    {
+        MainMenuUI.SetActive(false);
+        TutorialUI.SetActive(true);
+    }
+
+    public void LeapMotion()
+    {
+        MainMenuUI.SetActive(false);
+        LeapMotionUI.SetActive(true);
+    }
+
+    public void BackT()
+    {
+        TutorialUI.SetActive(false);
+        MainMenuUI.SetActive(true);
+    }
+
+    public void BackLM()
+    {
+        LeapMotionUI.SetActive(false);
+        MainMenuUI.SetActive(true);
     }
 
     public void LoadMenu()
