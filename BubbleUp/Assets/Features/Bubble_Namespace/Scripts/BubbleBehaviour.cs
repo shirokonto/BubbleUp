@@ -1,4 +1,5 @@
 using DataStructures.Variables;
+using Features.Interactables_Namespace.Scripts;
 using UnityEngine;
 using Vector3 = UnityEngine.Vector3;
 
@@ -25,7 +26,6 @@ namespace Features.Bubble_Namespace.Scripts
             switch (other.gameObject.tag)
             {
                 case "InfoObject":
-                    Debug.Log("Hit me");
                     HitInfoItem(other.gameObject);
                     break; ;
                 case "MinimizeBubble":
@@ -45,10 +45,9 @@ namespace Features.Bubble_Namespace.Scripts
                 Destroy(this.gameObject);
                 bubblePop.Play();
             }
-            infoItem.SetActive(false);
+            infoItem.GetComponent<DisableIfFarAwayOrHitBubble>().ResetPositionAndRotation();
         }
-    
-        //TODO: call in HandBehaviour.cs
+        
         public void HitMinimizeBubble(GameObject minimizeItem)
         {
             if (_hit >= 1 && _hit < 3)
@@ -56,8 +55,7 @@ namespace Features.Bubble_Namespace.Scripts
                 _hit -= 1;
                 transform.localScale -= _scaleChange;
             }
-            minimizeItem.GetComponent<SphereCollider>().enabled = false;
-            minimizeItem.SetActive(false);
+            minimizeItem.GetComponent<DisableIfFarAwayOrHitBubble>().ResetPositionAndRotation();
         }
     }
 }

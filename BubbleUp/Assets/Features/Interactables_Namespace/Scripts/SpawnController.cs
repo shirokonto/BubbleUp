@@ -32,6 +32,7 @@ namespace Features.Interactables_Namespace.Scripts
             //TODO fix this so that the infoitems are not being spawnt randomly somewhere
             infoItemAppearingPercentage.Set(0.8f);
             powerUpItemAppearingPercentage.Set(0.9f);
+            
             //_currentRoute = origSpawnRoute;
             _tags = new List<string>();
             _tags.Add("InfoObject");
@@ -58,10 +59,14 @@ namespace Features.Interactables_Namespace.Scripts
             _currentRoute = spawnRoutes[Random.Range(0, spawnRoutes.Count)];
             
             string tagging = _tags[Random.Range(0, _tags.Count)];
+            
+            
             DetermineSpawningItem();
-            GameObject spawningItem = ObjectPooler.SharedInstance.GetPooledObject(tagging, _currentRoute.transform.GetChild(0).gameObject.transform); 
+            GameObject spawningItem = ObjectPooler.SharedInstance.GetPooledObject(tagging, _currentRoute.transform.GetChild(0).gameObject.transform);
+            
             if (spawningItem != null) {
                 spawningItem.transform.localPosition = Vector3.zero;
+                spawningItem.GetComponent<Rigidbody>().freezeRotation = false;
                 spawningItem.SetActive(true);
             }
             //GameObject spawningItem2 = Instantiate(_currentlySpawningItems[Random.Range(0, _currentlySpawningItems.Count)], _currentRoute.transform.GetChild(0).gameObject.transform);

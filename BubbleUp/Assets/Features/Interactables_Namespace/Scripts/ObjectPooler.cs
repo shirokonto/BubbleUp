@@ -30,10 +30,11 @@ namespace Features.Interactables_Namespace.Scripts
         // Start is called before the first frame update
         void Start()
         {
+            
             pooledItems = new List<GameObject>();
             foreach (ObjectPoolItem item in itemsToPool) {
                 for (int i = 0; i < item.amountToPool; i++) {
-                    _firstRoute = _spawnController.GetFirstRoute();
+                    _firstRoute = _spawnController.GetFirstRoute(); //TODO: spawned at same route sometimes
                     GameObject obj = (GameObject)Instantiate(item.itemToPool, _firstRoute);
                     obj.SetActive(false);
                     pooledItems.Add(obj);

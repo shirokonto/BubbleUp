@@ -3,15 +3,17 @@ using UnityEngine;
 
 namespace Features.Interactables_Namespace.Scripts
 {
-    public class DisableIfFarAway : MonoBehaviour
+    public class DisableIfFarAwayOrHitBubble : MonoBehaviour
     {
         [SerializeField] private Transform player;
         [SerializeField] private float distanceFromPlayer;
         private Rigidbody _rigidbody;
+        private Transform _transform;
 
         private void Start()
         {
             _rigidbody = GetComponent<Rigidbody>();
+            _transform = GetComponent<Transform>();
         }
 
         // Update is called once per frame
@@ -19,11 +21,17 @@ namespace Features.Interactables_Namespace.Scripts
         {
             if (Vector3.Distance(player.position, gameObject.transform.position) > distanceFromPlayer)
             {
-                Debug.Log("Bye");
-                gameObject.SetActive(false);
-                _rigidbody.velocity = Vector3.zero;
+                ResetPositionAndRotation();
             }
 
+        }
+
+        public void ResetPositionAndRotation()
+        {
+            gameObject.SetActive(false);
+            _rigidbody.velocity = Vector3.zero;
+            _transform.rotation = Quaternion.Euler(Vector3.zero);
+            _rigidbody.freezeRotation = true;
         }
     }
 }

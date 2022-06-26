@@ -1,48 +1,49 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SlowMotionBehaviour : MonoBehaviour
+namespace Features.Interactables_Namespace.Scripts
 {
-    private List<Transform> _allItemsOnSameRoute;
-
-    private void Start()
+    public class SlowMotionBehaviour : MonoBehaviour
     {
-        _allItemsOnSameRoute = new List<Transform>();
-    }
+        private List<Transform> _allItemsOnSameRoute;
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Bubble"))
+        private void Start()
         {
-            //Change speed in itemMover moveSpeed only for siblings on same route
-            
-            Transform path = transform.parent.gameObject.transform;
-            for (int i = 0; i < path.childCount; i++)
+            _allItemsOnSameRoute = new List<Transform>();
+        }
+
+        private void OnCollisionEnter(Collision collision)
+        {
+            if (collision.gameObject.CompareTag("Bubble"))
             {
-                _allItemsOnSameRoute.Add(path.GetChild(i));
+                //Change speed in itemMover moveSpeed only for siblings on same route
+            
+                Transform path = transform.parent.gameObject.transform;
+                for (int i = 0; i < path.childCount; i++)
+                {
+                    _allItemsOnSameRoute.Add(path.GetChild(i));
+                }
+                StartCoroutine(SlowDownFlowTemporary(_allItemsOnSameRoute));
+                GetComponent<DisableIfFarAwayOrHitBubble>().ResetPositionAndRotation();
             }
-            StartCoroutine(SlowDownFlowTemporary(_allItemsOnSameRoute));
-            gameObject.SetActive(false);
         }
-       
-    }
     
-    private IEnumerator SlowDownFlowTemporary(List<Transform> itemsOnRoute)
-    {
-        for (int i = 0; i < itemsOnRoute.Count; i++)
+        private IEnumerator SlowDownFlowTemporary(List<Transform> itemsOnRoute)
         {
-            //slow down speed by 20%
-            itemsOnRoute[i].GetComponent<ItemMover>().ScaleMoveSpeed(0.8f);
-        }
+            for (int i = 0; i < itemsOnRoute.Count; i++)
+            {
+                //slow down speed by 20%
+                itemsOnRoute[i].GetComponent<ItemMover>().ScaleMoveSpeed(0.8f);
+            }
 
-        yield return new WaitForSeconds(5f);
+            yield return new WaitForSeconds(5f);
 
-        for (int i = 0; i < itemsOnRoute.Count; i++)
-        {
-            //increase speed by 20%
-            itemsOnRoute[i].GetComponent<ItemMover>().ScaleMoveSpeed(1.25f); 
+            for (int i = 0; i < itemsOnRoute.Count; i++)
+            {
+                //increase speed by 20%
+                itemsOnRoute[i].GetComponent<ItemMover>().ScaleMoveSpeed(1.25f); 
+            }
         }
     }
 }
