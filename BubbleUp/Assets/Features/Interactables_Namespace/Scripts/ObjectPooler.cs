@@ -55,9 +55,7 @@ namespace Features.Interactables_Namespace.Scripts
             foreach (ObjectPoolItem item in itemsToPool) {
                 if (item.itemToPool.CompareTag(tag)) {
                     if (item.shouldExpand) {
-                        Debug.Log("Route: " + route);
                         GameObject obj = (GameObject)Instantiate(item.itemToPool, route);
-                        Debug.Log("parent: " + transform.parent.gameObject.transform);
                         obj.SetActive(false);
                         pooledItems.Add(obj);
                         return obj;

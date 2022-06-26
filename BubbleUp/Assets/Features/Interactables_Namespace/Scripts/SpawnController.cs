@@ -54,6 +54,7 @@ namespace Features.Interactables_Namespace.Scripts
     
         private void Instantiate()
         {
+            //TODO: refactor "Tagging" to gameObject to use multiple infoItems
             _currentRoute = spawnRoutes[Random.Range(0, spawnRoutes.Count)];
             
             string tagging = _tags[Random.Range(0, _tags.Count)];

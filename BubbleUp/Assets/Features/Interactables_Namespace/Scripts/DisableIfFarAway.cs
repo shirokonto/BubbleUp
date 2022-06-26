@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Features.Interactables_Namespace.Scripts
@@ -6,6 +7,12 @@ namespace Features.Interactables_Namespace.Scripts
     {
         [SerializeField] private Transform player;
         [SerializeField] private float distanceFromPlayer;
+        private Rigidbody _rigidbody;
+
+        private void Start()
+        {
+            _rigidbody = GetComponent<Rigidbody>();
+        }
 
         // Update is called once per frame
         void Update()
@@ -14,6 +21,7 @@ namespace Features.Interactables_Namespace.Scripts
             {
                 Debug.Log("Bye");
                 gameObject.SetActive(false);
+                _rigidbody.velocity = Vector3.zero;
             }
 
         }
