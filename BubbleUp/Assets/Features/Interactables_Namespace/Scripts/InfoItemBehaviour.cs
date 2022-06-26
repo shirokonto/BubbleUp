@@ -1,3 +1,4 @@
+using System;
 using Leap.Unity.Interaction;
 using UnityEngine;
 
@@ -8,12 +9,6 @@ namespace Features.Interactables_Namespace.Scripts
         public void PrintInfoItemColor()
         {
             Debug.Log("I'm a " + gameObject.name);
-        }
-
-        public void DisableItem()
-        {
-            //gameObject.GetComponent<SphereCollider>().enabled = false;
-            //gameObject.SetActive(false, 1f);
         }
     }
 }

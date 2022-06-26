@@ -12,6 +12,7 @@ TagManager:
   - MinimizeBubble
   - SlowMo
   - Bubble
+  - Radius
   layers:
   - Default
   - TransparentFX

@@ -1,28 +1,30 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
+using Features.Bubble_Namespace.Scripts;
 using UnityEngine;
 
-public class AdItemBehaviour : MonoBehaviour
+namespace Features.Interactables_Namespace.Scripts
 {
-    [SerializeField] private float activeDuration = 2;
-
-    private void OnCollisionEnter(Collision collision)
+    public class AdItemBehaviour : MonoBehaviour
     {
-        GameObject collidedObject = collision.gameObject;
-        if (collidedObject.CompareTag("Bubble") && !collidedObject.GetComponent<BubbleBehaviour>().adBlockerEnabled)
+        [SerializeField] private float activeDuration = 2;
+
+        private void OnCollisionEnter(Collision collision)
         {
-            StartCoroutine(SetTemporaryAd(collidedObject));
-            Destroy(this.gameObject);
+            GameObject collidedObject = collision.gameObject;
+            if (collidedObject.CompareTag("Bubble") && !collidedObject.GetComponent<BubbleBehaviour>().adBlockerEnabled)
+            {
+                StartCoroutine(SetTemporaryAd(collidedObject));
+                Destroy(this.gameObject);
+            }
         }
-    }
     
-    private IEnumerator SetTemporaryAd(GameObject bubble)
-    {
-        bubble.GetComponent<SphereCollider>().enabled = false;
+        private IEnumerator SetTemporaryAd(GameObject bubble)
+        {
+            bubble.GetComponent<SphereCollider>().enabled = false;
         
-        yield return new WaitForSeconds(activeDuration);
+            yield return new WaitForSeconds(activeDuration);
 
-        bubble.GetComponent<SphereCollider>().enabled = true;
+            bubble.GetComponent<SphereCollider>().enabled = true;
+        }
     }
 }
