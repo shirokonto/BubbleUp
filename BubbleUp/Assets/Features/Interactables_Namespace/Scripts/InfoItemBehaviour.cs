@@ -12,8 +12,8 @@ namespace Features.Interactables_Namespace.Scripts
 
         public void DisableItem()
         {
-            gameObject.GetComponent<SphereCollider>().enabled = false;
-            gameObject.SetActive(false);
+            //gameObject.GetComponent<SphereCollider>().enabled = false;
+            //gameObject.SetActive(false, 1f);
         }
     }
 }

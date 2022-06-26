@@ -1,35 +1,36 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class CharacterSelection : MonoBehaviour
+namespace Features.Menu_Namespace.Scripts
 {
-    public GameObject[] characters; // Character variable to switch between characters
-    public int selectedCharacter = 0; // saves which character is currently chosen
-
-    public void NextCharacter() // if button is clicked
+    public class CharacterSelection : MonoBehaviour
     {
-        characters[selectedCharacter].SetActive(false); // selectedCharacter dectivated to switch to next character
-        selectedCharacter = (selectedCharacter + 1) % characters.Length; // Index erhoeht um naechsten Charakter auszuwaehlen, modu Anzahl der Charaktere
-        characters[selectedCharacter].SetActive(true); // neu ausgewaehlte Charakter wird aktiviert bzw sichtbar
-    }
+        public GameObject[] characters; // Character variable to switch between characters
+        public int selectedCharacter = 0; // saves which character is currently chosen
 
-    public void PreviousCharacter()
-    {
-        characters[selectedCharacter].SetActive(false);
-        selectedCharacter--;
-        if (selectedCharacter < 0)
+        public void NextCharacter() // if button is clicked
         {
-            selectedCharacter += characters.Length;
+            characters[selectedCharacter].SetActive(false); // selectedCharacter dectivated to switch to next character
+            selectedCharacter = (selectedCharacter + 1) % characters.Length; // Index erhoeht um naechsten Charakter auszuwaehlen, modu Anzahl der Charaktere
+            characters[selectedCharacter].SetActive(true); // neu ausgewaehlte Charakter wird aktiviert bzw sichtbar
         }
-        characters[selectedCharacter].SetActive(true);
-    }
 
-    public void StartGame()
-    {
-        PlayerPrefs.SetInt("selectedCharacter", selectedCharacter); // save data
-        SceneManager.LoadScene(2, LoadSceneMode.Single);
-        SceneManager.LoadScene(4, LoadSceneMode.Additive);
+        public void PreviousCharacter()
+        {
+            characters[selectedCharacter].SetActive(false);
+            selectedCharacter--;
+            if (selectedCharacter < 0)
+            {
+                selectedCharacter += characters.Length;
+            }
+            characters[selectedCharacter].SetActive(true);
+        }
+
+        public void StartGame()
+        {
+            PlayerPrefs.SetInt("selectedCharacter", selectedCharacter); // save data
+            SceneManager.LoadScene(2, LoadSceneMode.Single);
+            SceneManager.LoadScene(4, LoadSceneMode.Additive);
+        }
     }
 }

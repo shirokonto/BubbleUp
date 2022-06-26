@@ -33,14 +33,16 @@ public class SlowMotionBehaviour : MonoBehaviour
     {
         for (int i = 0; i < itemsOnRoute.Count; i++)
         {
-            itemsOnRoute[i].GetComponent<ItemMover>().SetMoveSpeed(0.25f);
+            //slow down speed by 20%
+            itemsOnRoute[i].GetComponent<ItemMover>().ScaleMoveSpeed(0.8f);
         }
 
         yield return new WaitForSeconds(5f);
 
         for (int i = 0; i < itemsOnRoute.Count; i++)
         {
-            itemsOnRoute[i].GetComponent<ItemMover>().SetMoveSpeed(0.5f);
+            //increase speed by 20%
+            itemsOnRoute[i].GetComponent<ItemMover>().ScaleMoveSpeed(1.25f); 
         }
     }
 }
