@@ -3,7 +3,6 @@ using UnityEngine;
 
 namespace Features.Interactables_Namespace.Scripts
 {
-    
     [System.Serializable]
     public class ObjectPoolItem {
         public GameObject itemToPool; //currently only takes one!
@@ -20,7 +19,6 @@ namespace Features.Interactables_Namespace.Scripts
         private Transform _firstRoute;
         private SpawnController _spawnController;
 
-        
         private void Awake()
         {
             SharedInstance = this;
@@ -30,11 +28,10 @@ namespace Features.Interactables_Namespace.Scripts
         // Start is called before the first frame update
         void Start()
         {
-            
             pooledItems = new List<GameObject>();
             foreach (ObjectPoolItem item in itemsToPool) {
                 for (int i = 0; i < item.amountToPool; i++) {
-                    _firstRoute = _spawnController.GetFirstRoute(); //TODO: spawned at same route sometimes
+                    _firstRoute = _spawnController.GetFirstRoute();
                     GameObject obj = (GameObject)Instantiate(item.itemToPool, _firstRoute);
                     obj.SetActive(false);
                     pooledItems.Add(obj);
@@ -47,14 +44,14 @@ namespace Features.Interactables_Namespace.Scripts
          * @param random chosen tag and route
          * @returns GameObject item
          */
-       public GameObject GetPooledObject(string tag, Transform route) {
+       public GameObject GetPooledObject(string tagging, Transform route) {
             for (int i = 0; i < pooledItems.Count; i++) {
-                if (!pooledItems[i].activeInHierarchy && pooledItems[i].CompareTag(tag)) {
+                if (!pooledItems[i].activeInHierarchy && pooledItems[i].CompareTag(tagging)) {
                     return pooledItems[i];
                 }
             }
             foreach (ObjectPoolItem item in itemsToPool) {
-                if (item.itemToPool.CompareTag(tag)) {
+                if (item.itemToPool.CompareTag(tagging)) {
                     if (item.shouldExpand) {
                         GameObject obj = (GameObject)Instantiate(item.itemToPool, route);
                         obj.SetActive(false);

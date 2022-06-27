@@ -48,7 +48,7 @@ namespace Features.Bubble_Namespace.Scripts
             infoItem.GetComponent<DisableIfFarAwayOrHitBubble>().ResetPositionAndRotation();
         }
         
-        public void HitMinimizeBubble(GameObject minimizeItem)
+        private void HitMinimizeBubble(GameObject minimizeItem)
         {
             if (_hit >= 1 && _hit < 3)
             {

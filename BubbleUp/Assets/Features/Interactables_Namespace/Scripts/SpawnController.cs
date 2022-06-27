@@ -40,8 +40,7 @@ namespace Features.Interactables_Namespace.Scripts
             _tags.Add("SlowMo");
         }
 
-        // Start is called before the first frame update
-        void OnEnable()
+        void Start()
         {
             StartCoroutine(Spawn());
         }
@@ -57,12 +56,11 @@ namespace Features.Interactables_Namespace.Scripts
         {
             //TODO: refactor "Tagging" to gameObject to use multiple infoItems
             _currentRoute = spawnRoutes[Random.Range(0, spawnRoutes.Count)];
-            
             string tagging = _tags[Random.Range(0, _tags.Count)];
             
-            
             DetermineSpawningItem();
-            GameObject spawningItem = ObjectPooler.SharedInstance.GetPooledObject(tagging, _currentRoute.transform.GetChild(0).gameObject.transform);
+            //Debug.Log("gameobject: " + ObjectPooler.SharedInstance.GetPooledObject(tagging, _currentRoute.transform.GetChild(0).gameObject.transform).name);
+            var spawningItem = ObjectPooler.SharedInstance.GetPooledObject(tagging, _currentRoute.transform.GetChild(0).gameObject.transform);
             
             if (spawningItem != null) {
                 spawningItem.transform.localPosition = Vector3.zero;
