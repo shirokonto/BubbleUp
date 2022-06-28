@@ -39,8 +39,10 @@ public class BubbleBehaviour : MonoBehaviour
         }
         if(_hit == 3)
         {
+            Menu.isGameOver = true;
             Destroy(this.gameObject);
             bubblePop.Play();
+            
         }
         infoItem.SetActive(false);
     }
