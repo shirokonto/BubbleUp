@@ -123,6 +123,41 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &288996178 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3408093172112336141, guid: 9673093423f9a490eaee654c4d433203, type: 3}
+  m_PrefabInstance: {fileID: 2561021513011658114}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &288996179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 288996178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e17ef91c199c69a4e9774d34bd404528, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bubbleIsPopped: {fileID: 11400000, guid: 1ffba4ce249273b4fb2ab41f428a9faa, type: 2}
+  rigidBody: {fileID: 288996180}
+--- !u!54 &288996180
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 288996178}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &2561021513011658114
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -237,3 +272,38 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1fdbac13ecdbf47ab83bbaefcbf8a23d, type: 3}
+--- !u!1 &8783694070178389413 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8441041929462790290, guid: 1fdbac13ecdbf47ab83bbaefcbf8a23d, type: 3}
+  m_PrefabInstance: {fileID: 8783694070178389412}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8783694070178389414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8783694070178389413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e17ef91c199c69a4e9774d34bd404528, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bubbleIsPopped: {fileID: 11400000, guid: 1ffba4ce249273b4fb2ab41f428a9faa, type: 2}
+  rigidBody: {fileID: 8783694070178389415}
+--- !u!54 &8783694070178389415
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8783694070178389413}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

@@ -1,19 +1,17 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DataStructures.Variables;
+using Features.Interactables_Namespace.Scripts;
 using UnityEngine;
 
 public class ItemMover : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 0.5f;
     [SerializeField] private GameObject spawner;
+    [SerializeField] private BoolVariable isSecondWave;
     private Transform _currentPoint;
     private Route _currentRoute;
-
-    private void Awake()
-    {
-        
-    }
 
     // Start is called before the first frame update
     void Start()
@@ -31,13 +29,17 @@ public class ItemMover : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (isSecondWave.Get())
+        {
+            moveSpeed = 0.75f;
+        }
         var position = _currentPoint.position;
         transform.position =
             Vector3.MoveTowards(transform.position, position, moveSpeed * Time.deltaTime);
     }
 
-    public void SetMoveSpeed(float modifiedMoveSpeed)
+    public void ScaleMoveSpeed(float percentage)
     {
-        moveSpeed = modifiedMoveSpeed;
+        moveSpeed = moveSpeed * percentage;
     }
 }

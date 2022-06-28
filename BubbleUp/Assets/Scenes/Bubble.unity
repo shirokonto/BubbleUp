@@ -141,6 +141,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   correctInfoType: InfoObjectPink
+  bubbleIsPopped: {fileID: 11400000, guid: 1ffba4ce249273b4fb2ab41f428a9faa, type: 2}
   bubblePop: {fileID: 2053911444}
   adBlockerEnabled: 0
 --- !u!1001 &1185497705
