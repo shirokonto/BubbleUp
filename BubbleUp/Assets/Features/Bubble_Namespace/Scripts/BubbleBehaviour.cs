@@ -1,62 +1,62 @@
 using DataStructures.Variables;
+using Features.Interactables_Namespace.Scripts;
 using UnityEngine;
 using Vector3 = UnityEngine.Vector3;
 
-public class BubbleBehaviour : MonoBehaviour
+namespace Features.Bubble_Namespace.Scripts
 {
-    [SerializeField] private string correctInfoType; //will be set before the game starts via character view
-    [SerializeField] private BoolVariable bubbleIsPopped; 
-    private const float BUBBLE_SCALING = 0.03f;
-    public ParticleSystem bubblePop;
-    private Vector3 _scaleChange;
-    private int _hit = 0;
-    public bool adBlockerEnabled;
+    public class BubbleBehaviour : MonoBehaviour {
+        [SerializeField] private string correctInfoType; //will be set before the game starts via character view
+        [SerializeField] private BoolVariable bubbleIsPopped; 
+        private const float BUBBLE_SCALING = 0.03f;
+        public ParticleSystem bubblePop;
+        private Vector3 _scaleChange;
+        private int _hit = 0;
+        public bool adBlockerEnabled;
 
-    private void Start()
-    {
-        _scaleChange = new Vector3(BUBBLE_SCALING, BUBBLE_SCALING, BUBBLE_SCALING);
-        bubbleIsPopped.Set(false);
-        bubblePop.Stop();
-    }
-    
-    private void OnCollisionEnter(Collision collision)
-    {
-        switch (collision.gameObject.tag)
+        private void Start()
         {
-            case "InfoObject": 
-                HitInfoItem(collision.gameObject);
-                break; ;
-            case "MinimizeBubble":
-                HitMinimizeBubble(collision.gameObject);
-                break;
+            _scaleChange = new Vector3(BUBBLE_SCALING, BUBBLE_SCALING, BUBBLE_SCALING);
+            bubbleIsPopped.Set(false);
+            bubblePop.Stop();
         }
-    }
-    private void HitInfoItem(GameObject infoItem){
-        if (!infoItem.transform.name.Contains(correctInfoType))
+
+        private void OnCollisionEnter(Collision other)
         {
-            _hit += 1;
-            transform.localScale += _scaleChange;
+            switch (other.gameObject.tag)
+            {
+                case "InfoObject":
+                    HitInfoItem(other.gameObject);
+                    break; ;
+                case "MinimizeBubble":
+                    HitMinimizeBubble(other.gameObject);
+                    break;
+            }
         }
-        if(_hit == 3)
+        private void HitInfoItem(GameObject infoItem){
+            if (!infoItem.transform.name.Contains(correctInfoType))
+            {
+                _hit += 1;
+                transform.localScale += _scaleChange;
+            }
+            if(_hit == 3)
+            {
+                bubbleIsPopped.Set(true);
+                Destroy(this.gameObject);
+                bubblePop.Play();
+                Menu.isGameOver = true;
+            }
+            infoItem.GetComponent<DisableIfFarAwayOrHitBubble>().ResetPositionAndRotation();
+        }
+        
+        private void HitMinimizeBubble(GameObject minimizeItem)
         {
-            Menu.isGameOver = true;
-            bubbleIsPopped.Set(true);
-            Destroy(this.gameObject);
-            bubblePop.Play();
-            
+            if (_hit >= 1 && _hit < 3)
+            {
+                _hit -= 1;
+                transform.localScale -= _scaleChange;
+            }
+            minimizeItem.GetComponent<DisableIfFarAwayOrHitBubble>().ResetPositionAndRotation();
         }
-        infoItem.SetActive(false);
-    }
-    
-    //TODO: call in HandBehaviour.cs
-    public void HitMinimizeBubble(GameObject minimizeItem)
-    {
-        if (_hit >= 1 && _hit < 3)
-        {
-            _hit -= 1;
-            transform.localScale -= _scaleChange;
-        }
-        minimizeItem.GetComponent<SphereCollider>().enabled = false;
-        minimizeItem.SetActive(false);
     }
 }
