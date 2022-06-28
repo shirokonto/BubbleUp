@@ -16,6 +16,7 @@ public class BubbleBehaviour : MonoBehaviour
     {
         _scaleChange = new Vector3(BUBBLE_SCALING, BUBBLE_SCALING, BUBBLE_SCALING);
         bubbleIsPopped.Set(false);
+        bubblePop.Stop();
     }
     
     private void OnCollisionEnter(Collision collision)
