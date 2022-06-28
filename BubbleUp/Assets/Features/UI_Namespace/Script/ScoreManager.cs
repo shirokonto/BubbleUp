@@ -8,10 +8,10 @@ using TMPro;
 public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager instance;
-    [SerializeField] private PointInt points;
+    [SerializeField] private IntVariable points;
     public Text scoreText;
     public Text highscoreText;
-    int score = 0;
+   // int score = 0;
     int highscore = 0;
     // Start is called before the first frame update
 
@@ -21,12 +21,12 @@ public class ScoreManager : MonoBehaviour
     }
     void Start()
     {
-        highscore = PlayerPrefs.GetInt("highscore", 0);
-        scoreText.text = score.ToString() + " POINTS";
-        highscoreText.text = "HIGHSCORE: " + highscore.ToString();
+        //highscore = PlayerPrefs.GetInt("highscore", 0);
+        scoreText.text = points.Get() + " POINTS";
+       // highscoreText.text = "HIGHSCORE: " + highscore.ToString();
     }
 
-    public void AddPoint()
+   /* public void AddPoint()
     {
         score += 3;
         scoreText.text = score.ToString() + " POINTS";
@@ -39,7 +39,15 @@ public class ScoreManager : MonoBehaviour
     }
     public void MinusPoint()
     {
+
         score -= 1;
         scoreText.text = score.ToString() + " POINTS";
+    }
+   */
+
+
+    void Update()
+    {
+        scoreText.text = points.Get() + " POINTS";
     }
 }

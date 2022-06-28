@@ -5,15 +5,18 @@ using Vector3 = UnityEngine.Vector3;
 public class BubbleBehaviour : MonoBehaviour
 {
     [SerializeField] private string correctInfoType; //will be set before the game starts via character view
-    [SerializeField] private BoolVariable bubbleIsPopped; 
+    [SerializeField] private BoolVariable bubbleIsPopped;
+    [SerializeField] private IntVariable points;
     private const float BUBBLE_SCALING = 0.03f;
     public ParticleSystem bubblePop;
     private Vector3 _scaleChange;
     private int _hit = 0;
+    private int localPoints = 0;
     public bool adBlockerEnabled;
 
     private void Start()
     {
+        points.Set(0); 
         _scaleChange = new Vector3(BUBBLE_SCALING, BUBBLE_SCALING, BUBBLE_SCALING);
         bubbleIsPopped.Set(false);
     }
@@ -33,8 +36,15 @@ public class BubbleBehaviour : MonoBehaviour
     private void HitInfoItem(GameObject infoItem){
         if (!infoItem.transform.name.Contains(correctInfoType))
         {
+            localPoints -= 3;
+            points.Set(localPoints);
             _hit += 1;
             transform.localScale += _scaleChange;
+        }
+        else
+        {
+            localPoints += 1;
+            points.Set(localPoints);
         }
         if(_hit == 3)
         {

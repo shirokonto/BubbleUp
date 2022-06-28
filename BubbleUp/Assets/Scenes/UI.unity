@@ -499,7 +499,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60dd3311455b4ec4ba1f8facb8f0b24e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  points: {fileID: 11400000, guid: 7d40246d15d3ede4a892aea8b363e831, type: 2}
+  points: {fileID: 11400000, guid: 5dcebee57bc04964b84d2b727e558f7d, type: 2}
   scoreText: {fileID: 765095131}
   highscoreText: {fileID: 0}
 --- !u!1 &1831601802

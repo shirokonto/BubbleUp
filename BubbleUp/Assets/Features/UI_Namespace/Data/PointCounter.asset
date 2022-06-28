@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6dcb1583e206c2b499ba959644f4eb32, type: 3}
-  m_Name: NewPointIntVariable
+  m_Script: {fileID: 11500000, guid: d60f261b718a448d960f65fcea8d2f82, type: 3}
+  m_Name: PointCounter
   m_EditorClassIdentifier: 
-  storedValue: 1
+  storedValue: 0
   onValueChanged: {fileID: 0}
