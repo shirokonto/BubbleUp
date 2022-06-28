@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ namespace Features.Interactables_Namespace.Scripts
 {
     public class SpawnController : MonoBehaviour
     {
-        [Header("Incoming Items")] 
+        [Header("Incoming Items")]
         [SerializeField] private List<GameObject> incomingInfoItems;
         [SerializeField] private List<GameObject> incomingBlockerItems;
         [SerializeField] private List<GameObject> incomingPowerUpItems;
@@ -17,35 +18,57 @@ namespace Features.Interactables_Namespace.Scripts
         [SerializeField] private FloatVariable powerUpItemAppearingPercentage;
         [SerializeField] private BoolVariable isSecondWave;
         [SerializeField] private List<GameObject> spawnRoutes;
-        [SerializeField] private GameObject origSpawnRoute;
         [SerializeField][Range(0.01f, 1f)] private float minRespawnTime;
         [SerializeField][Range(0.01f, 1f)] private float maxRespawnTime;
         
         private GameObject _currentRoute;
         private float _spawningItemDeterminer;
         private List<GameObject> _currentlySpawningItems;
+        
+        private List<string> _tags;
 
         private void Awake()
         {
             //TODO fix this so that the infoitems are not being spawnt randomly somewhere
             infoItemAppearingPercentage.Set(0.8f);
             powerUpItemAppearingPercentage.Set(0.9f);
-            _currentRoute = origSpawnRoute;
+            
+            //_currentRoute = origSpawnRoute;
+            _tags = new List<string>();
+            _tags.Add("InfoObject");
+            _tags.Add("MinimizeBubble");
+            _tags.Add("SlowMo");
         }
 
-        // Start is called before the first frame update
         void Start()
         {
             StartCoroutine(Spawn());
         }
+        
+        public Transform GetFirstRoute()
+        {
+            _currentRoute = spawnRoutes[Random.Range(0, spawnRoutes.Count)];
+            return _currentRoute.transform.GetChild(0).gameObject.transform;
+            
+        }
     
         private void Instantiate()
         {
+            //TODO: refactor "Tagging" to gameObject to use multiple infoItems
             _currentRoute = spawnRoutes[Random.Range(0, spawnRoutes.Count)];
-
+            string tagging = _tags[Random.Range(0, _tags.Count)];
+            
             DetermineSpawningItem();
-            GameObject spawningItem = Instantiate(_currentlySpawningItems[Random.Range(0, _currentlySpawningItems.Count)], _currentRoute.transform.GetChild(0).gameObject.transform);
-            spawningItem.transform.localPosition = Vector3.zero;
+            //Debug.Log("gameobject: " + ObjectPooler.SharedInstance.GetPooledObject(tagging, _currentRoute.transform.GetChild(0).gameObject.transform).name);
+            var spawningItem = ObjectPooler.SharedInstance.GetPooledObject(tagging, _currentRoute.transform.GetChild(0).gameObject.transform);
+            
+            if (spawningItem != null) {
+                spawningItem.transform.localPosition = Vector3.zero;
+                spawningItem.GetComponent<Rigidbody>().freezeRotation = false;
+                spawningItem.SetActive(true);
+            }
+            //GameObject spawningItem2 = Instantiate(_currentlySpawningItems[Random.Range(0, _currentlySpawningItems.Count)], _currentRoute.transform.GetChild(0).gameObject.transform);
+            //spawningItem.transform.localPosition = Vector3.zero;
         }
     
         private IEnumerator Spawn()
