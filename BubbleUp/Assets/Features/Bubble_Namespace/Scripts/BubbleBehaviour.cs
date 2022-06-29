@@ -1,13 +1,18 @@
+using System.Collections;
+using System.Collections.Generic;
 using DataStructures.Variables;
 using Features.Interactables_Namespace.Scripts;
 using UnityEngine;
+using UnityEngine.UI;
+using Utilities.Event_Namespace;
 using Vector3 = UnityEngine.Vector3;
 
 namespace Features.Bubble_Namespace.Scripts
 {
     public class BubbleBehaviour : MonoBehaviour {
         [SerializeField] private string correctInfoType; //will be set before the game starts via character view
-        [SerializeField] private BoolVariable bubbleIsPopped; 
+        [SerializeField] private BoolVariable bubbleIsPopped;
+        [SerializeField] private GameEvent showPopup;
         private const float BUBBLE_SCALING = 0.03f;
         public ParticleSystem bubblePop;
         private Vector3 _scaleChange;
@@ -30,6 +35,9 @@ namespace Features.Bubble_Namespace.Scripts
                     break; ;
                 case "MinimizeBubble":
                     HitMinimizeBubble(other.gameObject);
+                    break;
+                case "Virus":
+                    HitVirus(other.gameObject);
                     break;
             }
         }
@@ -57,6 +65,12 @@ namespace Features.Bubble_Namespace.Scripts
                 transform.localScale -= _scaleChange;
             }
             minimizeItem.GetComponent<DisableIfFarAwayOrHitBubble>().ResetPositionAndRotation();
+        }
+
+        public void HitVirus(GameObject virusItem)
+        {
+            virusItem.GetComponent<DisableIfFarAwayOrHitBubble>().ResetPositionAndRotation();
+            showPopup.Raise();
         }
     }
 }
