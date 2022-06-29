@@ -9,8 +9,7 @@ using Vector3 = UnityEngine.Vector3;
 
 namespace Features.Bubble_Namespace.Scripts
 {
-    public class BubbleBehaviour : MonoBehaviour
-    {
+    public class BubbleBehaviour : MonoBehaviour {
         [SerializeField] private string correctInfoType; //will be set before the game starts via character view
         [SerializeField] private BoolVariable bubbleIsPopped;
         [SerializeField] private GameEvent showPopup;
@@ -23,10 +22,10 @@ namespace Features.Bubble_Namespace.Scripts
         private void Start()
         {
             _scaleChange = new Vector3(BUBBLE_SCALING, BUBBLE_SCALING, BUBBLE_SCALING);
-            bubbleIsPopped.Set(false); 
-            
+            bubbleIsPopped.Set(false);
+            bubblePop.Stop();
         }
-    
+
         private void OnCollisionEnter(Collision other)
         {
             switch (other.gameObject.tag)
@@ -53,6 +52,7 @@ namespace Features.Bubble_Namespace.Scripts
                 bubbleIsPopped.Set(true);
                 Destroy(this.gameObject);
                 bubblePop.Play();
+                Menu.isGameOver = true;
             }
             infoItem.GetComponent<DisableIfFarAwayOrHitBubble>().ResetPositionAndRotation();
         }
