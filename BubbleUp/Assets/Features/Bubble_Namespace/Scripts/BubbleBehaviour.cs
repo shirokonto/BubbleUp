@@ -69,7 +69,7 @@ namespace Features.Bubble_Namespace.Scripts
 
         public void HitVirus(GameObject virusItem)
         {
-            virusItem.GetComponent<DisableIfFarAwayOrHitBubble>().ResetPositionAndRotation();
+            virusItem.GetComponent<ItemMover>().ResetPositionAndRotationBeforeRespawn();
             showPopup.Raise();
         }
     }

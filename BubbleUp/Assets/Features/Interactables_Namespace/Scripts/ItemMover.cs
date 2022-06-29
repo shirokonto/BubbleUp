@@ -1,16 +1,15 @@
 using DataStructures.Variables;
-using Leap.Unity;
 using Unity.Mathematics;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 namespace Features.Interactables_Namespace.Scripts
 {
     public class ItemMover : MonoBehaviour
     {
-        [SerializeField] private float moveSpeed = 0.5f;
+        //[SerializeField] private float moveSpeed = 0.5f;
         [SerializeField] private GameObject spawner;
         [SerializeField] private BoolVariable isSecondWave;
+        [SerializeField] private FloatVariable moveSpeed;
         [SerializeField] private Transform player;
         [SerializeField] private float distanceFromPlayer;
         private Transform _startPosition;
@@ -50,7 +49,7 @@ namespace Features.Interactables_Namespace.Scripts
             {
                 if (isSecondWave.Get())
                 {
-                    moveSpeed = 0.75f;
+                    moveSpeed.Set(0.75f);
                 }
                 MoveItemTowardsBubble();
                 if (Vector3.Distance(player.position, gameObject.transform.position) > distanceFromPlayer)
@@ -64,7 +63,7 @@ namespace Features.Interactables_Namespace.Scripts
         {
             var position = _currentPoint.position;
             transform.position =
-                Vector3.MoveTowards(transform.position, position, moveSpeed * Time.deltaTime);
+                Vector3.MoveTowards(transform.position, position, moveSpeed.Get() * Time.deltaTime);
         }
 
         public void ResetPositionAndRotationBeforeRespawn()
@@ -72,26 +71,22 @@ namespace Features.Interactables_Namespace.Scripts
             gameObject.SetActive(false);
             
             //reset position
-            _transform = _startPosition;
+            //_transform = _startPosition;
             _rigidbody.velocity = Vector3.zero;
         
             //reset rotation
-            _transform.rotation = _startRotation;
+            //_transform.rotation = _startRotation;
             _transform.eulerAngles = Vector3.zero;
             _transform.localRotation = quaternion.Euler(Vector3.zero);
-            //_transform.rotation = Quaternion.identity;
+            _transform.rotation = Quaternion.identity;
             _rigidbody.freezeRotation = true;
         }
+        
+        
 
-        public void ScaleMoveSpeed(float percentage)
+        public void SetMoveSpeed(float newMoveSpeed)
         {
-            //set only if not 0.75 or 0.5
-            moveSpeed = moveSpeed * percentage;
-        }
-
-        public float GetMoveSpeed()
-        {
-            return moveSpeed;
+            moveSpeed.Set(newMoveSpeed);
         }
     }
 }
