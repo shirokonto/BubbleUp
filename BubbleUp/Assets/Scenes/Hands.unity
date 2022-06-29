@@ -567,6 +567,8 @@ MonoBehaviour:
   moveSpeed: 0.5
   spawner: {fileID: 324664140}
   isSecondWave: {fileID: 11400000, guid: 9f4476234b8df094a90704b0df1d3f50, type: 2}
+  player: {fileID: 1541325858}
+  distanceFromPlayer: 5.7
 --- !u!114 &405828241
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -579,20 +581,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a53aa10bfd2d1f43a83d91d166c9bad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &405828242
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 405828239}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e4d1258fec69e6419f3d9de398536cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 1541325858}
-  distanceFromPlayer: 4.8
 --- !u!1 &430202773
 GameObject:
   m_ObjectHideFlags: 0
@@ -743,7 +731,6 @@ GameObject:
   - component: {fileID: 454413488}
   - component: {fileID: 454413487}
   - component: {fileID: 454413486}
-  - component: {fileID: 454413489}
   m_Layer: 3
   m_Name: AdObjectDummy
   m_TagString: Ad
@@ -901,20 +888,8 @@ MonoBehaviour:
   moveSpeed: 0.5
   spawner: {fileID: 324664140}
   isSecondWave: {fileID: 11400000, guid: 9f4476234b8df094a90704b0df1d3f50, type: 2}
---- !u!114 &454413489
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 454413480}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e4d1258fec69e6419f3d9de398536cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
   player: {fileID: 1541325858}
-  distanceFromPlayer: 4.8
+  distanceFromPlayer: 5.7
 --- !u!1 &533138085 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1218537825695938, guid: 33edf201cbc6fe645ad9078697cd2aea, type: 3}
@@ -1108,20 +1083,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a53aa10bfd2d1f43a83d91d166c9bad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &688978117
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 688978109}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e4d1258fec69e6419f3d9de398536cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 1541325858}
-  distanceFromPlayer: 4.8
 --- !u!114 &994881518 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2609939515537707692, guid: f8a7c12b8fbb74648b01bcede8e3054f, type: 3}
@@ -1291,20 +1252,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8986858342126209138, guid: 7b3b5f9c88082e741b03ceb92306ce29, type: 3}
   m_PrefabInstance: {fileID: 1777411244587100980}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1045304279
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1045304278}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e4d1258fec69e6419f3d9de398536cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 1541325858}
-  distanceFromPlayer: 4.8
 --- !u!114 &1045304285
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1486,7 +1433,6 @@ GameObject:
   - component: {fileID: 1175763833}
   - component: {fileID: 1175763832}
   - component: {fileID: 1175763835}
-  - component: {fileID: 1175763839}
   m_Layer: 3
   m_Name: AdBlockerObjectDummy
   m_TagString: AdBlocker
@@ -1569,6 +1515,8 @@ MonoBehaviour:
   moveSpeed: 0.5
   spawner: {fileID: 324664140}
   isSecondWave: {fileID: 11400000, guid: 9f4476234b8df094a90704b0df1d3f50, type: 2}
+  player: {fileID: 1541325858}
+  distanceFromPlayer: 5.7
 --- !u!114 &1175763835
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1644,20 +1592,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1175763830}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1175763839
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1175763830}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e4d1258fec69e6419f3d9de398536cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 1541325858}
-  distanceFromPlayer: 4.8
 --- !u!114 &1274871359 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1840978236689490611, guid: 1779d4145c3aded4489404f8770c31c9, type: 3}
@@ -1811,20 +1745,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a53aa10bfd2d1f43a83d91d166c9bad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1373809084
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1373809082}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e4d1258fec69e6419f3d9de398536cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 1541325858}
-  distanceFromPlayer: 4.8
 --- !u!1 &1458269178
 GameObject:
   m_ObjectHideFlags: 0
@@ -2219,6 +2139,8 @@ MonoBehaviour:
   moveSpeed: 0.5
   spawner: {fileID: 324664140}
   isSecondWave: {fileID: 11400000, guid: 9f4476234b8df094a90704b0df1d3f50, type: 2}
+  player: {fileID: 1541325858}
+  distanceFromPlayer: 5.7
 --- !u!114 &1821116331
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2231,20 +2153,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a53aa10bfd2d1f43a83d91d166c9bad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1821116332
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1821116329}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e4d1258fec69e6419f3d9de398536cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 1541325858}
-  distanceFromPlayer: 4.8
 --- !u!1 &1841164300
 GameObject:
   m_ObjectHideFlags: 0
@@ -2571,6 +2479,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2107690403}
     - target: {fileID: 352624602017938725, guid: 0644f78ddf55514468becb563f17202c, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1541325858}
+    - target: {fileID: 352624602017938725, guid: 0644f78ddf55514468becb563f17202c, type: 3}
       propertyPath: spawner
       value: 
       objectReference: {fileID: 324664140}
@@ -2589,6 +2501,10 @@ PrefabInstance:
     - target: {fileID: 352624602017938725, guid: 0644f78ddf55514468becb563f17202c, type: 3}
       propertyPath: origSpawnRoute
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 352624602017938725, guid: 0644f78ddf55514468becb563f17202c, type: 3}
+      propertyPath: distanceFromPlayer
+      value: 5.7
       objectReference: {fileID: 0}
     - target: {fileID: 352624602017938726, guid: 0644f78ddf55514468becb563f17202c, type: 3}
       propertyPath: m_RootOrder
@@ -2762,6 +2678,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1856977020}
     m_Modifications:
     - target: {fileID: 2714277713759969702, guid: 7b3b5f9c88082e741b03ceb92306ce29, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1541325858}
+    - target: {fileID: 2714277713759969702, guid: 7b3b5f9c88082e741b03ceb92306ce29, type: 3}
       propertyPath: spawner
       value: 
       objectReference: {fileID: 324664140}
@@ -2784,6 +2704,10 @@ PrefabInstance:
     - target: {fileID: 2714277713759969702, guid: 7b3b5f9c88082e741b03ceb92306ce29, type: 3}
       propertyPath: routes.Array.size
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2714277713759969702, guid: 7b3b5f9c88082e741b03ceb92306ce29, type: 3}
+      propertyPath: distanceFromPlayer
+      value: 5.7
       objectReference: {fileID: 0}
     - target: {fileID: 2714277713759969702, guid: 7b3b5f9c88082e741b03ceb92306ce29, type: 3}
       propertyPath: routes.Array.data[0]
@@ -6441,6 +6365,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8057319731254089623, guid: 9b2fb244b125deb45a0f8e174ad940f5, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1541325858}
+    - target: {fileID: 8057319731254089623, guid: 9b2fb244b125deb45a0f8e174ad940f5, type: 3}
       propertyPath: spawner
       value: 
       objectReference: {fileID: 324664140}
@@ -6459,6 +6387,10 @@ PrefabInstance:
     - target: {fileID: 8057319731254089623, guid: 9b2fb244b125deb45a0f8e174ad940f5, type: 3}
       propertyPath: routes.Array.size
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8057319731254089623, guid: 9b2fb244b125deb45a0f8e174ad940f5, type: 3}
+      propertyPath: distanceFromPlayer
+      value: 5.7
       objectReference: {fileID: 0}
     - target: {fileID: 8057319731254089623, guid: 9b2fb244b125deb45a0f8e174ad940f5, type: 3}
       propertyPath: routes.Array.data[0]
@@ -6543,10 +6475,19 @@ PrefabInstance:
       value: SlowMo
       objectReference: {fileID: 0}
     - target: {fileID: 5019857663058644822, guid: 9ad44249e092a6e4ea84e4dbf4a03a9c, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1541325858}
+    - target: {fileID: 5019857663058644822, guid: 9ad44249e092a6e4ea84e4dbf4a03a9c, type: 3}
       propertyPath: spawner
       value: 
       objectReference: {fileID: 324664140}
-    m_RemovedComponents: []
+    - target: {fileID: 5019857663058644822, guid: 9ad44249e092a6e4ea84e4dbf4a03a9c, type: 3}
+      propertyPath: distanceFromPlayer
+      value: 5.7
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 1190426063683926853, guid: 9ad44249e092a6e4ea84e4dbf4a03a9c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 9ad44249e092a6e4ea84e4dbf4a03a9c, type: 3}
 --- !u!4 &8113580344650269928 stripped
 Transform:
@@ -6618,9 +6559,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3224761679100964921, guid: 6978d81baa2c6f945a26bc05b0a050ff, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1541325858}
+    - target: {fileID: 3224761679100964921, guid: 6978d81baa2c6f945a26bc05b0a050ff, type: 3}
       propertyPath: spawner
       value: 
       objectReference: {fileID: 324664140}
+    - target: {fileID: 3224761679100964921, guid: 6978d81baa2c6f945a26bc05b0a050ff, type: 3}
+      propertyPath: distanceFromPlayer
+      value: 5.7
+      objectReference: {fileID: 0}
     - target: {fileID: 3947453821300808078, guid: 6978d81baa2c6f945a26bc05b0a050ff, type: 3}
       propertyPath: player
       value: 
@@ -6629,7 +6578,8 @@ PrefabInstance:
       propertyPath: _manager
       value: 
       objectReference: {fileID: 2107690403}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3947453821300808078, guid: 6978d81baa2c6f945a26bc05b0a050ff, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 6978d81baa2c6f945a26bc05b0a050ff, type: 3}
 --- !u!1001 &8890311291467911958
 PrefabInstance:

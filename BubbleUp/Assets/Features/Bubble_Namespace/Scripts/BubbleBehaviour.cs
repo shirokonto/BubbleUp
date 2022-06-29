@@ -46,7 +46,7 @@ namespace Features.Bubble_Namespace.Scripts
                 bubblePop.Play();
                 Menu.isGameOver = true;
             }
-            infoItem.GetComponent<DisableIfFarAwayOrHitBubble>().ResetPositionAndRotation();
+            infoItem.GetComponent<ItemMover>().ResetPositionAndRotationBeforeRespawn();
         }
         
         private void HitMinimizeBubble(GameObject minimizeItem)
@@ -56,7 +56,7 @@ namespace Features.Bubble_Namespace.Scripts
                 _hit -= 1;
                 transform.localScale -= _scaleChange;
             }
-            minimizeItem.GetComponent<DisableIfFarAwayOrHitBubble>().ResetPositionAndRotation();
+            minimizeItem.GetComponent<ItemMover>().ResetPositionAndRotationBeforeRespawn();
         }
     }
 }

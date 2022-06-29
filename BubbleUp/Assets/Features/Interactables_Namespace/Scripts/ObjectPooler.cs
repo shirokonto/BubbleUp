@@ -40,7 +40,7 @@ namespace Features.Interactables_Namespace.Scripts
         }
 
         /**
-         * Provides information about the current pooled Item
+         * Returns an active item from the pool
          * @param random chosen tag and route
          * @returns GameObject item
          */
