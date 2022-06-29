@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.45100325, g: 0.50085795, b: 0.5743071, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -142,6 +142,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   correctInfoType: InfoObjectPink
   bubbleIsPopped: {fileID: 11400000, guid: 1ffba4ce249273b4fb2ab41f428a9faa, type: 2}
+  showPopup: {fileID: 11400000, guid: 259e7fd73e879114f853d6640a09bc74, type: 2}
   bubblePop: {fileID: 2053911444}
   adBlockerEnabled: 0
 --- !u!1001 &1185497705

@@ -40,11 +40,7 @@ namespace Features.Hands_Namespace.Scripts
                         //gameObj.GetComponent<InfoItemBehaviour>().PrintInfoItemColor();
                         //gameObj.GetComponent<InfoItemBehaviour>().DisableItem();
                         String hand = _interactionHand.isLeft ? "left hand" : "right hand";
-                        //Debug.Log("Info Object was touched by " + hand);
-                    } else if (gameObj.CompareTag("Virus")) //} else if (elem.CompareTag("Virus"))
-                    {
-                        //TODO: do this implementation in virus behaviour: set hand for two seconds still
-                    }
+                    } 
                 }
             }
         }
