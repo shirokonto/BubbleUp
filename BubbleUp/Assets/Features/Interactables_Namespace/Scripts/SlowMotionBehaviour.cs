@@ -11,14 +11,14 @@ namespace Features.Interactables_Namespace.Scripts
         [SerializeField] private BoolVariable isSecondWave;
         private List<Transform> _allItemsOnSameRoute;
         private float _defaultMoveSpeed;
-        private ItemMover _itemMover;
+        private Renderer _renderer;
 
         private void Start()
         {
             _allItemsOnSameRoute = new List<Transform>();
-            _itemMover = GetComponent<ItemMover>();
             _defaultMoveSpeed = 0.5f;
             currentMoveSpeed.Set(_defaultMoveSpeed);
+            _renderer = GetComponent<MeshRenderer>();
         }
 
         private void Update()
@@ -28,7 +28,6 @@ namespace Features.Interactables_Namespace.Scripts
                 _defaultMoveSpeed = 0.75f;
                 currentMoveSpeed.Set(_defaultMoveSpeed);
             }
-            Debug.Log("current move speed: " + currentMoveSpeed.Get());
         }
 
         private void OnCollisionEnter(Collision collision)
@@ -46,23 +45,32 @@ namespace Features.Interactables_Namespace.Scripts
                     }
                     StartCoroutine(SlowDownFlowTemporary(_allItemsOnSameRoute));
                 }
-                GetComponent<ItemMover>().ResetPositionAndRotationBeforeRespawn();
             }
         }
     
         private IEnumerator SlowDownFlowTemporary(List<Transform> itemsOnRoute)
         {
+            SetSlowMoVisibility(false);
             for (int i = 0; i < itemsOnRoute.Count; i++)
             {
                 //slow down speed by 20%
                 itemsOnRoute[i].GetComponent<ItemMover>().SetMoveSpeed(_defaultMoveSpeed * 0.4f);
             }
-            yield return new WaitForSeconds(2f);
-
+            yield return new WaitForSeconds(1f);
             for (int i = 0; i < itemsOnRoute.Count; i++)
             {
                 //increase speed by 20%
-                itemsOnRoute[i].GetComponent<ItemMover>().SetMoveSpeed(_defaultMoveSpeed); 
+                itemsOnRoute[i].GetComponent<ItemMover>().SetMoveSpeed(_defaultMoveSpeed);
+            }
+            SetSlowMoVisibility(true);
+            GetComponent<ItemMover>().ResetPositionAndRotationBeforeRespawn();
+        }
+
+        private void SetSlowMoVisibility(bool isVisible)
+        {
+            foreach (Transform child in transform)
+            {
+                child.gameObject.SetActive(isVisible); // or false
             }
         }
     }
