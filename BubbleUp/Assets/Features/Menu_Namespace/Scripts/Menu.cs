@@ -67,7 +67,11 @@ public class Menu : MonoBehaviour
     public void TryAgain()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(4, LoadSceneMode.Additive);
+        SceneManager.LoadScene(5, LoadSceneMode.Additive);
+        SceneManager.LoadScene(6, LoadSceneMode.Additive);
         Time.timeScale = 1f;
+        
     }
 
     public void Resume()
@@ -76,6 +80,7 @@ public class Menu : MonoBehaviour
         Time.timeScale = 1f;
         GameIsPaused = false;
     }
+    
 
     private void Pause()
     {

@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 055faca3cc3ce45c696ff16b663ece6f, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -1851,6 +1851,7 @@ MonoBehaviour:
   TutorialUI: {fileID: 1563733750}
   LeapMotionUI: {fileID: 489566362}
   MainMenuUI: {fileID: 1192092257}
+  CountdownMenuUI: {fileID: 0}
   AudioSource: {fileID: 0}
   transition: {fileID: 0}
   transitionTime: 2

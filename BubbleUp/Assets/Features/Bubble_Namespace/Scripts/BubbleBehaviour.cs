@@ -1,69 +1,88 @@
+using System.Collections;
+using System.Collections.Generic;
 using DataStructures.Variables;
+using Features.Interactables_Namespace.Scripts;
 using UnityEngine;
+using UnityEngine.UI;
+using Utilities.Event_Namespace;
 using Vector3 = UnityEngine.Vector3;
 
-public class BubbleBehaviour : MonoBehaviour
+namespace Features.Bubble_Namespace.Scripts
 {
-    [SerializeField] private string correctInfoType; //will be set before the game starts via character view
-    [SerializeField] private BoolVariable bubbleIsPopped;
-    [SerializeField] private IntVariable points;
-    private const float BUBBLE_SCALING = 0.03f;
-    public ParticleSystem bubblePop;
-    private Vector3 _scaleChange;
-    private int _hit = 0;
-    private int localPoints = 0;
-    public bool adBlockerEnabled;
+    public class BubbleBehaviour : MonoBehaviour {
+        [SerializeField] private string correctInfoType; //will be set before the game starts via character view
+        [SerializeField] private BoolVariable bubbleIsPopped;
+        [SerializeField] private GameEvent showPopup;
+        [SerializeField] private IntVariable points;
+        public bool adBlockerEnabled;        
+        public ParticleSystem bubblePop;
+        private Vector3 _scaleChange;
+        private int _hit = 0;
+        private int localPoints = 0;
+        private const float BUBBLE_SCALING = 0.03f;
+        private const int PLUSPOINT = 1;
+        private const int MINUSPOINTS = 3;
+        
 
-    private void Start()
-    {
-        points.Set(0); 
-        _scaleChange = new Vector3(BUBBLE_SCALING, BUBBLE_SCALING, BUBBLE_SCALING);
-        bubbleIsPopped.Set(false);
-    }
-    
-    private void OnCollisionEnter(Collision collision)
-    {
-        switch (collision.gameObject.tag)
+        private void Start()
         {
-            case "InfoObject": 
-                HitInfoItem(collision.gameObject);
-                break; ;
-            case "MinimizeBubble":
-                HitMinimizeBubble(collision.gameObject);
-                break;
+            _scaleChange = new Vector3(BUBBLE_SCALING, BUBBLE_SCALING, BUBBLE_SCALING);
+            bubbleIsPopped.Set(false);
+            bubblePop.Stop();
         }
-    }
-    private void HitInfoItem(GameObject infoItem){
-        if (!infoItem.transform.name.Contains(correctInfoType))
+
+        private void OnCollisionEnter(Collision other)
         {
-            localPoints -= 3;
-            points.Set(localPoints);
-            _hit += 1;
-            transform.localScale += _scaleChange;
+            switch (other.gameObject.tag)
+            {
+                case "InfoObject":
+                    HitInfoItem(other.gameObject);
+                    break; ;
+                case "MinimizeBubble":
+                    HitMinimizeBubble(other.gameObject);
+                    break;
+                case "Virus":
+                    HitVirus(other.gameObject);
+                    break;
+            }
         }
-        else
+
+        private void HitInfoItem(GameObject infoItem){
+            if (!infoItem.transform.name.Contains(correctInfoType))
+            {
+                _hit += 1;
+                localPoints -= MINUSPOINTS;
+                points.Set(localPoints);
+                transform.localScale += _scaleChange;
+            } else
+            {
+                localPoints += PLUSPOINT;
+                points.Set(localPoints);
+            }
+            if(_hit == 3)
+            {
+                bubbleIsPopped.Set(true);
+                Destroy(this.gameObject);
+                bubblePop.Play();
+                Menu.isGameOver = true;
+            }
+            infoItem.GetComponent<DisableIfFarAwayOrHitBubble>().ResetPositionAndRotation();
+        }
+        
+        private void HitMinimizeBubble(GameObject minimizeItem)
         {
-            localPoints += 1;
-            points.Set(localPoints);
+            if (_hit >= 1 && _hit < 3)
+            {
+                _hit -= 1;
+                transform.localScale -= _scaleChange;
+            }
+            minimizeItem.GetComponent<DisableIfFarAwayOrHitBubble>().ResetPositionAndRotation();
         }
-        if(_hit == 3)
+
+        public void HitVirus(GameObject virusItem)
         {
-            bubbleIsPopped.Set(true);
-            Destroy(this.gameObject);
-            bubblePop.Play();
+            virusItem.GetComponent<DisableIfFarAwayOrHitBubble>().ResetPositionAndRotation();
+            showPopup.Raise();
         }
-        infoItem.SetActive(false);
-    }
-    
-    //TODO: call in HandBehaviour.cs
-    public void HitMinimizeBubble(GameObject minimizeItem)
-    {
-        if (_hit >= 1 && _hit < 3)
-        {
-            _hit -= 1;
-            transform.localScale -= _scaleChange;
-        }
-        minimizeItem.GetComponent<SphereCollider>().enabled = false;
-        minimizeItem.SetActive(false);
     }
 }
