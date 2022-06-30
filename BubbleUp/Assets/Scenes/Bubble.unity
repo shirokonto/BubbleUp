@@ -143,8 +143,9 @@ MonoBehaviour:
   correctInfoType: InfoObjectPink
   bubbleIsPopped: {fileID: 11400000, guid: 1ffba4ce249273b4fb2ab41f428a9faa, type: 2}
   showPopup: {fileID: 11400000, guid: 259e7fd73e879114f853d6640a09bc74, type: 2}
-  bubblePop: {fileID: 2053911444}
+  points: {fileID: 11400000, guid: 5dcebee57bc04964b84d2b727e558f7d, type: 2}
   adBlockerEnabled: 0
+  bubblePop: {fileID: 2053911444}
 --- !u!1001 &1185497705
 PrefabInstance:
   m_ObjectHideFlags: 0
