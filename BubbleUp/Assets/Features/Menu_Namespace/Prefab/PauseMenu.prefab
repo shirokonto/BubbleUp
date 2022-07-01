@@ -92,8 +92,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 101.6
-  m_fontSizeBase: 101.6
+  m_fontSize: 89.8
+  m_fontSizeBase: 89.8
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -228,8 +228,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 122.8
-  m_fontSizeBase: 122.8
+  m_fontSize: 102.6
+  m_fontSizeBase: 102.6
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -364,8 +364,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 122.8
-  m_fontSizeBase: 122.8
+  m_fontSize: 102.6
+  m_fontSizeBase: 102.6
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -444,7 +444,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -155}
-  m_SizeDelta: {x: 294.2494, y: 151.7908}
+  m_SizeDelta: {x: 294.2494, y: 110.21}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1448069740183195214
 CanvasRenderer:
@@ -597,7 +597,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -24}
-  m_SizeDelta: {x: 466.2169, y: 151.7908}
+  m_SizeDelta: {x: 466.2169, y: 114.21}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1448069740423814140
 CanvasRenderer:
@@ -746,8 +746,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 326}
-  m_SizeDelta: {x: 893.7997, y: 282.21}
+  m_AnchoredPosition: {x: 0, y: 263}
+  m_SizeDelta: {x: 893.7997, y: 172}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1448069740619557071
 CanvasRenderer:
@@ -804,8 +804,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 294
-  m_fontSizeBase: 294
+  m_fontSize: 200
+  m_fontSizeBase: 200
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -883,8 +883,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 109}
-  m_SizeDelta: {x: 466.2169, y: 151.7908}
+  m_AnchoredPosition: {x: 0, y: 95}
+  m_SizeDelta: {x: 466.2169, y: 119.1333}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1448069740951418510
 CanvasRenderer:
@@ -1017,7 +1017,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1448069741286635403
 RectTransform:
   m_ObjectHideFlags: 0

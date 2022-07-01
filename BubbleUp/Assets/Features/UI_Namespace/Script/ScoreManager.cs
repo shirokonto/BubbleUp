@@ -9,8 +9,8 @@ public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager instance;
     [SerializeField] private IntVariable points;
-    public Text scoreText;
-    public Text highscoreText;
+    public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI highscoreText;
    // int score = 0;
     int highscore = 0;
     // Start is called before the first frame update
