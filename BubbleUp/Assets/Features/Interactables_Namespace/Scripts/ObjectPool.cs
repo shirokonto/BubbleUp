@@ -8,35 +8,28 @@ namespace Features.Interactables_Namespace.Scripts
         //use of queue to store reference to game object
         private Dictionary<string, Queue<GameObject>> _itemPool;
 
-        // Start is called before the first frame update
-        void Start()
+        private void Awake()
         {
             _itemPool = new Dictionary<string, Queue<GameObject>>();
         }
 
-        public GameObject GetItem(GameObject item){
-            if (_itemPool.TryGetValue(gameObject.name, out Queue<GameObject> itemList))
+        public GameObject GetItem(GameObject item, Transform route){
+            if (_itemPool.TryGetValue(item.name, out Queue<GameObject> itemList))
             {
                 if (itemList.Count == 0)
                 {
-                    return CreateNewItem(item);
+                    return CreateNewItem(item, route);
                 }
-                else
-                {
-                    GameObject pooledItem = itemList.Dequeue();
-                    pooledItem.SetActive(true);
-                    return pooledItem;
-                }
+                GameObject pooledItem = itemList.Dequeue();
+                pooledItem.SetActive(true);
+                return pooledItem;
             }
-            else
-            {
-                return CreateNewItem(item);
-            }
+            return CreateNewItem(item, route);
         }
 
-        private GameObject CreateNewItem(GameObject item)
+        private GameObject CreateNewItem(GameObject item, Transform route)
         {
-            GameObject newItem = Instantiate(item);
+            GameObject newItem = Instantiate(item, route);
             newItem.name = item.name;
             return newItem;
         }
@@ -54,6 +47,5 @@ namespace Features.Interactables_Namespace.Scripts
                 _itemPool.Add(item.name, newItemQueue);
             }
         }
-
     }
 }

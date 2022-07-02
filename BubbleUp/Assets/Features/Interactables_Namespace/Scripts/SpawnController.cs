@@ -59,7 +59,6 @@ namespace Features.Interactables_Namespace.Scripts
             string tagging = _tags[Random.Range(0, _tags.Count)];
             
             DetermineSpawningItem();
-            //Debug.Log("gameobject: " + ObjectPooler.SharedInstance.GetPooledObject(tagging, _currentRoute.transform.GetChild(0).gameObject.transform).name);
             var spawningItem = ObjectPooler.SharedInstance.GetPooledObject(tagging, _currentRoute.transform.GetChild(0).gameObject.transform);
             
             if (spawningItem != null) {

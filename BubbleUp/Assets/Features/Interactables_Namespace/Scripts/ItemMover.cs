@@ -1,3 +1,4 @@
+using System;
 using DataStructures.Variables;
 using Unity.Mathematics;
 using UnityEngine;
@@ -20,18 +21,22 @@ namespace Features.Interactables_Namespace.Scripts
         private Transform _transform;
         private ItemMover _itemMover;
 
-        // Start is called before the first frame update
-        void Start()
+
+        private void Awake()
         {
             _rigidbody = GetComponent<Rigidbody>();
             _transform = GetComponent<Transform>();
             _itemMover = GetComponent<ItemMover>();
-            
-            //Set initial position to first point of one of the three routes
+        }
+
+        // Start is called before the first frame update
+        void Start()
+        {
+            //Set initial position to first point of current route
             if (gameObject.transform.name.Contains("Clone"))
             {
-                _currentRoute = spawner.GetComponent<SpawnController>().GetCurrentRoute();
-        
+                _currentRoute = spawner.GetComponent<Spawner>().GetCurrentRoute();
+
                 _currentPoint = _currentRoute.GetNextWayPoint(_currentPoint);
                 _startPosition = _currentPoint;
                 _startRotation = transform.rotation;
