@@ -19,8 +19,6 @@ public class Menu : MonoBehaviour
 
     public GameObject MainMenuUI;
 
-    public GameObject CountdownMenuUI;
-
     public AudioSource AudioSource;
 
     public Animator transition;
@@ -69,15 +67,17 @@ public class Menu : MonoBehaviour
     public void TryAgain()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(4, LoadSceneMode.Additive);
+        SceneManager.LoadScene(5, LoadSceneMode.Additive);
+        SceneManager.LoadScene(6, LoadSceneMode.Additive);
         Time.timeScale = 1f;
         
     }
 
     public void Resume()
     {
-        CountdownMenuUI.SetActive(true);
         PauseMenuUI.SetActive(false);
-        
+        Time.timeScale = 1f;
         GameIsPaused = false;
     }
     

@@ -13,11 +13,16 @@ namespace Features.Bubble_Namespace.Scripts
         [SerializeField] private string correctInfoType; //will be set before the game starts via character view
         [SerializeField] private BoolVariable bubbleIsPopped;
         [SerializeField] private GameEvent showPopup;
-        private const float BUBBLE_SCALING = 0.03f;
+        [SerializeField] private IntVariable points;
+        public bool adBlockerEnabled;        
         public ParticleSystem bubblePop;
         private Vector3 _scaleChange;
         private int _hit = 0;
-        public bool adBlockerEnabled;
+        private int localPoints = 0;
+        private const float BUBBLE_SCALING = 0.03f;
+        private const int PLUSPOINT = 1;
+        private const int MINUSPOINTS = 3;
+        
 
         private void Start()
         {
@@ -41,11 +46,18 @@ namespace Features.Bubble_Namespace.Scripts
                     break;
             }
         }
+
         private void HitInfoItem(GameObject infoItem){
             if (!infoItem.transform.name.Contains(correctInfoType))
             {
                 _hit += 1;
+                localPoints -= MINUSPOINTS;
+                points.Set(localPoints);
                 transform.localScale += _scaleChange;
+            } else
+            {
+                localPoints += PLUSPOINT;
+                points.Set(localPoints);
             }
             if(_hit == 3)
             {
