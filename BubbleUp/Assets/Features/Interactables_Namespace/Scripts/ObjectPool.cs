@@ -14,13 +14,17 @@ namespace Features.Interactables_Namespace.Scripts
         }
 
         public GameObject GetItem(GameObject item, Transform route){
-            if (_itemPool.TryGetValue(item.name, out Queue<GameObject> itemList))
+            //Debug.Log("all items: " + _itemPool.Count + " Item: " + item.name);
+            if (_itemPool.TryGetValue(item.name + "(Clone)", out Queue<GameObject> itemList))
             {
+                //Debug.Log("Item: " + item.name + " and their list: " + itemList.Count);
                 if (itemList.Count == 0)
                 {
+                    Debug.Log("here");
                     return CreateNewItem(item, route);
                 }
                 GameObject pooledItem = itemList.Dequeue();
+                //Debug.Log("pooled item: " + pooledItem);
                 pooledItem.SetActive(true);
                 return pooledItem;
             }
@@ -30,6 +34,7 @@ namespace Features.Interactables_Namespace.Scripts
         private GameObject CreateNewItem(GameObject item, Transform route)
         {
             GameObject newItem = Instantiate(item, route);
+            //Debug.Log("Item: " + newItem.name);
             return newItem;
         }
         

@@ -37,8 +37,9 @@ namespace Features.Interactables_Namespace.Scripts
             {
                 _currentRoute = spawner.GetComponent<Spawner>().GetCurrentRoute();
                 _objectPool = gameObject.transform.GetComponentInParent<ObjectPool>();
+                //TODO: fix respawn position
+                _startPosition = _currentRoute.transform.GetChild(0).gameObject.transform;
                 _currentPoint = _currentRoute.GetNextWayPoint(_currentPoint);
-                _startPosition = _currentPoint;
                 _startRotation = transform.rotation;
                 transform.position = _currentPoint.position;
         
@@ -75,9 +76,10 @@ namespace Features.Interactables_Namespace.Scripts
         public void ResetPositionAndRotationBeforeRespawn()
         {
             gameObject.SetActive(false);
-            _objectPool.ReturnItemToPool(this.gameObject);
+            
+            //TODO: fix respawn position 
             //reset position
-            //_transform = _startPosition;
+            _transform = _startPosition;
             _rigidbody.velocity = Vector3.zero;
         
             //reset rotation
@@ -86,6 +88,7 @@ namespace Features.Interactables_Namespace.Scripts
             _transform.localRotation = quaternion.Euler(Vector3.zero);
             _transform.rotation = Quaternion.identity;
             _rigidbody.freezeRotation = true;
+            _objectPool.ReturnItemToPool(gameObject);
         }
         
         public void SetMoveSpeed(float newMoveSpeed)

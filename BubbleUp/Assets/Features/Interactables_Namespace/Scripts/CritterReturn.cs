@@ -12,12 +12,12 @@ namespace Features.Interactables_Namespace.Scripts
         {
             _objectPool = FindObjectOfType<ObjectPool>();
         }
-
+        // Tim isn cooler Dude
         private void OnDisable()
         {
             if (_objectPool != null)
             {
-                _objectPool.ReturnItemToPool(this.gameObject);
+                //_objectPool.ReturnItemToPool(this.gameObject);
             }
         }
     }
