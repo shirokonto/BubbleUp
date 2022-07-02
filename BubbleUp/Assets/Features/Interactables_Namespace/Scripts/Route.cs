@@ -24,10 +24,10 @@ namespace Features.Interactables_Namespace.Scripts
                 Gizmos.DrawLine(transform.GetChild(i).position, transform.GetChild(i+1).position);
             }
         }
-
+        
         /**
-     * Returns the next way point of the path towards the bubble
-     */
+        * Returns the next way point of the path towards the bubble
+        */
         public Transform GetNextWayPoint(Transform currentWayPoint)
         {
             if (currentWayPoint == null)

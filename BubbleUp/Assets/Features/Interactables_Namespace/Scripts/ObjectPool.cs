@@ -30,7 +30,6 @@ namespace Features.Interactables_Namespace.Scripts
         private GameObject CreateNewItem(GameObject item, Transform route)
         {
             GameObject newItem = Instantiate(item, route);
-            newItem.name = item.name;
             return newItem;
         }
         

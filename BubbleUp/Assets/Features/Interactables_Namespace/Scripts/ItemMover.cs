@@ -2,6 +2,7 @@ using System;
 using DataStructures.Variables;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 namespace Features.Interactables_Namespace.Scripts
 {
@@ -19,14 +20,13 @@ namespace Features.Interactables_Namespace.Scripts
         private Route _currentRoute;
         private Rigidbody _rigidbody;
         private Transform _transform;
-        private ItemMover _itemMover;
+        private ObjectPool _objectPool;
 
 
         private void Awake()
         {
             _rigidbody = GetComponent<Rigidbody>();
             _transform = GetComponent<Transform>();
-            _itemMover = GetComponent<ItemMover>();
         }
 
         // Start is called before the first frame update
@@ -36,7 +36,7 @@ namespace Features.Interactables_Namespace.Scripts
             if (gameObject.transform.name.Contains("Clone"))
             {
                 _currentRoute = spawner.GetComponent<Spawner>().GetCurrentRoute();
-
+                _objectPool = gameObject.transform.GetComponentInParent<ObjectPool>();
                 _currentPoint = _currentRoute.GetNextWayPoint(_currentPoint);
                 _startPosition = _currentPoint;
                 _startRotation = transform.rotation;
@@ -56,6 +56,7 @@ namespace Features.Interactables_Namespace.Scripts
                 {
                     moveSpeed.Set(0.75f);
                 }
+
                 MoveItemTowardsBubble();
                 if (Vector3.Distance(player.position, gameObject.transform.position) > distanceFromPlayer)
                 {
@@ -74,7 +75,7 @@ namespace Features.Interactables_Namespace.Scripts
         public void ResetPositionAndRotationBeforeRespawn()
         {
             gameObject.SetActive(false);
-            
+            _objectPool.ReturnItemToPool(this.gameObject);
             //reset position
             //_transform = _startPosition;
             _rigidbody.velocity = Vector3.zero;
@@ -87,8 +88,6 @@ namespace Features.Interactables_Namespace.Scripts
             _rigidbody.freezeRotation = true;
         }
         
-        
-
         public void SetMoveSpeed(float newMoveSpeed)
         {
             moveSpeed.Set(newMoveSpeed);

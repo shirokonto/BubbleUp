@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using DataStructures.Variables;
 using UnityEngine;
+using UnityEngine.Rendering;
 using Random = System.Random;
 using RandomUnityEngine = UnityEngine.Random;
 
@@ -27,7 +28,7 @@ namespace Features.Interactables_Namespace.Scripts
 
         void Awake()
         {
-            _objectPool = FindObjectOfType<ObjectPool>();
+            _objectPool = gameObject.GetComponent<ObjectPool>();
             _random = new Random();
         }
 
@@ -48,7 +49,6 @@ namespace Features.Interactables_Namespace.Scripts
         {
             DetermineSpawningItem();
             GameObject newCritter = _objectPool.GetItem(ChooseRandomItemFromList(_currentlySpawningItems), spawnRoute.transform.GetChild(0).gameObject.transform);
-            newCritter.transform.position = this.transform.position;
         }
 
         private IEnumerator Spawn()
