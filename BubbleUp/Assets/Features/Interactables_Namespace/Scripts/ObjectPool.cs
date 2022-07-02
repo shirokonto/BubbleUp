@@ -14,20 +14,6 @@ namespace Features.Interactables_Namespace.Scripts
             _itemPool = new Dictionary<string, Queue<GameObject>>();
         }
 
-        public void ReturnItemFromPool(GameObject item)
-        {
-            if (_itemPool.TryGetValue(item.name, out Queue<GameObject> itemList))
-            {
-                itemList.Enqueue(item);
-            }
-            else
-            {
-                Queue<GameObject> newItemQueue = new Queue<GameObject>();
-                newItemQueue.Enqueue(item);
-                _itemPool.Add(item.name, newItemQueue);
-            }
-        }
-
         public GameObject GetItem(GameObject item){
             if (_itemPool.TryGetValue(gameObject.name, out Queue<GameObject> itemList))
             {
@@ -54,5 +40,20 @@ namespace Features.Interactables_Namespace.Scripts
             newItem.name = item.name;
             return newItem;
         }
+        
+        public void ReturnItemToPool(GameObject item)
+        {
+            if (_itemPool.TryGetValue(item.name, out Queue<GameObject> itemList))
+            {
+                itemList.Enqueue(item);
+            }
+            else
+            {
+                Queue<GameObject> newItemQueue = new Queue<GameObject>();
+                newItemQueue.Enqueue(item);
+                _itemPool.Add(item.name, newItemQueue);
+            }
+        }
+
     }
 }
