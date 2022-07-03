@@ -19,7 +19,7 @@ public class Menu : MonoBehaviour
 
     public GameObject MainMenuUI;
 
-    public AudioSource AudioSource;
+    //public AudioSource AudioSource;
 
     public Animator transition;
     public float transitionTime = 2f;
@@ -48,7 +48,7 @@ public class Menu : MonoBehaviour
         if (isGameOver)
         {
             GameOverScreen.SetActive(true);
-            AudioSource.Stop();
+            //AudioSource.Stop();
             Time.timeScale = 0f;
         }
     }
@@ -56,7 +56,7 @@ public class Menu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        AudioSource = GetComponent<AudioSource>();
+        //AudioSource = GetComponent<AudioSource>();
     }
 
     public void Play()
