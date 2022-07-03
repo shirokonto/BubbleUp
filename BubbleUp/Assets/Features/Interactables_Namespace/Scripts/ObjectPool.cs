@@ -34,6 +34,7 @@ namespace Features.Interactables_Namespace.Scripts
         private GameObject CreateNewItem(GameObject item, Transform route)
         {
             GameObject newItem = Instantiate(item, route);
+            newItem.GetComponent<ItemMover>().SetCurrentRoute(route);
             //Debug.Log("Item: " + newItem.name);
             return newItem;
         }
