@@ -20,7 +20,6 @@ namespace Features.Interactables_Namespace.Scripts
                 //Debug.Log("Item: " + item.name + " and their list: " + itemList.Count);
                 if (itemList.Count == 0)
                 {
-                    Debug.Log("here");
                     return CreateNewItem(item, route);
                 }
                 GameObject pooledItem = itemList.Dequeue();
@@ -34,6 +33,7 @@ namespace Features.Interactables_Namespace.Scripts
         private GameObject CreateNewItem(GameObject item, Transform route)
         {
             GameObject newItem = Instantiate(item, route);
+            newItem.GetComponent<ItemMover>().SetCurrentRoute(route);
             //Debug.Log("Item: " + newItem.name);
             return newItem;
         }

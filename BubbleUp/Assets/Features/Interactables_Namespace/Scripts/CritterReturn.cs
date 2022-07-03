@@ -12,7 +12,7 @@ namespace Features.Interactables_Namespace.Scripts
         {
             _objectPool = FindObjectOfType<ObjectPool>();
         }
-        // Tim isn cooler Dude
+        
         private void OnDisable()
         {
             if (_objectPool != null)

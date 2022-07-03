@@ -42,7 +42,7 @@ namespace Features.Menu_Namespace.Scripts
             if (IsGameOver)
             {
                 gameOverScreen.SetActive(true);
-                audioSource.Stop();
+                //audioSource.Stop();
                 Time.timeScale = 0f;
             }
         }

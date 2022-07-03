@@ -9,7 +9,7 @@ namespace Features.Interactables_Namespace.Scripts
     public class ItemMover : MonoBehaviour
     {
         //[SerializeField] private float moveSpeed = 0.5f;
-        [SerializeField] private GameObject spawner;
+        //[SerializeField] private GameObject spawner;
         [SerializeField] private BoolVariable isSecondWave;
         [SerializeField] private FloatVariable moveSpeed;
         [SerializeField] private Transform player;
@@ -21,7 +21,6 @@ namespace Features.Interactables_Namespace.Scripts
         private Rigidbody _rigidbody;
         private Transform _transform;
         private ObjectPool _objectPool;
-
 
         private void Awake()
         {
@@ -35,10 +34,9 @@ namespace Features.Interactables_Namespace.Scripts
             //Set initial position to first point of current route
             if (gameObject.transform.name.Contains("Clone"))
             {
-                _currentRoute = spawner.GetComponent<Spawner>().GetCurrentRoute();
+                //_currentRoute = spawner.GetComponent<Spawner>().GetCurrentRoute();
                 _objectPool = gameObject.transform.GetComponentInParent<ObjectPool>();
-                //TODO: fix respawn position
-                _startPosition = _currentRoute.transform.GetChild(0).gameObject.transform;
+                _startPosition = _currentRoute.gameObject.transform.GetChild(0).gameObject.transform; 
                 _currentPoint = _currentRoute.GetNextWayPoint(_currentPoint);
                 _startRotation = transform.rotation;
                 transform.position = _currentPoint.position;
@@ -66,6 +64,11 @@ namespace Features.Interactables_Namespace.Scripts
             }
         }
 
+        public void SetCurrentRoute(Transform route)
+        {
+            _currentRoute = route.GetComponent<Spawner>().GetCurrentRoute();
+        }
+
         private void MoveItemTowardsBubble()
         {
             var position = _currentPoint.position;
@@ -79,7 +82,7 @@ namespace Features.Interactables_Namespace.Scripts
             
             //TODO: fix respawn position 
             //reset position
-            _transform = _startPosition;
+            _transform.position = _startPosition.position;
             _rigidbody.velocity = Vector3.zero;
         
             //reset rotation
