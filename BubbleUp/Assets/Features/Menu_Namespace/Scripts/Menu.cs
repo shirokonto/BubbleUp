@@ -22,6 +22,7 @@ namespace Features.Menu_Namespace.Scripts
         private void Awake()
         {
             IsGameOver = false;
+            SceneManager.LoadScene(4, LoadSceneMode.Additive); //Bubble
         }
 
         // Update is called once per frame
