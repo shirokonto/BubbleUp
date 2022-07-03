@@ -22,7 +22,6 @@ namespace Features.Interactables_Namespace.Scripts
             }
         }
 
-
         public void ShowPopups()
         {
             popupWindow.SetActive(true);
@@ -30,23 +29,28 @@ namespace Features.Interactables_Namespace.Scripts
         }
         public IEnumerator ShowAdWhenVirusHit(){
             
-            //show UI1 ad Element
-            _popupChildren[0].SetActive(true);
-            yield return new WaitForSeconds(0.4f);
+            //show ad popups
+            _popupChildren[4].SetActive(true);
+            yield return new WaitForSeconds(0.3f);
             _popupChildren[1].SetActive(true);
-            yield return new WaitForSeconds(0.4f);
-            _popupChildren[0].SetActive(false);
+            yield return new WaitForSeconds(0.3f);
+            _popupChildren[4].SetActive(false);
 
             _popupChildren[2].SetActive(true);
-            yield return new WaitForSeconds(0.4f);
+            yield return new WaitForSeconds(0.3f);
             _popupChildren[1].SetActive(false);
 
             _popupChildren[3].SetActive(true);
-            yield return new WaitForSeconds(0.4f);
-            _popupChildren[2].SetActive(false);
-            yield return new WaitForSeconds(0.4f);
-            _popupChildren[3].SetActive(false);
+            yield return new WaitForSeconds(0.3f);
             
+            _popupChildren[0].SetActive(true);
+            yield return new WaitForSeconds(0.3f);
+            _popupChildren[2].SetActive(false);
+            yield return new WaitForSeconds(0.3f);
+            _popupChildren[3].SetActive(false); 
+            
+            yield return new WaitForSeconds(0.3f);
+            _popupChildren[0].SetActive(false);
         }
     }
 }

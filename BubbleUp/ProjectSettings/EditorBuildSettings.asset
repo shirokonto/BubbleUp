@@ -15,9 +15,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Hands.unity
     guid: aa2da2d69eb0b4c4a8396377653773f7
   - enabled: 1
-    path: Assets/Scenes/Characters.unity
-    guid: 42aea55a2900a40f59e8c73fafa20338
-  - enabled: 1
     path: Assets/Scenes/Bubble.unity
     guid: da774869f92e744498f57ddce27c083b
   - enabled: 1
@@ -26,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/UI_Pavel.unity
     guid: 26aa7563aeab5184c8910c8d059e288b
+  - enabled: 1
+    path: Assets/Scenes/UI.unity
+    guid: 61da517199a493942bcbffbbecd857f1
   m_configObjects: {}

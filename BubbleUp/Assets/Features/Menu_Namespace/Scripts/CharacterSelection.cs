@@ -1,3 +1,4 @@
+using DataStructures.Variables;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -5,6 +6,7 @@ namespace Features.Menu_Namespace.Scripts
 {
     public class CharacterSelection : MonoBehaviour
     {
+        [SerializeField] private IntVariable points;
         public GameObject[] characters; // Character variable to switch between characters
         public int selectedCharacter = 0; // saves which character is currently chosen
 
@@ -29,7 +31,9 @@ namespace Features.Menu_Namespace.Scripts
         public void StartGame()
         {
             PlayerPrefs.SetInt("selectedCharacter", selectedCharacter); // save data
+            points.Set(0);
             SceneManager.LoadScene(2, LoadSceneMode.Single);
+            SceneManager.LoadScene(3, LoadSceneMode.Additive);
             SceneManager.LoadScene(4, LoadSceneMode.Additive);
             SceneManager.LoadScene(5, LoadSceneMode.Additive);
             SceneManager.LoadScene(6, LoadSceneMode.Additive);
