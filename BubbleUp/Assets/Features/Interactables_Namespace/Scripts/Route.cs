@@ -1,41 +1,45 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Route : MonoBehaviour
+namespace Features.Interactables_Namespace.Scripts
 {
-    [Range(0f, 0.5f)]
-    [SerializeField] private float wayPointSize = 1f;
-    private void OnDrawGizmos()
+    public class Route : MonoBehaviour
     {
-        foreach (Transform t in transform)
+        [Range(0f, 0.5f)]
+        [SerializeField] private float wayPointSize = 1f;
+    
+        /**
+     * Display the start and end points as blue spheres and route as a red line using gizmos
+     */
+        private void OnDrawGizmos()
         {
-            Gizmos.color = Color.blue;
-            Gizmos.DrawWireSphere(t.position, wayPointSize); //take every transform for every waypoints
-        }
+            foreach (Transform t in transform)
+            {
+                Gizmos.color = Color.blue;
+                Gizmos.DrawWireSphere(t.position, wayPointSize); //take every transform for every waypoints
+            }
 
-        Gizmos.color = Color.red;
-        for (int i = 0; i < transform.childCount - 1; i++)
-        {
-            Gizmos.DrawLine(transform.GetChild(i).position, transform.GetChild(i+1).position);
+            Gizmos.color = Color.red;
+            for (int i = 0; i < transform.childCount - 1; i++)
+            {
+                Gizmos.DrawLine(transform.GetChild(i).position, transform.GetChild(i+1).position);
+            }
         }
-    }
+        
+        /**
+        * Returns the next way point of the path towards the bubble
+        */
+        public Transform GetNextWayPoint(Transform currentWayPoint)
+        {
+            if (currentWayPoint == null)
+            {
+                return transform.GetChild(0);
+            }
 
-    //TODO: adapt for our two nodes only path
-    public Transform GetNextWayPoint(Transform currentWayPoint)
-    {
-        if (currentWayPoint == null)
-        {
-            return transform.GetChild(0);
-        }
+            if (currentWayPoint.GetSiblingIndex() < transform.childCount - 1)
+            {
+                return transform.GetChild(currentWayPoint.GetSiblingIndex() + 1); //get next point
+            }
 
-        if (currentWayPoint.GetSiblingIndex() < transform.childCount - 1)
-        {
-            return transform.GetChild(currentWayPoint.GetSiblingIndex() + 1); //get next point
-        }
-        else
-        {
             return transform.GetChild(0);
         }
     }
