@@ -1,7 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using DataStructures.Variables;
 using Features.Interactables_Namespace.Scripts;
+using Features.Menu_Namespace.Scripts;
 using UnityEngine;
 using UnityEngine.UI;
 using Utilities.Event_Namespace;
@@ -64,7 +63,7 @@ namespace Features.Bubble_Namespace.Scripts
                 bubbleIsPopped.Set(true);
                 Destroy(this.gameObject);
                 bubblePop.Play();
-                Menu.isGameOver = true;
+                Menu.IsGameOver = true;
             }
             infoItem.GetComponent<DisableIfFarAwayOrHitBubble>().ResetPositionAndRotation();
         }
