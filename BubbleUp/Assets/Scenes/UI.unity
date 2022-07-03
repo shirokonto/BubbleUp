@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.3731193, g: 0.38073996, b: 0.3587269, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -596,14 +596,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f30da3a31d1254c41b33816ddfd2ac27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PauseMenuUI: {fileID: 129170065}
-  GameOverScreen: {fileID: 1869531588}
-  TutorialUI: {fileID: 0}
-  LeapMotionUI: {fileID: 0}
-  MainMenuUI: {fileID: 0}
-  AudioSource: {fileID: 0}
+  pauseMenuUI: {fileID: 129170065}
+  gameOverScreen: {fileID: 1869531588}
+  tutorialUI: {fileID: 0}
+  leapMotionUI: {fileID: 0}
+  mainMenuUI: {fileID: 0}
+  audioSource: {fileID: 0}
   transition: {fileID: 0}
   transitionTime: 2
+  points: {fileID: 11400000, guid: 5dcebee57bc04964b84d2b727e558f7d, type: 2}
 --- !u!1 &1485436737
 GameObject:
   m_ObjectHideFlags: 0
