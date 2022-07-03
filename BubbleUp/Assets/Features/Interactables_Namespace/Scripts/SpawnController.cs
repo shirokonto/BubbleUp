@@ -55,12 +55,10 @@ namespace Features.Interactables_Namespace.Scripts
     
         private void Instantiate()
         {
-            //TODO: refactor "Tagging" to gameObject to use multiple infoItems
             _currentRoute = spawnRoutes[Random.Range(0, spawnRoutes.Count)];
             string tagging = _tags[Random.Range(0, _tags.Count)];
             
             DetermineSpawningItem();
-            //Debug.Log("gameobject: " + ObjectPooler.SharedInstance.GetPooledObject(tagging, _currentRoute.transform.GetChild(0).gameObject.transform).name);
             var spawningItem = ObjectPooler.SharedInstance.GetPooledObject(tagging, _currentRoute.transform.GetChild(0).gameObject.transform);
             
             if (spawningItem != null) {
