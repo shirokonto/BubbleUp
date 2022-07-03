@@ -272,6 +272,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b2449ddbc180c40d8a9a9d737e4f1e2c, type: 3}
+--- !u!1 &129170065 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1448069741286635396, guid: b2449ddbc180c40d8a9a9d737e4f1e2c, type: 3}
+  m_PrefabInstance: {fileID: 129170064}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &129170066 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1448069741286635403, guid: b2449ddbc180c40d8a9a9d737e4f1e2c, type: 3}
@@ -791,15 +796,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f30da3a31d1254c41b33816ddfd2ac27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseMenuUI: {fileID: 0}
-  gameOverScreen: {fileID: 0}
+  pauseMenuUI: {fileID: 129170065}
+  gameOverScreen: {fileID: 1869531588}
   tutorialUI: {fileID: 0}
   leapMotionUI: {fileID: 0}
   mainMenuUI: {fileID: 0}
   audioSource: {fileID: 0}
   transition: {fileID: 0}
   transitionTime: 2
-  points: {fileID: 0}
+  points: {fileID: 11400000, guid: 5dcebee57bc04964b84d2b727e558f7d, type: 2}
 --- !u!1 &1273521035
 GameObject:
   m_ObjectHideFlags: 0
@@ -1135,6 +1140,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ff377325d18a419ea3eef594cc79246, type: 3}
+--- !u!1 &1869531588 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2452329055010981324, guid: 6ff377325d18a419ea3eef594cc79246, type: 3}
+  m_PrefabInstance: {fileID: 1869531587}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1869531589 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2452329055010981312, guid: 6ff377325d18a419ea3eef594cc79246, type: 3}
