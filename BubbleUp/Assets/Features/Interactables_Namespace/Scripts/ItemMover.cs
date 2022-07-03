@@ -22,7 +22,6 @@ namespace Features.Interactables_Namespace.Scripts
         private Transform _transform;
         private ObjectPool _objectPool;
 
-
         private void Awake()
         {
             _rigidbody = GetComponent<Rigidbody>();
@@ -37,8 +36,7 @@ namespace Features.Interactables_Namespace.Scripts
             {
                 //_currentRoute = spawner.GetComponent<Spawner>().GetCurrentRoute();
                 _objectPool = gameObject.transform.GetComponentInParent<ObjectPool>();
-                _startPosition = _currentRoute.gameObject.transform.GetChild(0).gameObject.transform;
-                Debug.Log("startpos 1.: " + _startPosition.position);
+                _startPosition = _currentRoute.gameObject.transform.GetChild(0).gameObject.transform; 
                 _currentPoint = _currentRoute.GetNextWayPoint(_currentPoint);
                 _startRotation = transform.rotation;
                 transform.position = _currentPoint.position;
@@ -85,7 +83,6 @@ namespace Features.Interactables_Namespace.Scripts
             //TODO: fix respawn position 
             //reset position
             _transform.position = _startPosition.position;
-            Debug.Log("transform: " + _transform.position);
             _rigidbody.velocity = Vector3.zero;
         
             //reset rotation

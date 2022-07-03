@@ -25,6 +25,7 @@ namespace Features.Interactables_Namespace.Scripts
         private float _spawningItemDeterminer;
         private Random _random;
         private List<GameObject> _currentlySpawningItems;
+        private Transform _startPosition;
 
         void Awake()
         {

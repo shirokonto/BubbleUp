@@ -20,7 +20,6 @@ namespace Features.Interactables_Namespace.Scripts
                 //Debug.Log("Item: " + item.name + " and their list: " + itemList.Count);
                 if (itemList.Count == 0)
                 {
-                    Debug.Log("here");
                     return CreateNewItem(item, route);
                 }
                 GameObject pooledItem = itemList.Dequeue();
