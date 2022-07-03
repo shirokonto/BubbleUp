@@ -27,6 +27,7 @@ public class Menu : MonoBehaviour
     private void Awake()
     {
         isGameOver = false;
+        //SceneManager.LoadScene(4, LoadSceneMode.Additive);
     }
 
     // Update is called once per frame

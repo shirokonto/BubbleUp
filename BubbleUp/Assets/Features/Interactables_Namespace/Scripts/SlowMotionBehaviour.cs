@@ -44,6 +44,7 @@ namespace Features.Interactables_Namespace.Scripts
                         _allItemsOnSameRoute.Add(path.GetChild(i));
                     }
                     StartCoroutine(SlowDownFlowTemporary(_allItemsOnSameRoute));
+                    SelectedItem.timer = true;
                 }
             }
         }
@@ -64,6 +65,7 @@ namespace Features.Interactables_Namespace.Scripts
             }
             SetSlowMoVisibility(true);
             GetComponent<ItemMover>().ResetPositionAndRotationBeforeRespawn();
+            SelectedItem.timer = false;
         }
 
         private void SetSlowMoVisibility(bool isVisible)
