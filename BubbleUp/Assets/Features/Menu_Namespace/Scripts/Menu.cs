@@ -68,7 +68,6 @@ public class Menu : MonoBehaviour
     public void TryAgain()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        SceneManager.LoadScene(2, LoadSceneMode.Additive);
         SceneManager.LoadScene(3, LoadSceneMode.Additive);
         SceneManager.LoadScene(4, LoadSceneMode.Additive);
         SceneManager.LoadScene(5, LoadSceneMode.Additive);
