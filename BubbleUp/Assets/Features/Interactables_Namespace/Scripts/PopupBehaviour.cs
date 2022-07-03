@@ -26,6 +26,7 @@ namespace Features.Interactables_Namespace.Scripts
         {
             popupWindow.SetActive(true);
             StartCoroutine(ShowAdWhenVirusHit());
+            
         }
         public IEnumerator ShowAdWhenVirusHit(){
             
@@ -51,6 +52,9 @@ namespace Features.Interactables_Namespace.Scripts
             
             yield return new WaitForSeconds(0.3f);
             _popupChildren[0].SetActive(false);
+
+            SelectedItem.virus = false;
         }
+        
     }
 }

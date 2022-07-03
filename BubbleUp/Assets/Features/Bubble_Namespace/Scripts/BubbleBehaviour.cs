@@ -1,3 +1,4 @@
+using System.Collections;
 using DataStructures.Variables;
 using Features.Interactables_Namespace.Scripts;
 using Features.Menu_Namespace.Scripts;
@@ -63,7 +64,7 @@ namespace Features.Bubble_Namespace.Scripts
                 bubbleIsPopped.Set(true);
                 Destroy(this.gameObject);
                 bubblePop.Play();
-                Menu.IsGameOver = true;
+                Menu.isGameOver = true;
             }
             infoItem.GetComponent<ItemMover>().ResetPositionAndRotationBeforeRespawn();
         }
@@ -76,12 +77,24 @@ namespace Features.Bubble_Namespace.Scripts
                 transform.localScale -= _scaleChange;
             }
             minimizeItem.GetComponent<ItemMover>().ResetPositionAndRotationBeforeRespawn();
+            ShowAdWhenMinimizeHit();
+
+
         }
 
         public void HitVirus(GameObject virusItem)
         {
             virusItem.GetComponent<ItemMover>().ResetPositionAndRotationBeforeRespawn();
             showPopup.Raise();
+            SelectedItem.virus = true;
+        }
+
+        public IEnumerator ShowAdWhenMinimizeHit()
+        {
+            //show Timer item
+            SelectedItem.minimize = true;
+            yield return new WaitForSeconds(0.3f);
         }
     }
 }
+
