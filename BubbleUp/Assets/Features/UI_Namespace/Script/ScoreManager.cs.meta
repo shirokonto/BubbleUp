@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:BubbleUp/Assets/Features/Interactables_Namespace/Scripts/CritterReturn.cs.meta
+guid: 2d53786b449f0fe4590f9e68a33e6c5c
+=======
 guid: 60dd3311455b4ec4ba1f8facb8f0b24e
+>>>>>>> main:BubbleUp/Assets/Features/UI_Namespace/Script/ScoreManager.cs.meta
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2

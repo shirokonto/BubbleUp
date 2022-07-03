@@ -65,7 +65,7 @@ namespace Features.Bubble_Namespace.Scripts
                 bubblePop.Play();
                 Menu.IsGameOver = true;
             }
-            infoItem.GetComponent<DisableIfFarAwayOrHitBubble>().ResetPositionAndRotation();
+            infoItem.GetComponent<ItemMover>().ResetPositionAndRotationBeforeRespawn();
         }
         
         private void HitMinimizeBubble(GameObject minimizeItem)
@@ -75,12 +75,12 @@ namespace Features.Bubble_Namespace.Scripts
                 _hit -= 1;
                 transform.localScale -= _scaleChange;
             }
-            minimizeItem.GetComponent<DisableIfFarAwayOrHitBubble>().ResetPositionAndRotation();
+            minimizeItem.GetComponent<ItemMover>().ResetPositionAndRotationBeforeRespawn();
         }
 
         public void HitVirus(GameObject virusItem)
         {
-            virusItem.GetComponent<DisableIfFarAwayOrHitBubble>().ResetPositionAndRotation();
+            virusItem.GetComponent<ItemMover>().ResetPositionAndRotationBeforeRespawn();
             showPopup.Raise();
         }
     }
