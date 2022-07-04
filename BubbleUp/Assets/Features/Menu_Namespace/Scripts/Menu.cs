@@ -56,6 +56,9 @@ public class Menu : MonoBehaviour
             GameOverScreen.SetActive(true);
             //AudioSource.Stop();
             Time.timeScale = 0f;
+        } else
+        {
+            Time.timeScale = 1f;
         }
     }
 
