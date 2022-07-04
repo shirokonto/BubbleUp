@@ -13,41 +13,50 @@ public class ScoreManager : MonoBehaviour
     public TextMeshProUGUI highscoreText;
    // int score = 0;
     int highscore = 0;
-    // Start is called before the first frame update
+    public GameObject[] bonbon;
+    private int lifeWithBonbons;
+    private int lifeAfterBonbons;
+    private bool dead;
+    
+
 
     private void Awake()
     {
         instance = this;
     }
+
     void Start()
     {
-        //highscore = PlayerPrefs.GetInt("highscore", 0);
+
         scoreText.text = points.Get() + " POINTS";
-       // highscoreText.text = "HIGHSCORE: " + highscore.ToString();
+      
     }
-
-   /* public void AddPoint()
-    {
-        score += 3;
-        scoreText.text = score.ToString() + " POINTS";
-
-        if (highscore < score)
-        {
-            PlayerPrefs.SetInt("highscore", score);
-        }
-
-    }
-    public void MinusPoint()
-    {
-
-        score -= 1;
-        scoreText.text = score.ToString() + " POINTS";
-    }
-   */
 
 
     void Update()
     {
-        scoreText.text = points.Get() + " POINTS";
+
+        if (points.Get() <= 2)
+        {
+            dead = true;
+        }
+
+        if (dead == true)
+        {
+            scoreText.text = points.Get() + " POINTS";
+        }
+
+        
+
+    }
+
+    public void TakeDamage(int d)
+    {
+        lifeWithBonbons -= d;
+        Destroy(bonbon[lifeWithBonbons].gameObject);
+        if(lifeWithBonbons < 1)
+        {
+            dead = true;
+        }
     }
 }
