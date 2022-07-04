@@ -9,7 +9,7 @@ Be aware of other dangers like ads or viruses and use useful items to keep them 
 ## How to play (Controls) :joystick: 
 ### Keyboard/Mouse
 * Pause with ESC
-* Leftclick for Menu buttons ;)
+* Leftclick for Menu buttons
 
 ### LeapMotion
 * Pause by hovering with the hand over the pause button
@@ -43,9 +43,9 @@ We are the rebootCrew and we’ve teamed up to develop this 3D game for the cour
 * name: [example link to repo](https://github.com/shirokonto/bubbleUp) 
 
 :space_invader: **Assets by:**
-* Bubble Shader
-* Environment
+* BOXOPHOBIC: [FREE Skybox Extended Shader](https://assetstore.unity.com/packages/vfx/shaders/free-skybox-extended-shader-107400)
 * Moonflower Carnivore: [Jiggly Bubble Free](https://assetstore.unity.com/packages/vfx/particles/environment/jiggly-bubble-free-61236)
 
 :wrench: **Utils**
 * Mixamo: [Animation for 3D Characters](https://www.mixamo.com/#/)
+* zetafonts: [Arista Font](https://www.1001freefonts.com/-z--arista.font)
