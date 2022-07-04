@@ -3,12 +3,15 @@ using DataStructures.Variables;
 using Features.Interactables_Namespace.Scripts;
 using Features.Menu_Namespace.Scripts;
 using UnityEngine;
-using UnityEngine.UI;
 using Utilities.Event_Namespace;
 using Vector3 = UnityEngine.Vector3;
 
 namespace Features.Bubble_Namespace.Scripts
 {
+    /**
+     *  
+     */
+
     public class BubbleBehaviour : MonoBehaviour {
         [SerializeField] private string correctInfoType; //will be set before the game starts via character view
         [SerializeField] private BoolVariable bubbleIsPopped;
@@ -17,8 +20,8 @@ namespace Features.Bubble_Namespace.Scripts
         public bool adBlockerEnabled;        
         public ParticleSystem bubblePop;
         private Vector3 _scaleChange;
-        private int _hit = 0;
-        private int localPoints = 0;
+        private int _hit;
+        private int _localPoints ;
         private const float BUBBLE_SCALING = 0.03f;
         private const int PLUSPOINT = 1;
         private const int MINUSPOINTS = 3;
@@ -26,6 +29,8 @@ namespace Features.Bubble_Namespace.Scripts
 
         private void Start()
         {
+            _hit = 0;
+            _localPoints = 0;
             _scaleChange = new Vector3(BUBBLE_SCALING, BUBBLE_SCALING, BUBBLE_SCALING);
             bubbleIsPopped.Set(false);
             bubblePop.Stop();
@@ -37,7 +42,7 @@ namespace Features.Bubble_Namespace.Scripts
             {
                 case "InfoObject":
                     HitInfoItem(other.gameObject);
-                    break; ;
+                    break;
                 case "MinimizeBubble":
                     HitMinimizeBubble(other.gameObject);
                     break;
@@ -51,13 +56,13 @@ namespace Features.Bubble_Namespace.Scripts
             if (!infoItem.transform.name.Contains(correctInfoType))
             {
                 _hit += 1;
-                localPoints -= MINUSPOINTS;
-                points.Set(localPoints);
+                _localPoints -= MINUSPOINTS;
+                points.Set(_localPoints);
                 transform.localScale += _scaleChange;
             } else
             {
-                localPoints += PLUSPOINT;
-                points.Set(localPoints);
+                _localPoints += PLUSPOINT;
+                points.Set(_localPoints);
             }
             if(_hit == 3)
             {
@@ -78,18 +83,16 @@ namespace Features.Bubble_Namespace.Scripts
             }
             minimizeItem.GetComponent<ItemMover>().ResetPositionAndRotationBeforeRespawn();
             ShowAdWhenMinimizeHit();
-
-
         }
 
-        public void HitVirus(GameObject virusItem)
+        private void HitVirus(GameObject virusItem)
         {
             virusItem.GetComponent<ItemMover>().ResetPositionAndRotationBeforeRespawn();
             showPopup.Raise();
             SelectedItem.virus = true;
         }
 
-        public IEnumerator ShowAdWhenMinimizeHit()
+        private static IEnumerator ShowAdWhenMinimizeHit()
         {
             //show Timer item
             SelectedItem.minimize = true;
