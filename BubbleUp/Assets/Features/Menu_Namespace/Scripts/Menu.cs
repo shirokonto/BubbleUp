@@ -29,6 +29,12 @@ public class Menu : MonoBehaviour
         isGameOver = false;
         //SceneManager.LoadScene(4, LoadSceneMode.Additive);
     }
+    
+    // Start is called before the first frame update
+    void Start()
+    {
+        //AudioSource = GetComponent<AudioSource>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -51,12 +57,6 @@ public class Menu : MonoBehaviour
             //AudioSource.Stop();
             Time.timeScale = 0f;
         }
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        //AudioSource = GetComponent<AudioSource>();
     }
 
     public void Play()
@@ -89,6 +89,12 @@ public class Menu : MonoBehaviour
         PauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
+    }
+
+    public void OpenPauseMenu()
+    {
+        Debug.Log("Button touched");
+        Pause();
     }
 
     public void Tutorial()

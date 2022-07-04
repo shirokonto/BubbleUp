@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.3731193, g: 0.38073996, b: 0.3587269, a: 1}
+  m_IndirectSpecularColor: {r: 0.45109284, g: 0.5009023, b: 0.57406944, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -158,7 +158,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -844, y: -461}
+  m_AnchoredPosition: {x: -844, y: 450}
   m_SizeDelta: {x: 180, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &124941689
@@ -1029,6 +1029,7 @@ GameObject:
   - component: {fileID: 1056326396}
   - component: {fileID: 1056326397}
   - component: {fileID: 1056326398}
+  - component: {fileID: 1056326399}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1152,7 +1153,6 @@ MonoBehaviour:
   TutorialUI: {fileID: 0}
   LeapMotionUI: {fileID: 0}
   MainMenuUI: {fileID: 0}
-  AudioSource: {fileID: 0}
   transition: {fileID: 0}
   transitionTime: 2
 --- !u!114 &1056326398
@@ -1171,6 +1171,34 @@ MonoBehaviour:
   Virus: {fileID: 1763296442}
   Minimize: {fileID: 2057978074}
   Timer: {fileID: 1571455050}
+--- !u!114 &1056326399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1056326391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b14879ae99a78a24aac937a0d1317c9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  event: {fileID: 11400000, guid: 4121298620d6e2b43a97b1308d6babc7, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1056326397}
+        m_TargetAssemblyTypeName: Menu, Assembly-CSharp
+        m_MethodName: OpenPauseMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1273521035
 GameObject:
   m_ObjectHideFlags: 0
