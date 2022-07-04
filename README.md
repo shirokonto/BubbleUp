@@ -8,25 +8,32 @@ Be aware of other dangers like ads or viruses and use useful items to keep them 
 
 ## How to play (Controls) :joystick: 
 ### Keyboard/Mouse
-* Pause with Space/ESC
-* Leftclick for Buttons ;)
+* Pause with ESC
+* Leftclick for Menu buttons ;)
 
 ### LeapMotion
-* Lefthand/Righthand
+* Pause by hovering with the hand over the pause button
+* Swipe items with Lefthand/Righthand
+* [Download SDK here](https://developer.leapmotion.com/tracking-software-download) 
 
 ## Level Sketch :clipboard:
-insert picture
+![BuBBLEUp](https://user-images.githubusercontent.com/57158200/177203027-34447c1e-0ab8-430f-9732-7da4630bbbeb.png)
 
 ## Team :busts_in_silhouette:
 
+ADD TEAM PICTURE
+
 We are the rebootCrew and we’ve teamed up to develop this 3D game for the course EMM.
-insert picture
+
 
 :page_facing_up: **Programming & Design:** 
 * My
-* Pavel
+* Pavel Tsvyatkov
 * Hikari Sophia Stölzle 
-* Quynh
+* Quynh Vi Trinh
+
+:art: **Art by:** 
+* Quynh Vi Trinh
 
 ## Credits :bow:
 :musical_note: **Music by:**
@@ -36,7 +43,9 @@ insert picture
 * name: [example link to repo](https://github.com/shirokonto/bubbleUp) 
 
 :space_invader: **Assets by:**
-* name: [example link to repo](https://github.com/shirokonto/bubbleUp)
+* Bubble Shader
+* Environment
+* Moonflower Carnivore: [Jiggly Bubble Free](https://assetstore.unity.com/packages/vfx/particles/environment/jiggly-bubble-free-61236)
 
 :wrench: **Utils**
-* name: [example link to repo](https://github.com/shirokonto/bubbleUp)
+* Mixamo: [Animation for 3D Characters](https://www.mixamo.com/#/)
