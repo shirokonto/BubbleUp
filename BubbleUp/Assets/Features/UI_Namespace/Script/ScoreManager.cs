@@ -9,11 +9,12 @@ public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager instance;
     [SerializeField] private IntVariable points;
+    [SerializeField] private IntVariable tempoPoints;
     public TextMeshProUGUI scoreText;
-    public TextMeshProUGUI highscoreText;
-   // int score = 0;
-    int highscore = 0;
-    // Start is called before the first frame update
+    public GameObject[] life;
+    private bool dead;
+    private int tempPoints = 0;
+
 
     private void Awake()
     {
@@ -21,33 +22,33 @@ public class ScoreManager : MonoBehaviour
     }
     void Start()
     {
-        //highscore = PlayerPrefs.GetInt("highscore", 0);
+        tempPoints = life.Length;
         scoreText.text = points.Get() + " POINTS";
-       // highscoreText.text = "HIGHSCORE: " + highscore.ToString();
     }
-
-   /* public void AddPoint()
-    {
-        score += 3;
-        scoreText.text = score.ToString() + " POINTS";
-
-        if (highscore < score)
-        {
-            PlayerPrefs.SetInt("highscore", score);
-        }
-
-    }
-    public void MinusPoint()
-    {
-
-        score -= 1;
-        scoreText.text = score.ToString() + " POINTS";
-    }
-   */
 
 
     void Update()
     {
+        tempPoints = 0;
+        tempoPoints.Get();
+        if(dead == true)
+        {
+            scoreText.text = points.Get() + " POINTS";
+        }
         scoreText.text = points.Get() + " POINTS";
+    }
+
+    public void TakeDamage (int dam)
+    {
+        if (tempPoints >= 1)
+        {
+            tempPoints -= dam;
+            Destroy(life[tempPoints].gameObject);
+
+            if (tempPoints < 1)
+            {
+                dead = true;
+            }
+        }
     }
 }

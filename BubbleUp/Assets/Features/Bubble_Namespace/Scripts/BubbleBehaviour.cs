@@ -14,11 +14,13 @@ namespace Features.Bubble_Namespace.Scripts
         [SerializeField] private BoolVariable bubbleIsPopped;
         [SerializeField] private GameEvent showPopup;
         [SerializeField] private IntVariable points;
+        [SerializeField] private IntVariable tempoPoints;
         public bool adBlockerEnabled;        
         public ParticleSystem bubblePop;
         private Vector3 _scaleChange;
         private int _hit = 0;
         private int localPoints = 0;
+        private int tempPoints = 0;
         private const float BUBBLE_SCALING = 0.03f;
         private const int PLUSPOINT = 1;
         private const int MINUSPOINTS = 3;
@@ -51,6 +53,8 @@ namespace Features.Bubble_Namespace.Scripts
             if (!infoItem.transform.name.Contains(correctInfoType))
             {
                 _hit += 1;
+                tempPoints -= 0;
+                tempoPoints.Set(tempPoints);
                 localPoints -= MINUSPOINTS;
                 points.Set(localPoints);
                 transform.localScale += _scaleChange;
