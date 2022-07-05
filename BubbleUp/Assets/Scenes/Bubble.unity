@@ -140,11 +140,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bc0e61b0412fe94d9a9170246cfe571, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  correctInfoType: InfoObjectPink
+  correctInfoType: {fileID: 11400000, guid: 7eb57f71161c8a045a64e6f2a0f0d1e7, type: 2}
+  correctInfoTypeInt: {fileID: 11400000, guid: c4cb85b3652c5ff4fb831d9a32d9f6bb, type: 2}
   bubbleIsPopped: {fileID: 11400000, guid: 1ffba4ce249273b4fb2ab41f428a9faa, type: 2}
   showPopup: {fileID: 11400000, guid: 259e7fd73e879114f853d6640a09bc74, type: 2}
   points: {fileID: 11400000, guid: 5dcebee57bc04964b84d2b727e558f7d, type: 2}
-  hitBubble: {fileID: 11400000, guid: e72e159065864c942bb6150d1213d426, type: 2}
   adBlockerEnabled: 0
   bubblePop: {fileID: 2053911444}
 --- !u!1001 &1185497705

@@ -10,11 +10,14 @@ namespace Features.Menu_Namespace.Scripts
         public GameObject[] characters; // Character variable to switch between characters
         public int selectedCharacter = 0; // saves which character is currently chosen
 
-        public void NextCharacter() // if button is clicked
+        /**
+         * Called when the ">" button is clicked to set the next character in the index active
+         */
+        public void NextCharacter()
         {
-            characters[selectedCharacter].SetActive(false); // selectedCharacter dectivated to switch to next character
-            selectedCharacter = (selectedCharacter + 1) % characters.Length; // Index erhoeht um naechsten Charakter auszuwaehlen, modu Anzahl der Charaktere
-            characters[selectedCharacter].SetActive(true); // neu ausgewaehlte Charakter wird aktiviert bzw sichtbar
+            characters[selectedCharacter].SetActive(false); 
+            selectedCharacter = (selectedCharacter + 1) % characters.Length; 
+            characters[selectedCharacter].SetActive(true); 
         }
 
         public void PreviousCharacter()
@@ -32,6 +35,11 @@ namespace Features.Menu_Namespace.Scripts
         {
             PlayerPrefs.SetInt("selectedCharacter", selectedCharacter); // save data
             points.Set(0);
+            LoadScenes();
+        }
+
+        private void LoadScenes()
+        {
             SceneManager.LoadScene(2, LoadSceneMode.Single);
             SceneManager.LoadScene(3, LoadSceneMode.Additive);
             SceneManager.LoadScene(4, LoadSceneMode.Additive);

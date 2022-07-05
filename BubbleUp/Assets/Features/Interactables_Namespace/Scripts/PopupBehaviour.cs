@@ -1,11 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
+using Features.UI_Namespace.Script;
 using UnityEngine;
 
 namespace Features.Interactables_Namespace.Scripts
-{   
-    
+{
     public class PopupBehaviour : MonoBehaviour
     {
         [SerializeField] private GameObject popupWindow;
@@ -55,6 +54,5 @@ namespace Features.Interactables_Namespace.Scripts
 
             SelectedItem.virus = false;
         }
-        
     }
 }

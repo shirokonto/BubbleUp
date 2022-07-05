@@ -1,15 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class OpenLink : MonoBehaviour
+namespace Features.Menu_Namespace.Scripts
 {
-    public void OpenTSDownload()
+    public class OpenLink : MonoBehaviour
     {
-        Application.OpenURL("https://developer.leapmotion.com/get-started");
-    }
-    public void OpenUDownload()
-    {
-        Application.OpenURL("https://developer.leapmotion.com/unity#setup-unity-packages");
+        public void OpenTsDownload()
+        {
+            Application.OpenURL("https://developer.leapmotion.com/get-started");
+        }
     }
 }

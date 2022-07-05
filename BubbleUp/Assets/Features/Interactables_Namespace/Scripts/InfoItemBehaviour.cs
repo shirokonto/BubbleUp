@@ -1,5 +1,3 @@
-using System;
-using Leap.Unity.Interaction;
 using UnityEngine;
 using UnityEngine.UI;
 
