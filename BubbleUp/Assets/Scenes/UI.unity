@@ -401,6 +401,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1448069741286635403, guid: b2449ddbc180c40d8a9a9d737e4f1e2c, type: 3}
   m_PrefabInstance: {fileID: 129170064}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &297973300 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2452329054294004296, guid: 6ff377325d18a419ea3eef594cc79246, type: 3}
+  m_PrefabInstance: {fileID: 1869531587}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &356354841
 GameObject:
   m_ObjectHideFlags: 0
@@ -1208,8 +1219,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   points: {fileID: 11400000, guid: 5dcebee57bc04964b84d2b727e558f7d, type: 2}
-  tempoPoints: {fileID: 11400000, guid: 5dcebee57bc04964b84d2b727e558f7d, type: 2}
+  hitBubble: {fileID: 11400000, guid: e72e159065864c942bb6150d1213d426, type: 2}
   scoreText: {fileID: 1485436739}
+  scoreTextGO: {fileID: 297973300}
   life:
   - {fileID: 981233526}
   - {fileID: 2119070295}
@@ -1856,6 +1868,14 @@ PrefabInstance:
     - target: {fileID: 2452329053870907859, guid: 6ff377325d18a419ea3eef594cc79246, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: TryAgain
+      objectReference: {fileID: 0}
+    - target: {fileID: 2452329054294004296, guid: 6ff377325d18a419ea3eef594cc79246, type: 3}
+      propertyPath: m_text
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2452329054294004296, guid: 6ff377325d18a419ea3eef594cc79246, type: 3}
+      propertyPath: m_margin.z
+      value: -449.39783
       objectReference: {fileID: 0}
     - target: {fileID: 2452329054294004342, guid: 6ff377325d18a419ea3eef594cc79246, type: 3}
       propertyPath: m_IsActive

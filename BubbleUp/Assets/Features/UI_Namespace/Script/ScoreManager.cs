@@ -9,11 +9,13 @@ public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager instance;
     [SerializeField] private IntVariable points;
-    [SerializeField] private IntVariable tempoPoints;
+    [SerializeField] private BoolVariable hitBubble;
     public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI scoreTextGO;
     public GameObject[] life;
     private bool dead;
-    private int tempPoints = 0;
+    private int tempPoints;
+    private int dam = 1;
 
 
     private void Awake()
@@ -29,26 +31,62 @@ public class ScoreManager : MonoBehaviour
 
     void Update()
     {
-        tempPoints = 0;
-        tempoPoints.Get();
+        Hitbubble();
         if(dead == true)
         {
             scoreText.text = points.Get() + " POINTS";
         }
-        scoreText.text = points.Get() + " POINTS";
+        
+        
+
+        //scoreText.text = points.Get() + " POINTS";
+        scoreTextGO.text = points.Get() + " POINTS";
     }
 
-    public void TakeDamage (int dam)
+    public void Hitbubble()
     {
-        if (tempPoints >= 1)
+        if (hitBubble.Get())
         {
-            tempPoints -= dam;
-            Destroy(life[tempPoints].gameObject);
+            hitBubble.Set(false);
+            Debug.Log("hit!");
 
-            if (tempPoints < 1)
+            if (tempPoints >= 1)
             {
-                dead = true;
+                tempPoints -= dam;
+
+                Destroy(life[tempPoints].gameObject);
+
+                Debug.Log("Life Destroyed");
+
+                if (tempPoints < 1)
+                {
+                      dead = true;
+                }
+                
             }
         }
     }
+
+    /*
+    public void TakeDamage(int dam)
+    {
+        if (hitBubble.Get() )
+        {
+            Debug.Log("hit!");
+            if (tempPoints >= 1)
+            {
+                tempPoints -= dam;
+                
+                Destroy(life[tempPoints].gameObject);
+
+                  if (tempPoints < 1)
+                  {
+                      dead = true;
+                  }
+                
+            }
+        }
+    }
+    */
+   
 }

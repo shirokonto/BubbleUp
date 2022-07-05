@@ -14,7 +14,7 @@ namespace Features.Bubble_Namespace.Scripts
         [SerializeField] private BoolVariable bubbleIsPopped;
         [SerializeField] private GameEvent showPopup;
         [SerializeField] private IntVariable points;
-        [SerializeField] private IntVariable tempoPoints;
+        [SerializeField] private BoolVariable hitBubble;
         public bool adBlockerEnabled;        
         public ParticleSystem bubblePop;
         private Vector3 _scaleChange;
@@ -52,20 +52,25 @@ namespace Features.Bubble_Namespace.Scripts
         private void HitInfoItem(GameObject infoItem){
             if (!infoItem.transform.name.Contains(correctInfoType))
             {
+                
                 _hit += 1;
-                tempPoints -= 0;
-                tempoPoints.Set(tempPoints);
-                localPoints -= MINUSPOINTS;
-                points.Set(localPoints);
-                transform.localScale += _scaleChange;
+                hitBubble.Set(true);
+                if (_hit > 2)
+                {
+                    localPoints -= MINUSPOINTS;
+                    points.Set(localPoints);
+                    transform.localScale += _scaleChange;
+                }
             } else
             {
                 localPoints += PLUSPOINT;
                 points.Set(localPoints);
+                hitBubble.Set(false);
             }
-            if(_hit == 3)
+            if(_hit == 5)
             {
                 bubbleIsPopped.Set(true);
+                hitBubble.Set(false);
                 Destroy(this.gameObject);
                 bubblePop.Play();
                 Menu.isGameOver = true;
