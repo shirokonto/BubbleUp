@@ -1134,10 +1134,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   points: {fileID: 11400000, guid: 5dcebee57bc04964b84d2b727e558f7d, type: 2}
-  hitBubble: {fileID: 0}
   scoreText: {fileID: 1485436739}
   scoreTextGO: {fileID: 1175006220}
-  life: []
 --- !u!114 &1056326397
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1150,6 +1148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f30da3a31d1254c41b33816ddfd2ac27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPauseIButtonHit: {fileID: 11400000, guid: cca0243c008fdf845ac4015228f03570, type: 2}
   PauseMenuUI: {fileID: 418924551}
   GameOverScreen: {fileID: 1288965779}
   TutorialUI: {fileID: 0}
@@ -1190,8 +1189,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1056326397}
-        m_TargetAssemblyTypeName: Menu, Assembly-CSharp
-        m_MethodName: OpenPauseMenu
+        m_TargetAssemblyTypeName: Features.Menu_Namespace.Scripts.Menu, Assembly-CSharp
+        m_MethodName: TogglePauseMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

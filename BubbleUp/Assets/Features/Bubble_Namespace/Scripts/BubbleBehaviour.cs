@@ -1,6 +1,7 @@
 using System.Collections;
 using DataStructures.Variables;
 using Features.Interactables_Namespace.Scripts;
+using Features.Menu_Namespace.Scripts;
 using UnityEngine;
 using Utilities.Event_Namespace;
 using Vector3 = UnityEngine.Vector3;
