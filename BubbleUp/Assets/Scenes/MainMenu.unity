@@ -1776,7 +1776,6 @@ MonoBehaviour:
   TutorialUI: {fileID: 1563733750}
   LeapMotionUI: {fileID: 489566362}
   MainMenuUI: {fileID: 1192092257}
-  AudioSource: {fileID: 0}
   transition: {fileID: 0}
   transitionTime: 2
 --- !u!1 &1192092257

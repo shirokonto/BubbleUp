@@ -1,11 +1,8 @@
-using System.Collections;
 using DataStructures.Variables;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
+using UnityEngine;
 
-public class ScoreManager : MonoBehaviour
+namespace Features.UI_Namespace.Script
 {
     public static ScoreManager instance;
     [SerializeField] private IntVariable points;
