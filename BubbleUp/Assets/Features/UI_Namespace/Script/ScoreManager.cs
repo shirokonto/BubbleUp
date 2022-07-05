@@ -4,86 +4,41 @@ using UnityEngine;
 
 namespace Features.UI_Namespace.Script
 {
-    public static ScoreManager instance;
-    [SerializeField] private IntVariable points;
-    [SerializeField] private BoolVariable hitBubble;
-    public TextMeshProUGUI scoreText;
-    public TextMeshProUGUI scoreTextGO;
-    public GameObject[] life;
-    private bool dead;
-    private int tempPoints;
-    private int dam = 1;
-
-
-    private void Awake()
+    public class ScoreManager : MonoBehaviour
     {
-        instance = this;
-    }
-    void Start()
-    {
-        tempPoints = life.Length;
-        scoreText.text = points.Get() + " POINTS";
-    }
+        public static ScoreManager instance;
+        [SerializeField] private IntVariable points;
+        [SerializeField] private BoolVariable hitBubble;
+        public TextMeshProUGUI scoreText;
+        public TextMeshProUGUI scoreTextGO;
+        public GameObject[] life;
+        private bool dead;
+        private int tempPoints;
+        private int dam = 1;
 
 
-    void Update()
-    {
-        Hitbubble();
-        if(dead == true)
+        private void Awake()
         {
+            instance = this;
+            points.Set(0);
+        }
+        void Start()
+        {
+            tempPoints = life.Length;
             scoreText.text = points.Get() + " POINTS";
+
         }
-        
-        
 
-        //scoreText.text = points.Get() + " POINTS";
-        scoreTextGO.text = points.Get() + " POINTS";
-    }
 
-    public void Hitbubble()
-    {
-        if (hitBubble.Get())
+        void Update()
         {
-            hitBubble.Set(false);
-            Debug.Log("hit!");
 
-            if (tempPoints >= 1)
-            {
-                tempPoints -= dam;
+            scoreText.text = points.Get() + " POINTS";
 
-                Destroy(life[tempPoints].gameObject);
+            scoreTextGO.text = points.Get() + " POINTS";
 
-                Debug.Log("Life Destroyed");
-
-                if (tempPoints < 1)
-                {
-                      dead = true;
-                }
-                
-            }
         }
-    }
 
-    /*
-    public void TakeDamage(int dam)
-    {
-        if (hitBubble.Get() )
-        {
-            Debug.Log("hit!");
-            if (tempPoints >= 1)
-            {
-                tempPoints -= dam;
-                
-                Destroy(life[tempPoints].gameObject);
-
-                  if (tempPoints < 1)
-                  {
-                      dead = true;
-                  }
-                
-            }
-        }
+ 
     }
-    */
-   
 }
