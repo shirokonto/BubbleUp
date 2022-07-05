@@ -8,14 +8,8 @@ namespace Features.UI_Namespace.Script
     {
         public static ScoreManager instance;
         [SerializeField] private IntVariable points;
-        [SerializeField] private BoolVariable hitBubble;
         public TextMeshProUGUI scoreText;
         public TextMeshProUGUI scoreTextGO;
-        public GameObject[] life;
-        private bool dead;
-        private int tempPoints;
-        private int dam = 1;
-
 
         private void Awake()
         {
@@ -24,21 +18,13 @@ namespace Features.UI_Namespace.Script
         }
         void Start()
         {
-            tempPoints = life.Length;
             scoreText.text = points.Get() + " POINTS";
-
         }
-
-
+        
         void Update()
         {
-
             scoreText.text = points.Get() + " POINTS";
-
             scoreTextGO.text = points.Get() + " POINTS";
-
         }
-
- 
     }
 }

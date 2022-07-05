@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05d7b30f20f4d2644a70edb1b620b762, type: 3}
   m_Name: CurrentMoveSpeed
   m_EditorClassIdentifier: 
-  storedValue: 0.5
+  storedValue: 0.25
   onValueChanged: {fileID: 0}

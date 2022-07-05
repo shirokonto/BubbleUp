@@ -169,7 +169,7 @@ Transform:
   m_Children:
   - {fileID: 1841164301}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: -15.42, y: 0, z: 0}
 --- !u!1 &6929851
 GameObject:
@@ -200,7 +200,7 @@ Transform:
   m_Children:
   - {fileID: 2006592269}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &13170752 stripped
 GameObject:
@@ -235,11 +235,12 @@ MonoBehaviour:
   - {fileID: 1611054081}
   incomingPowerUpItems:
   - {fileID: 754371767}
+  - {fileID: 571710023}
   infoItemAppearingPercentage: {fileID: 11400000, guid: 6e70250046c3f8b44af216bb2416fe00, type: 2}
   powerUpItemAppearingPercentage: {fileID: 11400000, guid: 8c807f69a1ce5b24f97e645ba7106a1c, type: 2}
   isSecondWave: {fileID: 11400000, guid: 9f4476234b8df094a90704b0df1d3f50, type: 2}
   minRespawnTime: 1
-  maxRespawnTime: 1
+  maxRespawnTime: 2
 --- !u!114 &293417154
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -252,105 +253,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b778800b77b47d499b57f3ce1156ada, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &324664140
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 324664142}
-  - component: {fileID: 324664141}
-  - component: {fileID: 324664143}
-  m_Layer: 0
-  m_Name: Spawner
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &324664141
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 324664140}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ddb9b820b7c33c48a8128fd98ea388f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  incomingInfoItems:
-  - {fileID: 1821116329}
-  - {fileID: 1373809082}
-  - {fileID: 405828239}
-  incomingBlockerItems:
-  - {fileID: 1611054081}
-  incomingPowerUpItems:
-  - {fileID: 0}
-  infoItemAppearingPercentage: {fileID: 11400000, guid: 6e70250046c3f8b44af216bb2416fe00, type: 2}
-  powerUpItemAppearingPercentage: {fileID: 11400000, guid: 8c807f69a1ce5b24f97e645ba7106a1c, type: 2}
-  isSecondWave: {fileID: 11400000, guid: 9f4476234b8df094a90704b0df1d3f50, type: 2}
-  spawnRoutes:
-  - {fileID: 1727158092}
-  - {fileID: 13170752}
-  - {fileID: 1767287868}
-  minRespawnTime: 1
-  maxRespawnTime: 1
---- !u!4 &324664142
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 324664140}
-  m_LocalRotation: {x: -0.13416143, y: -0, z: -0, w: 0.9909596}
-  m_LocalPosition: {x: 0, y: -230.993, z: 141.2218}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: -15.42, y: 0, z: 0}
---- !u!114 &324664143
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 324664140}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0db26f5c4bf914f45a2497b192f78b71, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pooledItems: []
-  itemsToPool:
-  - itemToPool: {fileID: 1821116329}
-    amountToPool: 4
-    shouldExpand: 1
-  - itemToPool: {fileID: 0}
-    amountToPool: 2
-    shouldExpand: 0
-  - itemToPool: {fileID: 0}
-    amountToPool: 2
-    shouldExpand: 0
-  - itemToPool: {fileID: 1373809082}
-    amountToPool: 4
-    shouldExpand: 1
-  - itemToPool: {fileID: 1611054081}
-    amountToPool: 2
-    shouldExpand: 1
-  - itemToPool: {fileID: 405828239}
-    amountToPool: 4
-    shouldExpand: 1
-  - itemToPool: {fileID: 1045304278}
-    amountToPool: 4
-    shouldExpand: 1
-  - itemToPool: {fileID: 688978109}
-    amountToPool: 2
-    shouldExpand: 1
 --- !u!1 &405828239 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8943275940731311233, guid: c2b5450a4deb96b4992456abaf060463, type: 3}
@@ -456,11 +358,12 @@ MonoBehaviour:
   - {fileID: 1611054081}
   incomingPowerUpItems:
   - {fileID: 754371767}
+  - {fileID: 571710023}
   infoItemAppearingPercentage: {fileID: 11400000, guid: 6e70250046c3f8b44af216bb2416fe00, type: 2}
   powerUpItemAppearingPercentage: {fileID: 11400000, guid: 8c807f69a1ce5b24f97e645ba7106a1c, type: 2}
   isSecondWave: {fileID: 11400000, guid: 9f4476234b8df094a90704b0df1d3f50, type: 2}
   minRespawnTime: 1
-  maxRespawnTime: 1
+  maxRespawnTime: 2
 --- !u!1001 &571710021
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1317,7 +1220,7 @@ Transform:
   - {fileID: 754371766}
   - {fileID: 571710022}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: -15.42, y: 0, z: 0}
 --- !u!1 &2006592263
 GameObject:
@@ -1512,8 +1415,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationAngle: {x: 0, y: 1, z: 0}
   rotationSpeed: 1
-  amplitude: 0
-  frequency: 0
 --- !u!1001 &2107690402
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5659,11 +5560,12 @@ MonoBehaviour:
   - {fileID: 1611054081}
   incomingPowerUpItems:
   - {fileID: 754371767}
+  - {fileID: 571710023}
   infoItemAppearingPercentage: {fileID: 11400000, guid: 6e70250046c3f8b44af216bb2416fe00, type: 2}
   powerUpItemAppearingPercentage: {fileID: 11400000, guid: 8c807f69a1ce5b24f97e645ba7106a1c, type: 2}
   isSecondWave: {fileID: 11400000, guid: 9f4476234b8df094a90704b0df1d3f50, type: 2}
   minRespawnTime: 1
-  maxRespawnTime: 1
+  maxRespawnTime: 2
 --- !u!114 &8890311291467911961
 MonoBehaviour:
   m_ObjectHideFlags: 0
