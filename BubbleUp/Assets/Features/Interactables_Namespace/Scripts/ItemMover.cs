@@ -1,15 +1,11 @@
-using System;
 using DataStructures.Variables;
 using Unity.Mathematics;
 using UnityEngine;
-using UnityEngine.Rendering;
 
 namespace Features.Interactables_Namespace.Scripts
 {
     public class ItemMover : MonoBehaviour
     {
-        //[SerializeField] private float moveSpeed = 0.5f;
-        //[SerializeField] private GameObject spawner;
         [SerializeField] private BoolVariable isSecondWave;
         [SerializeField] private FloatVariable moveSpeed;
         [SerializeField] private Transform player;
@@ -34,7 +30,6 @@ namespace Features.Interactables_Namespace.Scripts
             //Set initial position to first point of current route
             if (gameObject.transform.name.Contains("Clone"))
             {
-                //_currentRoute = spawner.GetComponent<Spawner>().GetCurrentRoute();
                 _objectPool = gameObject.transform.GetComponentInParent<ObjectPool>();
                 _startPosition = _currentRoute.gameObject.transform.GetChild(0).gameObject.transform; 
                 _currentPoint = _currentRoute.GetNextWayPoint(_currentPoint);
