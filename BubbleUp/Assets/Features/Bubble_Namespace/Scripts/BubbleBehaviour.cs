@@ -53,13 +53,11 @@ namespace Features.Bubble_Namespace.Scripts
                 _hit += 1; 
                 _localPoints = (_localPoints-= MINUSPOINTS) <= 0 ? 0 : (_localPoints);
                 points.Set(_localPoints);
-                Debug.Log(" -3   Points: " + points.Get());
                 transform.localScale += _scaleChange;
             } else
             {
                 _localPoints += PLUSPOINT;
                 points.Set(_localPoints);
-                Debug.Log(" +1   Points: " + points.Get());
             }
             if(_hit == 3)
             {
