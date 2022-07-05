@@ -1,8 +1,8 @@
-using System;
 using System.Collections;
 using DataStructures.Variables;
 using Features.Interactables_Namespace.Scripts;
 using Features.Menu_Namespace.Scripts;
+using Features.UI_Namespace.Script;
 using UnityEngine;
 using Utilities.Event_Namespace;
 using Vector3 = UnityEngine.Vector3;
@@ -15,7 +15,6 @@ namespace Features.Bubble_Namespace.Scripts
         [SerializeField] private BoolVariable bubbleIsPopped;
         [SerializeField] private GameEvent showPopup;
         [SerializeField] private IntVariable points;
-        public bool adBlockerEnabled;        
         public ParticleSystem bubblePop;
         private Vector3 _scaleChange;
         private int _hit;
