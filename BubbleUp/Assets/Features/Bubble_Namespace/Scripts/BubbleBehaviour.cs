@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using DataStructures.Variables;
 using Features.Interactables_Namespace.Scripts;
@@ -5,11 +6,12 @@ using Features.Menu_Namespace.Scripts;
 using UnityEngine;
 using Utilities.Event_Namespace;
 using Vector3 = UnityEngine.Vector3;
+using Random = System.Random;
 
 namespace Features.Bubble_Namespace.Scripts
 {
     public class BubbleBehaviour : MonoBehaviour {
-        [SerializeField] private string correctInfoType; //will be set before the game starts via character view
+        [SerializeField] private StringVariable correctInfoType; //will be set before the game starts via character view
         [SerializeField] private BoolVariable bubbleIsPopped;
         [SerializeField] private GameEvent showPopup;
         [SerializeField] private IntVariable points;
@@ -21,15 +23,22 @@ namespace Features.Bubble_Namespace.Scripts
         private const float BUBBLE_SCALING = 0.03f;
         private const int PLUSPOINT = 1;
         private const int MINUSPOINTS = 3;
-        
+        private readonly string[] _infoItemNames = new string[5] {"InfoObjectPink", "InfoObjectBlue", "InfoObjectRed", "InfoObjectGreen", "InfoObjectYellow"}; 
+        private Random _random;
+
+        private void Awake()
+        {
+            _scaleChange = new Vector3(BUBBLE_SCALING, BUBBLE_SCALING, BUBBLE_SCALING);
+            _random = new Random();
+        }
 
         private void Start()
         {
             _hit = 0;
             _localPoints = 0;
-            _scaleChange = new Vector3(BUBBLE_SCALING, BUBBLE_SCALING, BUBBLE_SCALING);
             bubbleIsPopped.Set(false);
             bubblePop.Stop();
+            SetCorrectInfoItemRandomly();
         }
 
         private void OnCollisionEnter(Collision other)
@@ -49,7 +58,7 @@ namespace Features.Bubble_Namespace.Scripts
         }
 
         private void HitInfoItem(GameObject infoItem){
-            if (!infoItem.transform.name.Contains(correctInfoType))
+            if (!infoItem.transform.name.Contains(correctInfoType.Get()))
             { 
                 _hit += 1; 
                 _localPoints = (_localPoints-= MINUSPOINTS) <= 0 ? 0 : (_localPoints);
@@ -93,6 +102,12 @@ namespace Features.Bubble_Namespace.Scripts
             //show Timer item
             SelectedItem.minimize = true;
             yield return new WaitForSeconds(0.3f);
+        }
+        
+        private void SetCorrectInfoItemRandomly()
+        {
+            int index = _random.Next(_infoItemNames.Length);
+            correctInfoType.Set(_infoItemNames[index]);
         }
     }
 }

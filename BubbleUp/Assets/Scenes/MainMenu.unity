@@ -349,8 +349,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 139521062}
-        m_TargetAssemblyTypeName: OpenLink, Assembly-CSharp
-        m_MethodName: OpenTSDownload
+        m_TargetAssemblyTypeName: Features.Menu_Namespace.Scripts.OpenLink, Assembly-CSharp
+        m_MethodName: OpenTsDownload
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

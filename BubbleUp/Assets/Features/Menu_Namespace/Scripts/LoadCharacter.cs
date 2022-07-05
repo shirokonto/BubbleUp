@@ -1,17 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class LoadCharacter : MonoBehaviour
+namespace Features.Menu_Namespace.Scripts
 {
-    public GameObject[] characterPrefabs;
-    public Transform spawnPoint;
-
-    private void Start()
+    public class LoadCharacter : MonoBehaviour
     {
-        int selectedCharacter = PlayerPrefs.GetInt("selectedCharacter");
-        GameObject prefab = characterPrefabs[selectedCharacter];
-        GameObject clone = Instantiate(prefab, spawnPoint.position, Quaternion.identity);
-        clone.SetActive(true);
+        public GameObject[] characterPrefabs;
+        public Transform spawnPoint;
+
+        private void Start()
+        {
+            int selectedCharacter = PlayerPrefs.GetInt("selectedCharacter");
+            GameObject prefab = characterPrefabs[selectedCharacter];
+            GameObject clone = Instantiate(prefab, spawnPoint.position, Quaternion.identity);
+            clone.SetActive(true);
+        }
     }
 }
