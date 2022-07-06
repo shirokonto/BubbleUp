@@ -39,6 +39,7 @@ namespace Features.Interactables_Namespace.Scripts
             _tags.Add("MinimizeBubble");
             _tags.Add("SlowMo");
             _tags.Add("Virus");
+            _tags.Add("AntiVirus");
         }
 
         void Start()

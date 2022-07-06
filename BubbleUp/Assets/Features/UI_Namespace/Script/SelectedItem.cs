@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Features.Bubble_Namespace.Scripts;
 
 public class SelectedItem : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class SelectedItem : MonoBehaviour
 
     public static bool timer;
     public GameObject Timer;
+    private bool showAntiVirus;
 
     // Start is called before the first frame update
     void Start()
@@ -25,12 +27,13 @@ public class SelectedItem : MonoBehaviour
         virus = false;
         minimize = false;
         timer = false;
+        showAntiVirus = GetComponent<BubbleBehaviour>().antiVirusEnabled;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (antiVirus)
+        if (antiVirus && showAntiVirus)
         {
             ShowAntiVirus();
         } else

@@ -14,7 +14,8 @@ namespace Features.Bubble_Namespace.Scripts
         [SerializeField] private BoolVariable bubbleIsPopped;
         [SerializeField] private GameEvent showPopup;
         [SerializeField] private IntVariable points;
-        public bool adBlockerEnabled;        
+        public bool adBlockerEnabled;
+        public bool antiVirusEnabled;
         public ParticleSystem bubblePop;
         private Vector3 _scaleChange;
         private int _hit = 0;
@@ -22,6 +23,7 @@ namespace Features.Bubble_Namespace.Scripts
         private const float BUBBLE_SCALING = 0.03f;
         private const int PLUSPOINT = 1;
         private const int MINUSPOINTS = 3;
+        //private int antivirusGauge = 0;
         
 
         private void Start()
@@ -43,6 +45,9 @@ namespace Features.Bubble_Namespace.Scripts
                     break;
                 case "Virus":
                     HitVirus(other.gameObject);
+                    break;
+                case "AntiVirus":
+                    HitAntiVirus(other.gameObject);
                     break;
             }
         }
@@ -84,9 +89,14 @@ namespace Features.Bubble_Namespace.Scripts
 
         public void HitVirus(GameObject virusItem)
         {
+            //if (antivirusGauge > 0) antivirusGauge -= 1;
+            // Debug.Log(antivirusGauge);
             virusItem.GetComponent<ItemMover>().ResetPositionAndRotationBeforeRespawn();
-            showPopup.Raise();
-            SelectedItem.virus = true;
+            if (!antiVirusEnabled)
+            {
+                showPopup.Raise();
+                SelectedItem.virus = true;
+            }
         }
 
         public IEnumerator ShowAdWhenMinimizeHit()
@@ -94,6 +104,18 @@ namespace Features.Bubble_Namespace.Scripts
             //show Timer item
             SelectedItem.minimize = true;
             yield return new WaitForSeconds(0.3f);
+        }
+        
+        public void HitAntiVirus(GameObject antiVirusItem)
+        {
+            //if(antivirusGauge == 0 || antivirusGauge < 3) antivirusGauge += 1;
+            //Debug.Log(antivirusGauge);
+            if (!antiVirusEnabled)
+            {
+                Debug.Log("Collected antivirus, 5 sec shield!");
+                antiVirusItem.GetComponent<ItemMover>().ResetPositionAndRotationBeforeRespawn();
+                SelectedItem.antiVirus = true;
+            }
         }
     }
 }
