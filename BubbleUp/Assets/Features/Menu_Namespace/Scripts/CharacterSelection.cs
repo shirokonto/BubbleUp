@@ -7,6 +7,7 @@ namespace Features.Menu_Namespace.Scripts
     public class CharacterSelection : MonoBehaviour
     {
         [SerializeField] private IntVariable points;
+        [SerializeField] private BoolVariable antiVirusEnabled;
         public GameObject[] characters; // Character variable to switch between characters
         public int selectedCharacter = 0; // saves which character is currently chosen
 
@@ -35,6 +36,7 @@ namespace Features.Menu_Namespace.Scripts
         {
             PlayerPrefs.SetInt("selectedCharacter", selectedCharacter); // save data
             points.Set(0);
+            antiVirusEnabled.Set(false);
             LoadScenes();
         }
 
