@@ -68,14 +68,11 @@ namespace Features.Menu_Namespace.Scripts
 
         public void GOScreen()
         {
-            //GameOverScreen.SetActive(true);
-            
             StartCoroutine(ShowGOScreen());
-
         }
+
         public IEnumerator ShowGOScreen()
-        {
-            
+        {          
             yield return new WaitForSeconds(0.7f);
             GameOverScreen.SetActive(true);
             Time.timeScale = 0f;
