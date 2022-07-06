@@ -1,10 +1,7 @@
-using System.Collections;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Features.Interactables_Namespace.Scripts;
 using UnityEngine;
-using Leap;
 using Leap.Unity.Interaction;
 
 namespace Features.Hands_Namespace.Scripts

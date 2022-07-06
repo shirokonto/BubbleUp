@@ -1,10 +1,8 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using DataStructures.Variables;
 using UnityEngine;
-using UnityEngine.Rendering;
 using Random = System.Random;
 using RandomUnityEngine = UnityEngine.Random;
 
@@ -19,8 +17,8 @@ namespace Features.Interactables_Namespace.Scripts
         [SerializeField] private FloatVariable infoItemAppearingPercentage;
         [SerializeField] private FloatVariable powerUpItemAppearingPercentage;
         [SerializeField] private BoolVariable isSecondWave;
-        [SerializeField][Range(0.01f, 1f)] private float minRespawnTime;
-        [SerializeField][Range(0.01f, 1f)] private float maxRespawnTime; 
+        [SerializeField][Range(1f, 2f)] private float minRespawnTime;
+        [SerializeField][Range(1f, 2f)] private float maxRespawnTime; 
         private ObjectPool _objectPool;
         private float _spawningItemDeterminer;
         private Random _random;

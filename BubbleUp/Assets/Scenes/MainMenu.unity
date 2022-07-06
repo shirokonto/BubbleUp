@@ -349,8 +349,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 139521062}
-        m_TargetAssemblyTypeName: OpenLink, Assembly-CSharp
-        m_MethodName: OpenTSDownload
+        m_TargetAssemblyTypeName: Features.Menu_Namespace.Scripts.OpenLink, Assembly-CSharp
+        m_MethodName: OpenTsDownload
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1771,6 +1771,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f30da3a31d1254c41b33816ddfd2ac27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPauseIButtonHit: {fileID: 11400000, guid: cca0243c008fdf845ac4015228f03570, type: 2}
   PauseMenuUI: {fileID: 0}
   GameOverScreen: {fileID: 0}
   TutorialUI: {fileID: 1563733750}

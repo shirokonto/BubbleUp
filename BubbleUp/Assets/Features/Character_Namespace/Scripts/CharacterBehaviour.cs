@@ -1,7 +1,5 @@
-using System;
 using DataStructures.Variables;
 using UnityEngine;
-using Utilities.Event_Namespace;
 
 namespace Features.Character_Namespace.Scripts
 {

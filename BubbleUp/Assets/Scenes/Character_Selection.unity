@@ -1005,15 +1005,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f30da3a31d1254c41b33816ddfd2ac27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseMenuUI: {fileID: 0}
-  gameOverScreen: {fileID: 0}
-  tutorialUI: {fileID: 0}
-  leapMotionUI: {fileID: 0}
-  mainMenuUI: {fileID: 0}
-  audioSource: {fileID: 0}
+  isPauseIButtonHit: {fileID: 11400000, guid: cca0243c008fdf845ac4015228f03570, type: 2}
+  PauseMenuUI: {fileID: 0}
+  GameOverScreen: {fileID: 0}
+  TutorialUI: {fileID: 0}
+  LeapMotionUI: {fileID: 0}
+  MainMenuUI: {fileID: 0}
   transition: {fileID: 0}
   transitionTime: 2
-  points: {fileID: 11400000, guid: 5dcebee57bc04964b84d2b727e558f7d, type: 2}
 --- !u!222 &1106062147
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1138,6 +1137,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   points: {fileID: 11400000, guid: 5dcebee57bc04964b84d2b727e558f7d, type: 2}
+  correctInfoType: {fileID: 11400000, guid: c4cb85b3652c5ff4fb831d9a32d9f6bb, type: 2}
   characters:
   - {fileID: 707002481}
   - {fileID: 587165699}
