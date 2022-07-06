@@ -1,3 +1,4 @@
+using System.Collections;
 using DataStructures.Variables;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -55,17 +56,29 @@ namespace Features.Menu_Namespace.Scripts
 
             if (isGameOver)
             {
-                GameOverScreen.SetActive(true);
+                GOScreen();
                 //AudioSource.Stop();
-                Time.timeScale = 0f;
             }
+
             if (isGameOver == false && _gameIsPaused == false)
             {
                 Time.timeScale = 1f;
             }
         }
 
-        public void Play()
+        public void GOScreen()
+        {
+            StartCoroutine(ShowGOScreen());
+        }
+
+        public IEnumerator ShowGOScreen()
+        {          
+            yield return new WaitForSeconds(0.7f);
+            GameOverScreen.SetActive(true);
+            Time.timeScale = 0f;
+        }
+
+            public void Play()
         {
             SceneManager.LoadScene("Character_Selection");
         }
