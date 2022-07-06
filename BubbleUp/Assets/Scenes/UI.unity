@@ -1168,6 +1168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bacf50aed72144ab2b4a74879767f3d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  showAntiVirus: {fileID: 11400000, guid: f1c2aa0f4b91e924a8f7e046438c65e2, type: 2}
   AntiVirus: {fileID: 1656901740}
   Virus: {fileID: 1763296442}
   Minimize: {fileID: 2057978074}

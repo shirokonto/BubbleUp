@@ -15,6 +15,7 @@ namespace Features.Bubble_Namespace.Scripts
         [SerializeField] private BoolVariable bubbleIsPopped;
         [SerializeField] private GameEvent showPopup;
         [SerializeField] private IntVariable points;
+        [SerializeField] private BoolVariable antiVirusEnabled;
         public ParticleSystem bubblePop;
         private Vector3 _scaleChange;
         private int _hit;
@@ -24,6 +25,7 @@ namespace Features.Bubble_Namespace.Scripts
         private const int MINUSPOINTS = 3;
         private readonly string[] _infoItemNames = new string[5] {"InfoObjectPink", "InfoObjectBlue", "InfoObjectRed", "InfoObjectGreen", "InfoObjectYellow"}; 
         private Random _random;
+        //private int antivirusGauge = 0;
 
         private void Awake()
         {
@@ -36,6 +38,7 @@ namespace Features.Bubble_Namespace.Scripts
             _hit = 0;
             _localPoints = 0;
             bubbleIsPopped.Set(false);
+            antiVirusEnabled.Set(false);
             bubblePop.Stop();
             SetCorrectInfoItemRandomly();
         }
@@ -53,6 +56,9 @@ namespace Features.Bubble_Namespace.Scripts
                 case "Virus":
                     HitVirus(other.gameObject);
                     break;
+                case "AntiVirus":
+                HitAntiVirus(other.gameObject);
+                break;
             }
         }
 
@@ -86,21 +92,33 @@ namespace Features.Bubble_Namespace.Scripts
                 transform.localScale -= _scaleChange;
             }
             minimizeItem.GetComponent<ItemMover>().ResetPositionAndRotationBeforeRespawn();
-            ShowAdWhenMinimizeHit();
+            StartCoroutine(ShowAdWhenMinimizeHit());
         }
 
         private void HitVirus(GameObject virusItem)
         {
             virusItem.GetComponent<ItemMover>().ResetPositionAndRotationBeforeRespawn();
-            showPopup.Raise();
-            SelectedItem.virus = true;
+            if (!antiVirusEnabled.Get())
+            {
+                showPopup.Raise();
+                SelectedItem.virus = true;
+            }
         }
 
+        private void HitAntiVirus(GameObject antiVirusItem)
+        {
+            if (!antiVirusEnabled.Get())
+            { 
+                antiVirusEnabled.Set(true);
+                antiVirusItem.GetComponent<ItemMover>().ResetPositionAndRotationBeforeRespawn();
+            }
+        }
+        
         private IEnumerator ShowAdWhenMinimizeHit()
         {
-            //show Timer item
             SelectedItem.minimize = true;
             yield return new WaitForSeconds(0.3f);
+            SelectedItem.minimize = false;
         }
         
         private void SetCorrectInfoItemRandomly()

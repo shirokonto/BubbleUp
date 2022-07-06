@@ -337,7 +337,6 @@ GameObject:
   - component: {fileID: 2255217164810996078}
   - component: {fileID: 386940752708715970}
   - component: {fileID: 8146382672223145227}
-  - component: {fileID: 8873421393564582097}
   m_Layer: 0
   m_Name: MinimizeBubble
   m_TagString: MinimizeBubble
@@ -435,23 +434,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2dea4541a7a40194cada761ac23c13b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 0.5
-  spawner: {fileID: 0}
   isSecondWave: {fileID: 11400000, guid: 9f4476234b8df094a90704b0df1d3f50, type: 2}
+  moveSpeed: {fileID: 0}
   player: {fileID: 0}
   distanceFromPlayer: 5.7
---- !u!114 &8873421393564582097
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6358552350091673335}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42ec4d0c8bc46ab4391983497003936c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &8385031976522708980
 GameObject:
   m_ObjectHideFlags: 0

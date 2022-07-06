@@ -1137,7 +1137,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   points: {fileID: 11400000, guid: 5dcebee57bc04964b84d2b727e558f7d, type: 2}
-  correctInfoType: {fileID: 11400000, guid: c4cb85b3652c5ff4fb831d9a32d9f6bb, type: 2}
+  antiVirusEnabled: {fileID: 11400000, guid: f1c2aa0f4b91e924a8f7e046438c65e2, type: 2}
   characters:
   - {fileID: 707002481}
   - {fileID: 587165699}

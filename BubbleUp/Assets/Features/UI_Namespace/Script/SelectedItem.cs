@@ -1,3 +1,5 @@
+using System.Collections;
+using DataStructures.Variables;
 using UnityEngine;
 
 namespace Features.UI_Namespace.Script
@@ -6,6 +8,7 @@ namespace Features.UI_Namespace.Script
     {
         public static SelectedItem instance;
 
+        [SerializeField] private BoolVariable showAntiVirus;
         public static bool antiVirus;
         public GameObject AntiVirus;
 
@@ -18,9 +21,12 @@ namespace Features.UI_Namespace.Script
         public static bool timer;
         public GameObject Timer;
 
+        
+
         // Start is called before the first frame update
         void Start()
         {
+            showAntiVirus.Set(false);
             antiVirus = false;
             virus = false;
             minimize = false;
@@ -30,7 +36,7 @@ namespace Features.UI_Namespace.Script
         // Update is called once per frame
         void Update()
         {
-            if (antiVirus)
+            if (showAntiVirus.Get())
             {
                 ShowAntiVirus();
             } else
@@ -38,7 +44,7 @@ namespace Features.UI_Namespace.Script
                 AntiVirus.SetActive(false);
             }
 
-            if (virus)
+            if (virus && !showAntiVirus.Get())
             {
                 ShowVirus();
             }
@@ -46,6 +52,7 @@ namespace Features.UI_Namespace.Script
             {
                 Virus.SetActive(false);
             }
+            
             if (minimize)
             {
                 ShowMinimize();
@@ -54,6 +61,7 @@ namespace Features.UI_Namespace.Script
             {
                 Minimize.SetActive(false);
             }
+            
             if (timer)
             {
                 ShowTimer();
@@ -64,24 +72,30 @@ namespace Features.UI_Namespace.Script
             }
         }
 
-        public void ShowAntiVirus()
+        private void ShowAntiVirus()
         {
-            AntiVirus.SetActive(true);
+            StartCoroutine(ShowAntiVirusActive());
         }
-
-        public void ShowVirus()
+        private void ShowVirus()
         {
             Virus.SetActive(true);
         }
 
-        public void ShowMinimize()
+        private void ShowMinimize()
         {
             Minimize.SetActive(true);
         }
 
-        public void ShowTimer()
+        private void ShowTimer()
         {
             Timer.SetActive(true);
         }
+        private IEnumerator ShowAntiVirusActive()
+        {
+            AntiVirus.SetActive(true);
+            yield return new WaitForSeconds(3f);
+            showAntiVirus.Set(false);
+        }
+        
     }
 }
