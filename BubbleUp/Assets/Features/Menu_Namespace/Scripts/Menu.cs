@@ -58,7 +58,8 @@ namespace Features.Menu_Namespace.Scripts
                 GameOverScreen.SetActive(true);
                 //AudioSource.Stop();
                 Time.timeScale = 0f;
-            } else
+            }
+            if (isGameOver == false && _gameIsPaused == true)
             {
                 Time.timeScale = 1f;
             }
