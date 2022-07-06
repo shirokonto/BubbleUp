@@ -59,7 +59,7 @@ namespace Features.Menu_Namespace.Scripts
                 //AudioSource.Stop();
                 Time.timeScale = 0f;
             }
-            if (isGameOver == false && _gameIsPaused == true)
+            if (isGameOver == false && _gameIsPaused == false)
             {
                 Time.timeScale = 1f;
             }
