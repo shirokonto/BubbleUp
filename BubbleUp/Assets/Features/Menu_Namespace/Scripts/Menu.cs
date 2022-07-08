@@ -9,7 +9,7 @@ namespace Features.Menu_Namespace.Scripts
     {
         [SerializeField] private BoolVariable isPauseIButtonHit;
         public static Menu instance;
-        private static bool _gameIsPaused = false;
+        public static bool _gameIsPaused = false;
         public GameObject PauseMenuUI;
 
         public static bool isGameOver;
