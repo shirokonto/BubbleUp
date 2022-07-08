@@ -13,6 +13,7 @@ namespace Features.UI_Namespace.Script
         {
             Transform child = transform.Find(correctInfoType.Get());
 
+            //Change that only the view with the "Ok" button is shown
             child.gameObject.SetActive(true);
             Time.timeScale = 0f;
             Debug.Log(child.name);

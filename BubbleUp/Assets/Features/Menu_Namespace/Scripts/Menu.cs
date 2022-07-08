@@ -33,7 +33,7 @@ namespace Features.Menu_Namespace.Scripts
         // Update is called once per frame
         void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Escape))
+            if (Input.GetKeyDown(KeyCode.Escape) && !isInfoItemViewShown)
             {
                 if (_gameIsPaused)
                 {
@@ -72,11 +72,6 @@ namespace Features.Menu_Namespace.Scripts
         public void Play()
         {
             SceneManager.LoadScene("Character_Selection");
-        }
-
-        public void PrintDebugLog()
-        {
-            Debug.Log("isgameover: " + IsGameOver + " gameisPaused: " + _gameIsPaused + " isinfoitemviewshown: " + isInfoItemViewShown.Get());
         }
 
         public void TryAgain()
@@ -145,13 +140,23 @@ namespace Features.Menu_Namespace.Scripts
         public void LoadMenu()
         {
             Time.timeScale = 1f;
-            isInfoItemViewShown.Set(true);
+            SetBackTimeCondition(false, true);
             SceneManager.LoadScene("MainMenu");
         }
 
         public void Quit()
         {
             Application.Quit();
+        }
+
+        /**
+         * the conditions gameIsPaused, isInfoItemViewShown and IsGameOver
+         * have to be set to their original value when replaying the game
+         */
+        private void SetBackTimeCondition(bool gamePaused, bool infoItemViewShown)
+        {
+            _gameIsPaused = gamePaused;
+            isInfoItemViewShown.Set(infoItemViewShown);
         }
     }
 }
