@@ -180,7 +180,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6929852}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -742,8 +742,8 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!135 &967126894
-SphereCollider:
+--- !u!65 &967126894
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -753,7 +753,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.18476248
+  m_Size: {x: 0.29508394, y: 0.25463054, z: 0.99132305}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &994881518 stripped
 MonoBehaviour:
@@ -846,9 +846,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8513424388201257645, guid: e729e829bfb35495ca13e19aefb04ba9, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -3957782524123411102, guid: e729e829bfb35495ca13e19aefb04ba9, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: e729e829bfb35495ca13e19aefb04ba9, type: 3}
       propertyPath: m_Name
       value: BubbleUp_PauseButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e729e829bfb35495ca13e19aefb04ba9, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3779745573541866595, guid: e729e829bfb35495ca13e19aefb04ba9, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e729e829bfb35495ca13e19aefb04ba9, type: 3}
