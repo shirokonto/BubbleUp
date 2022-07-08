@@ -242,6 +242,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4109804057571492858, guid: 3afccb151114b41eeac39904d62c2ee9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4109804057988051065, guid: 3afccb151114b41eeac39904d62c2ee9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4109804058229466442, guid: 3afccb151114b41eeac39904d62c2ee9, type: 3}
       propertyPath: m_Name
       value: VirusCanvas
@@ -328,6 +336,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4109804058229466446, guid: 3afccb151114b41eeac39904d62c2ee9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4109804058403234993, guid: 3afccb151114b41eeac39904d62c2ee9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4109804058604765409, guid: 3afccb151114b41eeac39904d62c2ee9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4109804058669962839, guid: 3afccb151114b41eeac39904d62c2ee9, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
