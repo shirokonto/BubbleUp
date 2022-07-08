@@ -2,7 +2,6 @@ using System;
 using DataStructures.Variables;
 using TMPro;
 using UnityEngine;
-using Utilities.Event_Namespace;
 
 namespace Features.UI_Namespace.Script
 {
@@ -12,8 +11,7 @@ namespace Features.UI_Namespace.Script
         [SerializeField] private FloatVariable currentTime;
         [SerializeField] private TextMeshProUGUI waveText;
         [SerializeField] private TextMeshProUGUI countdownText;
-        //[SerializeField] private GameEvent onTriggerSecondWave;
-        private const float STARTING_TIME = 5f;
+        private const float STARTING_TIME = 30f;
         private bool _triggeredSecondWave;
         private bool _isInitialized;
         
@@ -36,7 +34,6 @@ namespace Features.UI_Namespace.Script
             if (_triggeredSecondWave) return;
             currentTime.Add(-1 * Time.deltaTime);
             countdownText.text = Math.Floor(currentTime.Get()/60).ToString("0") + ":" + Math.Floor(currentTime.Get() % 60).ToString("00");
-            Debug.Log("currentTime: " + currentTime.Get());
             if (currentTime.Get() <= 0) 
             {
                 countdownText.text = "";
