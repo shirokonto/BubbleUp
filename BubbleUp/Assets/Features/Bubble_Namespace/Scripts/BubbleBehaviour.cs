@@ -79,7 +79,7 @@ namespace Features.Bubble_Namespace.Scripts
                 bubbleIsPopped.Set(true);
                 Destroy(this.gameObject);
                 bubblePop.Play();
-                Menu.isGameOver = true;
+                Menu.IsGameOver = true;
             }
             infoItem.GetComponent<ItemMover>().ResetPositionAndRotationBeforeRespawn();
         }

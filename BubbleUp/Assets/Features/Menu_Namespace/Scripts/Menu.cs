@@ -8,37 +8,28 @@ namespace Features.Menu_Namespace.Scripts
     public class Menu : MonoBehaviour
     {
         [SerializeField] private BoolVariable isPauseIButtonHit;
+        [SerializeField] private BoolVariable isInfoItemViewShown;
+        [SerializeField] private GameObject pauseMenuUI;
+        [SerializeField] private GameObject gameOverScreen;
+        [SerializeField] private GameObject tutorialUI;
+        [SerializeField] private GameObject leapMotionUI;
+        [SerializeField] private GameObject mainMenuUI;
+        [SerializeField] private  Animator transition;
+        [SerializeField] private  float transitionTime = 2f;
         public static Menu instance;
-        public static bool _gameIsPaused = false;
-        public GameObject PauseMenuUI;
-
-        public static bool isGameOver;
-        public GameObject GameOverScreen;
-
-        public GameObject TutorialUI;
-
-        public GameObject LeapMotionUI;
-
-        public GameObject MainMenuUI;
-
+        public static bool IsGameOver;
+        private static bool _gameIsPaused = false;
         //public AudioSource AudioSource;
-
-        public Animator transition;
-        public float transitionTime = 2f;
+        
 
         private void Awake()
         {
             isPauseIButtonHit.Set(true); //for hand gesture
-            isGameOver = false;
-            //SceneManager.LoadScene(4, LoadSceneMode.Additive);
-        }
-    
-        // Start is called before the first frame update
-        void Start()
-        {
+            IsGameOver = false;
+            SceneManager.LoadScene(4, LoadSceneMode.Additive);
             //AudioSource = GetComponent<AudioSource>();
         }
-
+ 
         // Update is called once per frame
         void Update()
         {
@@ -54,33 +45,38 @@ namespace Features.Menu_Namespace.Scripts
                 }
             }
 
-            if (isGameOver)
+            if (IsGameOver)
             {
                 GOScreen();
                 //AudioSource.Stop();
             }
-
-            if (isGameOver == false && _gameIsPaused == false)
+            if (!IsGameOver && !_gameIsPaused && !isInfoItemViewShown.Get())
             {
                 Time.timeScale = 1f;
             }
+            
         }
 
-        public void GOScreen()
+        private void GOScreen()
         {
             StartCoroutine(ShowGOScreen());
         }
 
-        public IEnumerator ShowGOScreen()
+        private IEnumerator ShowGOScreen()
         {          
             yield return new WaitForSeconds(0.7f);
-            GameOverScreen.SetActive(true);
+            gameOverScreen.SetActive(true);
             Time.timeScale = 0f;
         }
 
-            public void Play()
+        public void Play()
         {
             SceneManager.LoadScene("Character_Selection");
+        }
+
+        public void PrintDebugLog()
+        {
+            Debug.Log("isgameover: " + IsGameOver + " gameisPaused: " + _gameIsPaused + " isinfoitemviewshown: " + isInfoItemViewShown.Get());
         }
 
         public void TryAgain()
@@ -90,12 +86,13 @@ namespace Features.Menu_Namespace.Scripts
             SceneManager.LoadScene(4, LoadSceneMode.Additive);
             SceneManager.LoadScene(5, LoadSceneMode.Additive);
             SceneManager.LoadScene(6, LoadSceneMode.Additive);
+            _gameIsPaused = false;
             Time.timeScale = 1f;
         }
 
         public void Resume()
         {
-            PauseMenuUI.SetActive(false);
+            pauseMenuUI.SetActive(false);
             Time.timeScale = 1f;
             _gameIsPaused = false;
             isPauseIButtonHit.Set(true);
@@ -103,7 +100,7 @@ namespace Features.Menu_Namespace.Scripts
     
         private void Pause()
         {
-            PauseMenuUI.SetActive(true);
+            pauseMenuUI.SetActive(true);
             Time.timeScale = 0f;
             _gameIsPaused = true;
             isPauseIButtonHit.Set(false);
@@ -123,31 +120,32 @@ namespace Features.Menu_Namespace.Scripts
 
         public void Tutorial()
         {
-            MainMenuUI.SetActive(false);
-            TutorialUI.SetActive(true);
+            mainMenuUI.SetActive(false);
+            tutorialUI.SetActive(true);
         }
 
         public void LeapMotion()
         {
-            MainMenuUI.SetActive(false);
-            LeapMotionUI.SetActive(true);
+            mainMenuUI.SetActive(false);
+            leapMotionUI.SetActive(true);
         }
 
         public void BackT()
         {
-            TutorialUI.SetActive(false);
-            MainMenuUI.SetActive(true);
+            tutorialUI.SetActive(false);
+            mainMenuUI.SetActive(true);
         }
 
-        public void BackLM()
+        public void BackLm()
         {
-            LeapMotionUI.SetActive(false);
-            MainMenuUI.SetActive(true);
+            leapMotionUI.SetActive(false);
+            mainMenuUI.SetActive(true);
         }
 
         public void LoadMenu()
         {
             Time.timeScale = 1f;
+            isInfoItemViewShown.Set(true);
             SceneManager.LoadScene("MainMenu");
         }
 
@@ -155,6 +153,5 @@ namespace Features.Menu_Namespace.Scripts
         {
             Application.Quit();
         }
-
     }
 }
