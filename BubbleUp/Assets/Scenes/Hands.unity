@@ -350,7 +350,7 @@ MonoBehaviour:
   infoItemAppearingPercentage: {fileID: 11400000, guid: 6e70250046c3f8b44af216bb2416fe00, type: 2}
   powerUpItemAppearingPercentage: {fileID: 11400000, guid: 8c807f69a1ce5b24f97e645ba7106a1c, type: 2}
   isSecondWave: {fileID: 11400000, guid: 9f4476234b8df094a90704b0df1d3f50, type: 2}
-  minRespawnTime: 1
+  minRespawnTime: 1.5
   maxRespawnTime: 2
 --- !u!1001 &571710021
 PrefabInstance:
