@@ -11,9 +11,6 @@ namespace Features.Menu_Namespace.Scripts
         [SerializeField] private BoolVariable isInfoItemViewShown;
         [SerializeField] private GameObject pauseMenuUI;
         [SerializeField] private GameObject gameOverScreen;
-        [SerializeField] private GameObject tutorialUI;
-        [SerializeField] private GameObject leapMotionUI;
-        [SerializeField] private GameObject mainMenuUI;
         [SerializeField] private  Animator transition;
         [SerializeField] private  float transitionTime = 2f;
         public static Menu instance;
@@ -50,30 +47,23 @@ namespace Features.Menu_Namespace.Scripts
                 GOScreen();
                 //AudioSource.Stop();
             }
+            
             if (!IsGameOver && !_gameIsPaused && !isInfoItemViewShown.Get())
             {
                 Time.timeScale = 1f;
             }
             
         }
-
-        private void GOScreen()
-        {
-            StartCoroutine(ShowGOScreen());
-        }
-
-        private IEnumerator ShowGOScreen()
-        {          
-            yield return new WaitForSeconds(0.7f);
-            gameOverScreen.SetActive(true);
-            Time.timeScale = 0f;
-        }
-
+        
         public void Play()
         {
             SceneManager.LoadScene("Character_Selection");
         }
 
+        /**
+         * Reload the gameplay scenes after replay is chosen in
+         * Pause or GameOver menu
+         */
         public void TryAgain()
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
@@ -84,23 +74,10 @@ namespace Features.Menu_Namespace.Scripts
             _gameIsPaused = false;
             Time.timeScale = 1f;
         }
-
-        public void Resume()
-        {
-            pauseMenuUI.SetActive(false);
-            Time.timeScale = 1f;
-            _gameIsPaused = false;
-            isPauseIButtonHit.Set(true);
-        }
-    
-        private void Pause()
-        {
-            pauseMenuUI.SetActive(true);
-            Time.timeScale = 0f;
-            _gameIsPaused = true;
-            isPauseIButtonHit.Set(false);
-        }
-
+        
+        /**
+         * Used by the Interaction Button to open the pause menu
+         */
         public void TogglePauseMenu()
         {
             if (isPauseIButtonHit.Get())
@@ -113,50 +90,66 @@ namespace Features.Menu_Namespace.Scripts
             }
         }
 
-        public void Tutorial()
+        /**
+         * Resumes the gameplay
+         */
+        public void Resume()
         {
-            mainMenuUI.SetActive(false);
-            tutorialUI.SetActive(true);
+            pauseMenuUI.SetActive(false);
+            SetVariablesConditions(false, false, true, 1f);
         }
-
-        public void LeapMotion()
+    
+        /**
+         * Pause the gameplay
+         */
+        private void Pause()
         {
-            mainMenuUI.SetActive(false);
-            leapMotionUI.SetActive(true);
-        }
-
-        public void BackT()
-        {
-            tutorialUI.SetActive(false);
-            mainMenuUI.SetActive(true);
-        }
-
-        public void BackLm()
-        {
-            leapMotionUI.SetActive(false);
-            mainMenuUI.SetActive(true);
-        }
-
-        public void LoadMenu()
-        {
-            SetBackTimeCondition(false, true, 1f);
-            SceneManager.LoadScene("MainMenu");
-        }
-
-        public void Quit()
-        {
-            Application.Quit();
+            pauseMenuUI.SetActive(true);
+            SetVariablesConditions(true, false, false, 0f);
         }
 
         /**
-         * the conditions gameIsPaused, isInfoItemViewShown and IsGameOver
-         * have to be set to their original value when replaying the game
+         * Load the main menu
          */
-        private void SetBackTimeCondition(bool gamePaused, bool infoItemViewShown, float timeScale)
+        public void LoadMenu()
         {
+            SetVariablesConditions(false, true, false, 1f);
+            SceneManager.LoadScene("MainMenu");
+        }
+        
+        /**
+         * The conditions of the variables _gameIsPaused, isInfoItemViewShown, isPauseIButtonHit
+         * and timeScale have to be set for switching between views and gameplay
+         */
+        private void SetVariablesConditions(bool gamePaused, bool infoItemViewShown, bool iBtnPauseHit, float timeScale)
+        {
+            isPauseIButtonHit.Set(iBtnPauseHit);
             _gameIsPaused = gamePaused;
             isInfoItemViewShown.Set(infoItemViewShown);
             Time.timeScale = timeScale;
+        }
+        
+        /**
+         * The Game Over screen is shown when the bubble bursts
+         */
+        private void GOScreen()
+        {
+            StartCoroutine(ShowGOScreen());
+        }
+
+        private IEnumerator ShowGOScreen()
+        {          
+            yield return new WaitForSeconds(0.7f);
+            gameOverScreen.SetActive(true);
+            Time.timeScale = 0f;
+        }
+
+        /**
+         * Quit the application
+         */
+        public void Quit()
+        {
+            Application.Quit();
         }
     }
 }
