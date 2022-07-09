@@ -48,7 +48,10 @@ namespace Features.Interactables_Namespace.Scripts
                 else
                 {
                     GetComponent<ItemMover>().ResetPositionAndRotationBeforeRespawn();
-                    SelectedItem.timer = false;
+                    if (!SelectedItem.timer)
+                    {
+                        SelectedItem.timer = false;
+                    }
                 }
             }
         }
