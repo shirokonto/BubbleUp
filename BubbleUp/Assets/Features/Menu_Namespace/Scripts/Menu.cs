@@ -2,12 +2,14 @@ using System.Collections;
 using DataStructures.Variables;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 namespace Features.Menu_Namespace.Scripts
 {
     public class Menu : MonoBehaviour
     {
         [SerializeField] private BoolVariable isPauseIButtonHit;
+        [SerializeField] private BoolVariable resumeGame;
         public static Menu instance;
         private static bool _gameIsPaused = false;
         public GameObject PauseMenuUI;
@@ -46,6 +48,7 @@ namespace Features.Menu_Namespace.Scripts
             {
                 if (_gameIsPaused)
                 {
+                    StartCoroutine(PauseCoroutine());
                     Resume();
                 }
                 else
@@ -78,7 +81,7 @@ namespace Features.Menu_Namespace.Scripts
             Time.timeScale = 0f;
         }
 
-            public void Play()
+        public void Play()
         {
             SceneManager.LoadScene("Character_Selection");
         }
@@ -94,11 +97,15 @@ namespace Features.Menu_Namespace.Scripts
         }
 
         public void Resume()
-        {
+        { 
+            
             PauseMenuUI.SetActive(false);
             Time.timeScale = 1f;
             _gameIsPaused = false;
             isPauseIButtonHit.Set(true);
+            resumeGame.Set(true);
+            Debug.Log("Resume Game");
+            
         }
     
         private void Pause()
@@ -119,6 +126,14 @@ namespace Features.Menu_Namespace.Scripts
             {
                 Resume();
             }
+        }
+
+        public IEnumerator PauseCoroutine()
+        {
+            yield return new WaitForSeconds(3f);
+            PauseMenuUI.SetActive(false);
+            Debug.Log("Wait for 3 seconds");
+
         }
 
         public void Tutorial()
@@ -149,6 +164,7 @@ namespace Features.Menu_Namespace.Scripts
         {
             Time.timeScale = 1f;
             SceneManager.LoadScene("MainMenu");
+
         }
 
         public void Quit()
