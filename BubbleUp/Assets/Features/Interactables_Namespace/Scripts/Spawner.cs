@@ -17,13 +17,15 @@ namespace Features.Interactables_Namespace.Scripts
         [SerializeField] private FloatVariable infoItemAppearingPercentage;
         [SerializeField] private FloatVariable powerUpItemAppearingPercentage;
         [SerializeField] private BoolVariable isSecondWave;
-        [SerializeField][Range(1f, 2f)] private float minRespawnTime;
-        [SerializeField][Range(1f, 2f)] private float maxRespawnTime; 
+        [SerializeField] private BoolVariable spawnRateBeginning;
+        [SerializeField][Range(1f, 3f)] private float minRespawnTime;
+        [SerializeField][Range(1f, 3f)] private float maxRespawnTime; 
         private ObjectPool _objectPool;
         private float _spawningItemDeterminer;
         private Random _random;
         private List<GameObject> _currentlySpawningItems;
         private Transform _startPosition;
+        
 
         void Awake()
         {
@@ -34,6 +36,7 @@ namespace Features.Interactables_Namespace.Scripts
         // Start is called before the first frame update
         void Start()
         {
+            spawnRateBeginning.Set(true);
             infoItemAppearingPercentage.Set(0.8f);
             powerUpItemAppearingPercentage.Set(0.9f);
             StartCoroutine(Spawn());
@@ -53,10 +56,19 @@ namespace Features.Interactables_Namespace.Scripts
         private IEnumerator Spawn()
         {
             Instantiate();
-            
+            //if first wave = respawn time higher
+            //if second wave = respawn time lower
             yield return new WaitForSeconds(RandomUnityEngine.Range(minRespawnTime, maxRespawnTime));
-
             StartCoroutine(Spawn());
+        }
+
+        /**
+         * Only spawn infoItems in the first five seconds
+         */
+        private IEnumerator SpawnRateBeginning()
+        {
+            yield return new WaitForSeconds(5f);
+            spawnRateBeginning.Set(false);
         }
         
         private GameObject ChooseRandomItemFromList(List<GameObject> items)
@@ -70,6 +82,12 @@ namespace Features.Interactables_Namespace.Scripts
          */
         private void DetermineSpawningItem()
         {
+            if (spawnRateBeginning)
+            {
+                _currentlySpawningItems = incomingInfoItems.ToList();
+            }
+            StartCoroutine(SpawnRateBeginning());
+            
             if (isSecondWave.Get())
             {
                 infoItemAppearingPercentage.Set(0.6f);

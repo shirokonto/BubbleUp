@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05d7b30f20f4d2644a70edb1b620b762, type: 3}
-  m_Name: CurrentMoveSpeed
+  m_Script: {fileID: 11500000, guid: 98e7f27c19fc272448e63ff558302a5c, type: 3}
+  m_Name: SpawnRateBeginning
   m_EditorClassIdentifier: 
-  storedValue: 0.5
+  storedValue: 0
   onValueChanged: {fileID: 0}

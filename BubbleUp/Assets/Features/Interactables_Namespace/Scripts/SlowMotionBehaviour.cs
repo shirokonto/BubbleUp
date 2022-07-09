@@ -17,7 +17,7 @@ namespace Features.Interactables_Namespace.Scripts
         private void Start()
         {
             _allItemsOnSameRoute = new List<Transform>();
-            _defaultMoveSpeed = 0.5f;
+            _defaultMoveSpeed = 0.4f;
             currentMoveSpeed.Set(_defaultMoveSpeed);
             _renderer = GetComponent<MeshRenderer>();
         }
@@ -26,8 +26,9 @@ namespace Features.Interactables_Namespace.Scripts
         {
             if (isSecondWave.Get())
             {
-                _defaultMoveSpeed = 0.75f;
+                _defaultMoveSpeed = 0.7f;
                 currentMoveSpeed.Set(_defaultMoveSpeed);
+                isSecondWave.Set(false); //if not set false it will override the slowMo functionality
             }
         }
 
@@ -35,10 +36,10 @@ namespace Features.Interactables_Namespace.Scripts
         {
             if (collision.gameObject.CompareTag("Bubble"))
             {
-                //Change speed in itemMover moveSpeed only for siblings on same route
-
+                //Trigger slowMo only if the current speed is as the default value
                 if (currentMoveSpeed.Get() == _defaultMoveSpeed)
                 {
+                    Debug.Log("defaultMoveSpeed: " + _defaultMoveSpeed + " currentMoveSpeed: " + currentMoveSpeed.Get());
                     Transform path = transform.parent.gameObject.transform;
                     for (int i = 0; i < path.childCount; i++)
                     {
@@ -46,6 +47,11 @@ namespace Features.Interactables_Namespace.Scripts
                     }
                     StartCoroutine(SlowDownFlowTemporary(_allItemsOnSameRoute));
                     SelectedItem.timer = true;
+                }
+                else
+                {
+                    GetComponent<ItemMover>().ResetPositionAndRotationBeforeRespawn();
+                    SelectedItem.timer = false;
                 }
             }
         }
