@@ -241,7 +241,7 @@ MonoBehaviour:
   powerUpItemAppearingPercentage: {fileID: 11400000, guid: 8c807f69a1ce5b24f97e645ba7106a1c, type: 2}
   isSecondWave: {fileID: 11400000, guid: 9f4476234b8df094a90704b0df1d3f50, type: 2}
   spawnRateBeginning: {fileID: 11400000, guid: fd137271c8301314dbd81541f493e661, type: 2}
-  minRespawnTime: 1
+  minRespawnTime: 1.5
   maxRespawnTime: 2
 --- !u!114 &293417154
 MonoBehaviour:
@@ -5783,7 +5783,7 @@ MonoBehaviour:
   powerUpItemAppearingPercentage: {fileID: 11400000, guid: 8c807f69a1ce5b24f97e645ba7106a1c, type: 2}
   isSecondWave: {fileID: 11400000, guid: 9f4476234b8df094a90704b0df1d3f50, type: 2}
   spawnRateBeginning: {fileID: 11400000, guid: fd137271c8301314dbd81541f493e661, type: 2}
-  minRespawnTime: 1
+  minRespawnTime: 1.5
   maxRespawnTime: 2
 --- !u!114 &8890311291467911961
 MonoBehaviour:
