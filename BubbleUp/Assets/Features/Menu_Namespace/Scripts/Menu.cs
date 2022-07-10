@@ -109,8 +109,7 @@ namespace Features.Menu_Namespace.Scripts
         {
             pauseMenuUI.SetActive(false);
             Time.timeScale = 1f;
-            SetVariablesConditions(false, false, true, 1f);
-            Countdown();
+            SetVariablesConditions(false, false, true, 1f);      
             Debug.Log("Resume Game");
         }
     
