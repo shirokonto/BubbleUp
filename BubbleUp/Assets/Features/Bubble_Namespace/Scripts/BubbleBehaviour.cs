@@ -79,7 +79,7 @@ namespace Features.Bubble_Namespace.Scripts
                 bubbleIsPopped.Set(true);
                 Destroy(this.gameObject);
                 bubblePop.Play();
-                Menu.isGameOver = true;
+                Menu.IsGameOver = true;
             }
             infoItem.GetComponent<ItemMover>().ResetPositionAndRotationBeforeRespawn();
         }
@@ -92,7 +92,7 @@ namespace Features.Bubble_Namespace.Scripts
                 transform.localScale -= _scaleChange;
             }
             minimizeItem.GetComponent<ItemMover>().ResetPositionAndRotationBeforeRespawn();
-            StartCoroutine(ShowAdWhenMinimizeHit());
+            StartCoroutine(ShowIconWhenMinimizeHit());
         }
 
         private void HitVirus(GameObject virusItem)
@@ -112,9 +112,13 @@ namespace Features.Bubble_Namespace.Scripts
                 antiVirusEnabled.Set(true);
                 antiVirusItem.GetComponent<ItemMover>().ResetPositionAndRotationBeforeRespawn();
             }
+            else
+            {
+                antiVirusItem.GetComponent<ItemMover>().ResetPositionAndRotationBeforeRespawn();
+            }
         }
         
-        private IEnumerator ShowAdWhenMinimizeHit()
+        private IEnumerator ShowIconWhenMinimizeHit()
         {
             SelectedItem.minimize = true;
             yield return new WaitForSeconds(0.3f);

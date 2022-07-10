@@ -48,7 +48,7 @@ namespace Features.Interactables_Namespace.Scripts
             {
                 if (isSecondWave.Get())
                 {
-                    moveSpeed.Set(0.75f);
+                    moveSpeed.Set(0.7f);
                 }
 
                 MoveItemTowardsBubble();

@@ -49,3 +49,4 @@ We are the rebootCrew and we’ve teamed up to develop this 3D game for the cour
 :wrench: **Utils**
 * Mixamo: [Animation for 3D Characters](https://www.mixamo.com/#/)
 * zetafonts: [Arista Font](https://www.1001freefonts.com/-z--arista.font)
+* AE Tuts: [Bubbles in Unity using Shader Graph](https://www.youtube.com/watch?v=F6t8LR2mX1I&t=304s)

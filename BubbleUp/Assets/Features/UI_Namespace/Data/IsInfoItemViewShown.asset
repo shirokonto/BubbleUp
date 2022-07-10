@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d60f261b718a448d960f65fcea8d2f82, type: 3}
-  m_Name: Test
+  m_Script: {fileID: 11500000, guid: 98e7f27c19fc272448e63ff558302a5c, type: 3}
+  m_Name: IsInfoItemViewShown
   m_EditorClassIdentifier: 
-  storedValue: 0
+  storedValue: 1
   onValueChanged: {fileID: 0}
