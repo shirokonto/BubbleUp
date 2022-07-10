@@ -23,7 +23,7 @@ namespace Features.Menu_Namespace.Scripts
         {
             isPauseIButtonHit.Set(true); //for hand gesture
             IsGameOver = false;
-            SceneManager.LoadScene(4, LoadSceneMode.Additive);
+            SceneManager.LoadScene(3, LoadSceneMode.Additive);
             //AudioSource = GetComponent<AudioSource>();
         }
  
@@ -67,10 +67,10 @@ namespace Features.Menu_Namespace.Scripts
         public void TryAgain()
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            SceneManager.LoadScene(2, LoadSceneMode.Additive);
             SceneManager.LoadScene(3, LoadSceneMode.Additive);
             SceneManager.LoadScene(4, LoadSceneMode.Additive);
             SceneManager.LoadScene(5, LoadSceneMode.Additive);
-            SceneManager.LoadScene(6, LoadSceneMode.Additive);
             _gameIsPaused = false;
             Time.timeScale = 1f;
         }
