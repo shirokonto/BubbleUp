@@ -1242,6 +1242,11 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!4 &301726240 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3659754466489647768, guid: 53a08e280d60447fa8ba2c909717297f, type: 3}
+  m_PrefabInstance: {fileID: 3659754467753661309}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &398921714
 GameObject:
   m_ObjectHideFlags: 0
@@ -3312,6 +3317,8 @@ MonoBehaviour:
   gameOverScreen: {fileID: 2452329055010981324, guid: 6ff377325d18a419ea3eef594cc79246, type: 3}
   transition: {fileID: 0}
   transitionTime: 2
+  countdownTime: 0
+  countdownDisplay: {fileID: 0}
 --- !u!1 &1177911526
 GameObject:
   m_ObjectHideFlags: 0
@@ -3328,7 +3335,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1177911527
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3354,14 +3361,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1177911526}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1420.52, y: -1035, z: -175}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0.08109849, y: -0, z: -0, w: 0.9967061}
+  m_LocalPosition: {x: -594.83, y: -45.4, z: -218.80276}
+  m_LocalScale: {x: 0.96894413, y: 0.96894413, z: 0.96894413}
   m_Children:
   - {fileID: 707002482}
   - {fileID: 587165700}
-  m_Father: {fileID: 1891401225}
-  m_RootOrder: 6
+  m_Father: {fileID: 301726240}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1192092257
 GameObject:
@@ -4012,6 +4019,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1177911526}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!95 &1409453372
 Animator:
   serializedVersion: 3
@@ -4024,7 +4043,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: c99d5bfce1ce44c019c5b00735a0d907, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
@@ -5200,7 +5219,6 @@ RectTransform:
   - {fileID: 1424252155}
   - {fileID: 957227324}
   - {fileID: 1364592328}
-  - {fileID: 1177911528}
   m_Father: {fileID: 1468144855}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
