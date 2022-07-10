@@ -1760,8 +1760,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPauseIButtonHit: {fileID: 11400000, guid: cca0243c008fdf845ac4015228f03570, type: 2}
   isInfoItemViewShown: {fileID: 11400000, guid: eda7c6bb52c115244a00f391412cf260, type: 2}
-  pauseMenuUI: {fileID: 0}
-  gameOverScreen: {fileID: 0}
+  pauseMenuUI: {fileID: 1448069741286635396, guid: b2449ddbc180c40d8a9a9d737e4f1e2c, type: 3}
+  gameOverScreen: {fileID: 2452329055010981324, guid: 6ff377325d18a419ea3eef594cc79246, type: 3}
   transition: {fileID: 0}
   transitionTime: 2
 --- !u!1 &1192092257
