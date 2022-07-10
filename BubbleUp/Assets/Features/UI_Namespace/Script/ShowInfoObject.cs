@@ -6,7 +6,7 @@ namespace Features.UI_Namespace.Script
     public class ShowInfoObject : MonoBehaviour
     {
         [SerializeField] private StringVariable correctInfoType;
-        public GameObject pauseMenuUI;
+        //public GameObject pauseMenuUI;
 
 
         // Start is called before the first frame update
@@ -18,7 +18,7 @@ namespace Features.UI_Namespace.Script
             child.gameObject.SetActive(true);
             Time.timeScale = 0f;
             Debug.Log(child.name);
-            pauseMenuUI.SetActive(false);
+            //pauseMenuUI.SetActive(false);
         }
     }
 }
