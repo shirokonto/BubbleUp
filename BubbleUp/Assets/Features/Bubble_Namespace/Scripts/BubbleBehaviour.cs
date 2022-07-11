@@ -24,8 +24,8 @@ namespace Features.Bubble_Namespace.Scripts
         private int _hit;
         private int _localPoints;
         private const float BUBBLE_SCALING = 0.03f;
-        private const int PLUSPOINT = 1;
-        private const int MINUSPOINTS = 3;
+        private const int PLUSPOINT = 3;
+        private const int MINUSPOINTS = 1;
         private readonly string[] _infoItemNames = new string[5] {"InfoObjectPink", "InfoObjectBlue", "InfoObjectRed", "InfoObjectGreen", "InfoObjectYellow"}; 
         private Random _random;
         //private int antivirusGauge = 0;
