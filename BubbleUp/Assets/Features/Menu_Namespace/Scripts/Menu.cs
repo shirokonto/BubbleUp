@@ -2,6 +2,8 @@ using System.Collections;
 using DataStructures.Variables;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
+
 
 namespace Features.Menu_Namespace.Scripts
 {
@@ -13,11 +15,15 @@ namespace Features.Menu_Namespace.Scripts
         [SerializeField] private GameObject gameOverScreen;
         [SerializeField] private  Animator transition;
         [SerializeField] private  float transitionTime = 2f;
+        [SerializeField] private int countdownTime;
+        [SerializeField] private TextMeshProUGUI countdownDisplay;
+        [SerializeField] private GameObject countdownAfterPause;
         public static Menu instance;
         public static bool IsGameOver;
         private static bool _gameIsPaused = false;
+        private static bool _resumeGame;
         //public AudioSource AudioSource;
-        
+
 
         private void Awake()
         {
@@ -35,6 +41,8 @@ namespace Features.Menu_Namespace.Scripts
                 if (_gameIsPaused)
                 {
                     Resume();
+                    Countdown();
+                    countdownAfterPause.SetActive(true);
                 }
                 else
                 {
@@ -52,13 +60,13 @@ namespace Features.Menu_Namespace.Scripts
             {
                 Time.timeScale = 1f;
             }
-            
+
+            if (_resumeGame)
+            {
+                Time.timeScale = 0f;
+            }
         }
         
-        public void Play()
-        {
-            SceneManager.LoadScene("Character_Selection");
-        }
 
         /**
          * Reload the gameplay scenes after replay is chosen in
@@ -87,6 +95,8 @@ namespace Features.Menu_Namespace.Scripts
             else
             {
                 Resume();
+                countdownAfterPause.SetActive(true);
+                Countdown();
             }
         }
 
@@ -94,7 +104,7 @@ namespace Features.Menu_Namespace.Scripts
          * Resumes the gameplay
          */
         public void Resume()
-        {
+        {            
             pauseMenuUI.SetActive(false);
             SetVariablesConditions(false, false, true, 1f);
         }
@@ -128,17 +138,38 @@ namespace Features.Menu_Namespace.Scripts
             isInfoItemViewShown.Set(infoItemViewShown);
             Time.timeScale = timeScale;
         }
-        
+
+        private IEnumerator CountdownCoroutine()
+        {
+            while (countdownTime > 0)
+            {
+                _resumeGame = true;
+                countdownDisplay.text = countdownTime.ToString();
+                yield return new WaitForSecondsRealtime(1f);
+                countdownTime--;
+            }
+            countdownTime = 3;
+            _resumeGame = false;
+            countdownDisplay.gameObject.SetActive(false);
+        }
+
+        public void Countdown()
+        {
+            StartCoroutine(CountdownCoroutine());
+        }
+
         /**
          * The Game Over screen is shown when the bubble bursts
          */
         private void GOScreen()
         {
             StartCoroutine(ShowGOScreen());
+            pauseMenuUI.SetActive(false);
+
         }
 
         private IEnumerator ShowGOScreen()
-        {          
+        {
             yield return new WaitForSeconds(0.7f);
             gameOverScreen.SetActive(true);
             Time.timeScale = 0f;
@@ -152,4 +183,5 @@ namespace Features.Menu_Namespace.Scripts
             Application.Quit();
         }
     }
+
 }

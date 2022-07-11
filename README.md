@@ -40,7 +40,9 @@ We are the rebootCrew and we’ve teamed up to develop this 3D game for the cour
 * name: [example link to repo](https://github.com/shirokonto/bubbleUp)
 
 :speaker: **Soundeffects by:**
-* name: [example link to repo](https://github.com/shirokonto/bubbleUp) 
+* name: [example link to repo](https://github.com/shirokonto/bubbleUp)
+* B.G.M: [Shooting Sound](https://assetstore.unity.com/packages/audio/sound-fx/shooting-sound-177096)
+* mixkit.co: [Losing bleeps](https://mixkit.co/free-sound-effects/lose/)
 
 :space_invader: **Assets by:**
 * BOXOPHOBIC: [FREE Skybox Extended Shader](https://assetstore.unity.com/packages/vfx/shaders/free-skybox-extended-shader-107400)
