@@ -2633,6 +2633,7 @@ MonoBehaviour:
   transitionTime: 2
   countdownTime: 3
   countdownDisplay: {fileID: 1316171664}
+  countdownAfterPause: {fileID: 1316171663}
 --- !u!114 &1056326398
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3342,7 +3343,7 @@ GameObject:
   - component: {fileID: 1316171665}
   - component: {fileID: 1316171664}
   m_Layer: 5
-  m_Name: CountdownAfterPAuse
+  m_Name: CountdownAfterPause
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

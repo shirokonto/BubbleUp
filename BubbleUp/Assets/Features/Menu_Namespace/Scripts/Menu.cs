@@ -2,7 +2,6 @@ using System.Collections;
 using DataStructures.Variables;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 using TMPro;
 
 
@@ -18,10 +17,11 @@ namespace Features.Menu_Namespace.Scripts
         [SerializeField] private  float transitionTime = 2f;
         [SerializeField] private int countdownTime;
         [SerializeField] private TextMeshProUGUI countdownDisplay;
+        [SerializeField] private GameObject countdownAfterPause;
         public static Menu instance;
         public static bool IsGameOver;
         private static bool _gameIsPaused = false;
-        private static bool resumeGame;
+        private static bool _resumeGame;
         //public AudioSource AudioSource;
 
 
@@ -41,6 +41,8 @@ namespace Features.Menu_Namespace.Scripts
                 if (_gameIsPaused)
                 {
                     Resume();
+                    Countdown();
+                    countdownAfterPause.SetActive(true);
                 }
                 else
                 {
@@ -59,13 +61,12 @@ namespace Features.Menu_Namespace.Scripts
                 Time.timeScale = 1f;
             }
 
-            if (resumeGame)
+            if (_resumeGame)
             {
                 Time.timeScale = 0f;
             }
         }
         
-
 
         /**
          * Reload the gameplay scenes after replay is chosen in
@@ -94,6 +95,8 @@ namespace Features.Menu_Namespace.Scripts
             else
             {
                 Resume();
+                countdownAfterPause.SetActive(true);
+                Countdown();
             }
         }
 
@@ -101,11 +104,9 @@ namespace Features.Menu_Namespace.Scripts
          * Resumes the gameplay
          */
         public void Resume()
-        {
-            resumeGame = false;
+        {            
             pauseMenuUI.SetActive(false);
             SetVariablesConditions(false, false, true, 1f);
-            Debug.Log("Resume Game");
         }
     
         /**
@@ -140,40 +141,28 @@ namespace Features.Menu_Namespace.Scripts
 
         private IEnumerator CountdownCoroutine()
         {
-
             while (countdownTime > 0)
             {
-                resumeGame = true;
+                _resumeGame = true;
                 countdownDisplay.text = countdownTime.ToString();
-
                 yield return new WaitForSecondsRealtime(1f);
-
                 countdownTime--;
-
             }
-            resumeGame = false;
+            countdownTime = 3;
+            _resumeGame = false;
             countdownDisplay.gameObject.SetActive(false);
-            Debug.Log("Wait for 3 seconds");
-
-
         }
 
         public void Countdown()
         {
-
             StartCoroutine(CountdownCoroutine());
-
         }
-
 
         /**
          * The Game Over screen is shown when the bubble bursts
          */
         private void GOScreen()
         {
-            Debug.Log("Game is Paused: " + _gameIsPaused + "isPauseIButtonHit: " + isPauseIButtonHit.Get() + "isInfoItemViewShown.Set" + isInfoItemViewShown.Get() + "Time.timeScale" + Time.timeScale);
-
-
             StartCoroutine(ShowGOScreen());
             pauseMenuUI.SetActive(false);
 
