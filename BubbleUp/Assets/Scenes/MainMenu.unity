@@ -3319,6 +3319,7 @@ MonoBehaviour:
   transitionTime: 2
   countdownTime: 0
   countdownDisplay: {fileID: 0}
+  countdownAfterPause: {fileID: 0}
 --- !u!1 &1177911526
 GameObject:
   m_ObjectHideFlags: 0
@@ -4467,7 +4468,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b259ad5a31dfc44649feeb613335d33c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4e9d6d1c0a65f9941ab7e74cbc80adcd, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
