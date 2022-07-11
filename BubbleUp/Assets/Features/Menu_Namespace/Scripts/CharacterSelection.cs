@@ -47,6 +47,7 @@ namespace Features.Menu_Namespace.Scripts
             SceneManager.LoadScene(3, LoadSceneMode.Additive);
             SceneManager.LoadScene(4, LoadSceneMode.Additive);
             SceneManager.LoadScene(5, LoadSceneMode.Additive);
+            SceneManager.LoadScene(6, LoadSceneMode.Additive);
         }
     }
 }
