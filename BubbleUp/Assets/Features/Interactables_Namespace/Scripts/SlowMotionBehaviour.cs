@@ -12,14 +12,12 @@ namespace Features.Interactables_Namespace.Scripts
         [SerializeField] private BoolVariable isSecondWave;
         private List<Transform> _allItemsOnSameRoute;
         private float _defaultMoveSpeed;
-        private Renderer _renderer;
 
         private void Start()
         {
             _allItemsOnSameRoute = new List<Transform>();
             _defaultMoveSpeed = 0.4f;
             currentMoveSpeed.Set(_defaultMoveSpeed);
-            _renderer = GetComponent<MeshRenderer>();
         }
 
         private void Update()
@@ -39,7 +37,6 @@ namespace Features.Interactables_Namespace.Scripts
                 //Trigger slowMo only if the current speed is as the default value
                 if (currentMoveSpeed.Get() == _defaultMoveSpeed)
                 {
-                    Debug.Log("defaultMoveSpeed: " + _defaultMoveSpeed + " currentMoveSpeed: " + currentMoveSpeed.Get());
                     Transform path = transform.parent.gameObject.transform;
                     for (int i = 0; i < path.childCount; i++)
                     {
@@ -51,7 +48,10 @@ namespace Features.Interactables_Namespace.Scripts
                 else
                 {
                     GetComponent<ItemMover>().ResetPositionAndRotationBeforeRespawn();
-                    SelectedItem.timer = false;
+                    if (!SelectedItem.timer)
+                    {
+                        SelectedItem.timer = false;
+                    }
                 }
             }
         }
