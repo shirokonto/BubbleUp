@@ -14,7 +14,6 @@ namespace Features.Menu_Namespace.Scripts
         [SerializeField] private GameObject pauseMenuUI;
         [SerializeField] private GameObject gameOverScreen;
         [SerializeField] private  Animator transition;
-        [SerializeField] private  float transitionTime = 2f;
         [SerializeField] private int countdownTime;
         [SerializeField] private TextMeshProUGUI countdownDisplay;
         [SerializeField] private GameObject countdownAfterPause;

@@ -12,14 +12,12 @@ namespace Features.Interactables_Namespace.Scripts
         [SerializeField] private BoolVariable isSecondWave;
         private List<Transform> _allItemsOnSameRoute;
         private float _defaultMoveSpeed;
-        private Renderer _renderer;
 
         private void Start()
         {
             _allItemsOnSameRoute = new List<Transform>();
             _defaultMoveSpeed = 0.4f;
             currentMoveSpeed.Set(_defaultMoveSpeed);
-            _renderer = GetComponent<MeshRenderer>();
         }
 
         private void Update()
