@@ -38,7 +38,7 @@ We are the rebootCrew and we’ve teamed up to develop this 3D game for the cour
 ## Credits :bow:
 :musical_note: **Music by:**
 * Alper Maz: [Thank you for the Tracks <3](https://soundcloud.com/alper-maz)
-* Aural Space: [FREE Power Music for Awesome Games]([https://github.com/shirokonto/bubbleUp](https://assetstore.unity.com/packages/audio/music/electronic/free-power-music-for-awesome-games-166487)
+* Aural Space: [FREE Power Music for Awesome Games](https://assetstore.unity.com/packages/audio/music/electronic/free-power-music-for-awesome-games-166487)
 
 :speaker: **Soundeffects by:**
 * B.G.M: [Shooting Sound](https://assetstore.unity.com/packages/audio/sound-fx/shooting-sound-177096)
