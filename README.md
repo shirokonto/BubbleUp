@@ -6,6 +6,9 @@ It is extremely important to ensure that only the right information gets into th
 because we don't want humans's horizons to expand and the bubble to become large and uncontrollable!
 Be aware of other dangers like ads or viruses and use useful items to keep them at bay.
 
+![BubbleUp Screenshots from the Game](https://user-images.githubusercontent.com/57158200/178595345-aadc8c3c-42e3-44a9-8214-aa3f3dae07fc.png)
+
+
 ## How to play (Controls) :joystick: 
 ### Keyboard/Mouse
 * Pause with ESC
@@ -20,9 +23,6 @@ Be aware of other dangers like ads or viruses and use useful items to keep them 
 ![BuBBLEUp](https://user-images.githubusercontent.com/57158200/177203027-34447c1e-0ab8-430f-9732-7da4630bbbeb.png)
 
 ## Team :busts_in_silhouette:
-
-ADD TEAM PICTURE
-
 We are the rebootCrew and we’ve teamed up to develop this 3D game for the course EMM.
 
 
