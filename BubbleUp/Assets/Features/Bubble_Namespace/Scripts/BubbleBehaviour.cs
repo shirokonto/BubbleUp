@@ -65,11 +65,6 @@ namespace Features.Bubble_Namespace.Scripts
             }
         }
 
-        private void OnDestroy()
-        {
-            gameObject.GetComponent<AudioSource>().PlayOneShot(bubblePopSound);
-        }
-
         private void HitInfoItem(GameObject infoItem)
         {
             if (!infoItem.transform.name.Contains(correctInfoType.Get()))
