@@ -37,12 +37,13 @@ We are the rebootCrew and we’ve teamed up to develop this 3D game for the cour
 
 ## Credits :bow:
 :musical_note: **Music by:**
-* name: [example link to repo](https://github.com/shirokonto/bubbleUp)
+* Alper Maz: [Thank you for the Tracks <3](https://soundcloud.com/alper-maz)
+* Aural Space: [FREE Power Music for Awesome Games]([https://github.com/shirokonto/bubbleUp](https://assetstore.unity.com/packages/audio/music/electronic/free-power-music-for-awesome-games-166487)
 
 :speaker: **Soundeffects by:**
-* name: [example link to repo](https://github.com/shirokonto/bubbleUp)
 * B.G.M: [Shooting Sound](https://assetstore.unity.com/packages/audio/sound-fx/shooting-sound-177096)
 * mixkit.co: [Losing bleeps](https://mixkit.co/free-sound-effects/lose/)
+* Rocklynn Productions: [Water Splash Pack](https://assetstore.unity.com/packages/audio/sound-fx/foley/water-splash-pack-14039#content)
 
 :space_invader: **Assets by:**
 * BOXOPHOBIC: [FREE Skybox Extended Shader](https://assetstore.unity.com/packages/vfx/shaders/free-skybox-extended-shader-107400)
@@ -52,3 +53,4 @@ We are the rebootCrew and we’ve teamed up to develop this 3D game for the cour
 * Mixamo: [Animation for 3D Characters](https://www.mixamo.com/#/)
 * zetafonts: [Arista Font](https://www.1001freefonts.com/-z--arista.font)
 * AE Tuts: [Bubbles in Unity using Shader Graph](https://www.youtube.com/watch?v=F6t8LR2mX1I&t=304s)
+* James Lafritz: [ScriptableObject Game Events](https://blog.devgenius.io/scriptableobject-game-events-1f3401bbde72)
