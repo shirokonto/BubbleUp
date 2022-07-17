@@ -16,12 +16,13 @@ namespace Features.UI_Namespace.Script
             instance = this;
             points.Set(0);
         }
-        void Start()
+
+        private void Start()
         {
             scoreText.text = points.Get() + " POINTS";
         }
-        
-        void Update()
+
+        private void Update()
         {
             scoreText.text = points.Get() + " POINTS";
             scoreTextGO.text = points.Get() + " POINTS";

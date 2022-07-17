@@ -24,17 +24,15 @@ namespace Features.Interactables_Namespace.Scripts
         private float _spawningItemDeterminer;
         private Random _random;
         private List<GameObject> _currentlySpawningItems;
-        private Transform _startPosition;
-        
 
-        void Awake()
+        private void Awake()
         {
             _objectPool = gameObject.GetComponent<ObjectPool>();
             _random = new Random();
         }
 
         // Start is called before the first frame update
-        void Start()
+        private void Start()
         {
             spawnRateBeginning.Set(true);
             infoItemAppearingPercentage.Set(0.8f);
@@ -56,8 +54,6 @@ namespace Features.Interactables_Namespace.Scripts
         private IEnumerator Spawn()
         {
             Instantiate();
-            //if first wave = respawn time higher
-            //if second wave = respawn time lower
             yield return new WaitForSeconds(RandomUnityEngine.Range(minRespawnTime, maxRespawnTime));
             StartCoroutine(Spawn());
         }

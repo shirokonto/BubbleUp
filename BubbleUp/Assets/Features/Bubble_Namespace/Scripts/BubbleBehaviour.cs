@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using DataStructures.Variables;
 using Features.Interactables_Namespace.Scripts;
@@ -11,6 +10,11 @@ using Random = System.Random;
 
 namespace Features.Bubble_Namespace.Scripts
 {
+    /// <summary>
+    /// Takes care of the behaviour of the bubble such as resizing,
+    /// setting an correct infoItem and takes care of the action of the
+    /// collided items InfoItem, MinimizeBubble, Virus and AntiVirus
+    /// </summary>
     public class BubbleBehaviour : MonoBehaviour {
         [SerializeField] private StringVariable correctInfoType; //will be set before the game starts via character view
         [SerializeField] private BoolVariable bubbleIsPopped;
@@ -24,11 +28,10 @@ namespace Features.Bubble_Namespace.Scripts
         private int _hit;
         private int _localPoints;
         private const float BUBBLE_SCALING = 0.03f;
-        private const int PLUSPOINT = 3;
-        private const int MINUSPOINTS = 1;
-        private readonly string[] _infoItemNames = new string[5] {"InfoObjectPink", "InfoObjectBlue", "InfoObjectRed", "InfoObjectGreen", "InfoObjectYellow"}; 
+        private const int PLUS_POINTS = 3;
+        private const int MINUS_POINT = 1;
+        private readonly string[] _infoItemNames = {"InfoObjectPink", "InfoObjectBlue", "InfoObjectRed", "InfoObjectGreen", "InfoObjectYellow"}; 
         private Random _random;
-        //private int antivirusGauge = 0;
 
         private void Awake()
         {
@@ -70,13 +73,13 @@ namespace Features.Bubble_Namespace.Scripts
             if (!infoItem.transform.name.Contains(correctInfoType.Get()))
             {
                 _hit += 1;
-                _localPoints = (_localPoints -= MINUSPOINTS) <= 0 ? 0 : (_localPoints);
+                _localPoints = (_localPoints -= MINUS_POINT) <= 0 ? 0 : (_localPoints);
                 points.Set(_localPoints);
                 transform.localScale += _scaleChange;
             }
             else
             {
-                _localPoints += PLUSPOINT;
+                _localPoints += PLUS_POINTS;
                 points.Set(_localPoints);
             }
 

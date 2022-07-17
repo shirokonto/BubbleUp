@@ -13,7 +13,6 @@ namespace Features.Menu_Namespace.Scripts
         [SerializeField] private BoolVariable isInfoItemViewShown;
         [SerializeField] private GameObject pauseMenuUI;
         [SerializeField] private GameObject gameOverScreen;
-        [SerializeField] private  Animator transition;
         [SerializeField] private int countdownTime;
         [SerializeField] private TextMeshProUGUI countdownDisplay;
         [SerializeField] private GameObject countdownAfterPause;
@@ -21,19 +20,16 @@ namespace Features.Menu_Namespace.Scripts
         public static bool IsGameOver;
         private static bool _gameIsPaused = false;
         private static bool _resumeGame;
-        //public AudioSource AudioSource;
-
 
         private void Awake()
         {
             isPauseIButtonHit.Set(true); //for hand gesture
             IsGameOver = false;
             SceneManager.LoadScene(3, LoadSceneMode.Additive);
-            //AudioSource = GetComponent<AudioSource>();
         }
  
         // Update is called once per frame
-        void Update()
+        private void Update()
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
@@ -52,7 +48,6 @@ namespace Features.Menu_Namespace.Scripts
             if (IsGameOver)
             {
                 GOScreen();
-                //AudioSource.Stop();
             }
             
             if (!IsGameOver && !_gameIsPaused && !isInfoItemViewShown.Get())

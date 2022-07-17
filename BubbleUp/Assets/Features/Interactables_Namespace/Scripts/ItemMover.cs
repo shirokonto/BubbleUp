@@ -24,25 +24,24 @@ namespace Features.Interactables_Namespace.Scripts
             _transform = GetComponent<Transform>();
         }
 
-        // Start is called before the first frame update
-        void Start()
+        /// Start is called before the first frame update
+        private void Start()
         {
             //Set initial position to first point of current route
-            if (gameObject.transform.name.Contains("Clone"))
-            {
-                _objectPool = gameObject.transform.GetComponentInParent<ObjectPool>();
-                _startPosition = _currentRoute.gameObject.transform.GetChild(0).gameObject.transform; 
-                _currentPoint = _currentRoute.GetNextWayPoint(_currentPoint);
-                _startRotation = transform.rotation;
-                transform.position = _currentPoint.position;
+            if (!gameObject.transform.name.Contains("Clone")) return;
+            
+            _objectPool = gameObject.transform.GetComponentInParent<ObjectPool>();
+            _startPosition = _currentRoute.gameObject.transform.GetChild(0).gameObject.transform; 
+            _currentPoint = _currentRoute.GetNextWayPoint(_currentPoint);
+            _startRotation = transform.rotation;
+            transform.position = _currentPoint.position;
         
-                //Set next waypoint target
-                _currentPoint = _currentRoute.GetNextWayPoint(_currentPoint);
-            }
+            //Set next waypoint target
+            _currentPoint = _currentRoute.GetNextWayPoint(_currentPoint);
         }
 
-        // Update is called once per frame
-        void Update()
+        /// Update is called once per frame
+        private void Update()
         {
             if (gameObject.transform.name.Contains("Clone"))
             {
@@ -59,29 +58,24 @@ namespace Features.Interactables_Namespace.Scripts
             }
         }
 
+        /// <summary>
+        /// Sets the current route on which the item should spawn
+        /// </summary>
         public void SetCurrentRoute(Transform route)
         {
             _currentRoute = route.GetComponent<Spawner>().GetCurrentRoute();
         }
 
-        private void MoveItemTowardsBubble()
-        {
-            var position = _currentPoint.position;
-            transform.position =
-                Vector3.MoveTowards(transform.position, position, moveSpeed.Get() * Time.deltaTime);
-        }
-
+        /// <summary>
+        /// Resets the position and rotation of the item
+        /// </summary>
         public void ResetPositionAndRotationBeforeRespawn()
         {
             gameObject.SetActive(false);
-            
-            //TODO: fix respawn position 
-            //reset position
             _transform.position = _startPosition.position;
             _rigidbody.velocity = Vector3.zero;
         
             //reset rotation
-            //_transform.rotation = _startRotation;
             _transform.eulerAngles = Vector3.zero;
             _transform.localRotation = quaternion.Euler(Vector3.zero);
             _transform.rotation = Quaternion.identity;
@@ -89,9 +83,20 @@ namespace Features.Interactables_Namespace.Scripts
             _objectPool.ReturnItemToPool(gameObject);
         }
         
+        /// <summary>
+        /// Sets the movement speed of the item    
+        ///@param newMoveSpeed altered speed input
+        /// </summary>
         public void SetMoveSpeed(float newMoveSpeed)
         {
             moveSpeed.Set(newMoveSpeed);
+        }
+        
+        private void MoveItemTowardsBubble()
+        {
+            var position = _currentPoint.position;
+            transform.position =
+                Vector3.MoveTowards(transform.position, position, moveSpeed.Get() * Time.deltaTime);
         }
     }
 }
