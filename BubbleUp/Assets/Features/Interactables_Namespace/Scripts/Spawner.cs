@@ -8,6 +8,11 @@ using RandomUnityEngine = UnityEngine.Random;
 
 namespace Features.Interactables_Namespace.Scripts
 {
+    /**
+     * Handles the creation and spawning of the items.
+     * It is decided which item will be spawned next according to the given percentage in the
+     * first or second wave. 
+     */
     public class Spawner : MonoBehaviour
     {
         [SerializeField] private GameObject spawnRoute;
@@ -31,7 +36,7 @@ namespace Features.Interactables_Namespace.Scripts
             _random = new Random();
         }
 
-        // Start is called before the first frame update
+        /// Start is called before the first frame update
         private void Start()
         {
             spawnRateBeginning.Set(true);
@@ -40,17 +45,28 @@ namespace Features.Interactables_Namespace.Scripts
             StartCoroutine(Spawn());
         }
         
+        /**
+         * Returns the current route on which the items are spawned
+         * @return route of the attached game object
+         */
         public Route GetCurrentRoute()
         {
             return spawnRoute.GetComponent<Route>();
         }
 
+        /**
+         * Instantiates a new item based on the current route and chosen item group 
+         */
         private void Instantiate()
         {
             DetermineSpawningItem();
             GameObject newCritter = _objectPool.GetItem(ChooseRandomItemFromList(_currentlySpawningItems), spawnRoute.transform.GetChild(0).gameObject.transform);
         }
 
+        /**
+         * Spawns recursively a new item after waiting for a range of time
+         * between one and three seconds
+         */
         private IEnumerator Spawn()
         {
             Instantiate();
@@ -67,6 +83,11 @@ namespace Features.Interactables_Namespace.Scripts
             spawnRateBeginning.Set(false);
         }
         
+        /**
+         * Returns a random item from the given list
+         * @param items list with one or multiple items
+         * @return a random game object from the list
+         */
         private GameObject ChooseRandomItemFromList(List<GameObject> items)
         {
             int index = _random.Next(items.Count);
@@ -75,6 +96,7 @@ namespace Features.Interactables_Namespace.Scripts
         
         /**
          * Determines the amount of spawning objects in first and second wave
+         * by percentages and sets the currently spawning item list
          */
         private void DetermineSpawningItem()
         {
