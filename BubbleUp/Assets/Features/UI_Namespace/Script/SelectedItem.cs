@@ -9,7 +9,7 @@ namespace Features.UI_Namespace.Script
         public static SelectedItem instance;
 
         [SerializeField] private BoolVariable showAntiVirus;
-        public static bool antiVirus;
+        private static bool _antiVirus;
         public GameObject AntiVirus;
 
         public static bool virus;
@@ -27,7 +27,7 @@ namespace Features.UI_Namespace.Script
         void Start()
         {
             showAntiVirus.Set(false);
-            antiVirus = false;
+            _antiVirus = false;
             virus = false;
             minimize = false;
             timer = false;

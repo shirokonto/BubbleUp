@@ -3,15 +3,18 @@ using UnityEngine;
 
 namespace Features.Character_Namespace.Scripts
 {
+    /// <summary>
+    /// Takes care of the characters' animation such as
+    /// walking during gameplay and falling when the bubble
+    /// bursts
+    /// </summary>
     public class CharacterBehaviour : MonoBehaviour
     {
-        [Header("Events")]
-        //[SerializeField] private GameEvent raiseEndScreen;
         [SerializeField] private BoolVariable bubbleIsPopped;
         [SerializeField] private Rigidbody rigidBody;
         
         //References getter and setter
-        public Animator Animator { get; set; }
+        private Animator Animator { get; set; }
         private static readonly int IsFalling = Animator.StringToHash("IsFalling");
 
         private void Awake()
@@ -22,7 +25,7 @@ namespace Features.Character_Namespace.Scripts
         }
         
         // Update is called once per frame
-        void Update()
+        private void Update()
         {
             Animator.SetBool(IsFalling, false);
             if (bubbleIsPopped.Get())

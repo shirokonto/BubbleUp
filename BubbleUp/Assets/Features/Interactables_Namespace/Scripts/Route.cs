@@ -8,8 +8,8 @@ namespace Features.Interactables_Namespace.Scripts
         [SerializeField] private float wayPointSize = 1f;
     
         /**
-     * Display the start and end points as blue spheres and route as a red line using gizmos
-     */
+        * Display the start and end points as blue spheres and route as a red line using gizmos
+        */
         private void OnDrawGizmos()
         {
             foreach (Transform t in transform)

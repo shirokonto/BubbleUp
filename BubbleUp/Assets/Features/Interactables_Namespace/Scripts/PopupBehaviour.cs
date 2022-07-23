@@ -9,6 +9,7 @@ namespace Features.Interactables_Namespace.Scripts
     {
         [SerializeField] private GameObject popupWindow;
         private List<GameObject> _popupChildren;
+        
         // Start is called before the first frame update
         void Start()
         {
@@ -25,9 +26,9 @@ namespace Features.Interactables_Namespace.Scripts
         {
             popupWindow.SetActive(true);
             StartCoroutine(ShowAdWhenVirusHit());
-            
         }
-        public IEnumerator ShowAdWhenVirusHit(){
+
+        private IEnumerator ShowAdWhenVirusHit(){
             
             //show ad popups
             _popupChildren[4].SetActive(true);
