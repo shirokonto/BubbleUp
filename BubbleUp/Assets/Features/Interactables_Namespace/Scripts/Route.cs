@@ -2,6 +2,10 @@ using UnityEngine;
 
 namespace Features.Interactables_Namespace.Scripts
 {
+    /**
+     * Takes care of the item movement between the starting way point
+     * and the ending way point
+     */
     public class Route : MonoBehaviour
     {
         [Range(0f, 0.5f)]
@@ -27,6 +31,8 @@ namespace Features.Interactables_Namespace.Scripts
         
         /**
         * Returns the next way point of the path towards the bubble
+         * @param currentWayPoint the current point on the route
+         * @return the next point on the route
         */
         public Transform GetNextWayPoint(Transform currentWayPoint)
         {
