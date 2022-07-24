@@ -4,6 +4,9 @@ using UnityEngine.SceneManagement;
 
 namespace Features.Menu_Namespace.Scripts
 {
+    /**
+     * Selects the character which the player chooses
+     */
     public class CharacterSelection : MonoBehaviour
     {
         [SerializeField] private IntVariable points;
@@ -21,6 +24,9 @@ namespace Features.Menu_Namespace.Scripts
             characters[selectedCharacter].SetActive(true); 
         }
 
+        /**
+         * Called when the "<" button is clicked to set the previous character in the index active
+         */
         public void PreviousCharacter()
         {
             characters[selectedCharacter].SetActive(false);
@@ -32,6 +38,11 @@ namespace Features.Menu_Namespace.Scripts
             characters[selectedCharacter].SetActive(true);
         }
 
+        /**
+         * Called when Play button is clicked
+         * Playerpref saves data (which character is selected) which can be transefered
+         * onto the next scene
+         */
         public void StartGame()
         {
             PlayerPrefs.SetInt("selectedCharacter", selectedCharacter); // save data
@@ -40,6 +51,10 @@ namespace Features.Menu_Namespace.Scripts
             LoadScenes();
         }
 
+        /**
+         * Loads the gameplay scenes after a character is chosen in
+         * Character Selection scene
+         */
         private void LoadScenes()
         {
             SceneManager.LoadScene(1, LoadSceneMode.Single);

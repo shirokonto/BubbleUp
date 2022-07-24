@@ -3,11 +3,12 @@ using UnityEngine;
 
 namespace Features.Character_Namespace.Scripts
 {
-    /// <summary>
-    /// Takes care of the characters' animation such as
-    /// walking during gameplay and falling when the bubble
-    /// bursts
-    /// </summary>
+    /**
+     * Takes care of the characters' animation such as
+     * walking during gameplay and falling when the bubble
+     * burts
+     */
+
     public class CharacterBehaviour : MonoBehaviour
     {
         [SerializeField] private BoolVariable bubbleIsPopped;
@@ -24,7 +25,6 @@ namespace Features.Character_Namespace.Scripts
             rigidBody = GetComponent<Rigidbody>();
         }
         
-        // Update is called once per frame
         private void Update()
         {
             Animator.SetBool(IsFalling, false);
