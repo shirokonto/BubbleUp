@@ -92,6 +92,9 @@ namespace Features.Interactables_Namespace.Scripts
             moveSpeed.Set(newMoveSpeed);
         }
         
+        /// <summary>
+        /// Sets movement towards the bubble
+        /// </summary>
         private void MoveItemTowardsBubble()
         {
             var position = _currentPoint.position;

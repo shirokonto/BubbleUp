@@ -28,6 +28,9 @@ namespace Features.Menu_Namespace.Scripts
             SceneManager.LoadScene(3, LoadSceneMode.Additive);
         }
  
+        /*
+         * Calls the Pausemenu
+         */
         // Update is called once per frame
         private void Update()
         {
@@ -134,6 +137,9 @@ namespace Features.Menu_Namespace.Scripts
             Time.timeScale = timeScale;
         }
 
+        /**
+         * Countdown after pressing resume to pause for three seconds before continuing with the game
+         */
         private IEnumerator CountdownCoroutine()
         {
             while (countdownTime > 0)
@@ -148,6 +154,9 @@ namespace Features.Menu_Namespace.Scripts
             countdownDisplay.gameObject.SetActive(false);
         }
 
+        /*
+         * Calls the Ienumerator in a new class
+         */
         public void Countdown()
         {
             StartCoroutine(CountdownCoroutine());
@@ -163,6 +172,9 @@ namespace Features.Menu_Namespace.Scripts
 
         }
 
+        /*
+         * Shows GameOver Screen
+         */
         private IEnumerator ShowGOScreen()
         {
             yield return new WaitForSeconds(0.7f);

@@ -33,12 +33,16 @@ namespace Features.Bubble_Namespace.Scripts
         private readonly string[] _infoItemNames = {"InfoObjectPink", "InfoObjectBlue", "InfoObjectRed", "InfoObjectGreen", "InfoObjectYellow"}; 
         private Random _random;
 
+       
         private void Awake()
         {
             _scaleChange = new Vector3(BUBBLE_SCALING, BUBBLE_SCALING, BUBBLE_SCALING);
             _random = new Random();
         }
 
+        /*
+         * Initialize and set variables
+         */
         private void Start()
         {
             _hit = 0;
@@ -49,6 +53,9 @@ namespace Features.Bubble_Namespace.Scripts
             SetCorrectInfoItemRandomly();
         }
 
+        /*
+         * Detects different GameObjects on collision with bubble
+         */
         private void OnCollisionEnter(Collision other)
         {
             switch (other.gameObject.tag)
@@ -68,6 +75,11 @@ namespace Features.Bubble_Namespace.Scripts
             }
         }
 
+        /*
+         * Points are collected and the localPoints are set if the correct InfoType is collected.
+         * Bubble size changes depending on InfoType
+         * Bubble bursts if it got hit by wrong InfoTypes three times 
+         */
         private void HitInfoItem(GameObject infoItem)
         {
             if (!infoItem.transform.name.Contains(correctInfoType.Get()))
@@ -96,6 +108,9 @@ namespace Features.Bubble_Namespace.Scripts
             infoItem.GetComponent<ItemMover>().ResetPositionAndRotationBeforeRespawn();
         }
 
+        /**
+         * Minimizes Bubble
+         */
         private void HitMinimizeBubble(GameObject minimizeItem)
         {
             if (_hit >= 1 && _hit < 3)
@@ -107,6 +122,9 @@ namespace Features.Bubble_Namespace.Scripts
             StartCoroutine(ShowIconWhenMinimizeHit());
         }
 
+        /*
+         * Popups appear if VirusItem hits the bubble
+         */
         private void HitVirus(GameObject virusItem)
         {
             virusItem.GetComponent<ItemMover>().ResetPositionAndRotationBeforeRespawn();
@@ -117,6 +135,9 @@ namespace Features.Bubble_Namespace.Scripts
             }
         }
 
+        /*
+         * Removes the popups if Antivirus hits the bubble
+         */
         private void HitAntiVirus(GameObject antiVirusItem)
         {
             if (!antiVirusEnabled.Get())
@@ -130,6 +151,9 @@ namespace Features.Bubble_Namespace.Scripts
             }
         }
         
+        /*
+         * Set the icons in the game visible when collected
+         */
         private IEnumerator ShowIconWhenMinimizeHit()
         {
             SelectedItem.minimize = true;

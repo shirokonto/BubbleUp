@@ -11,6 +11,10 @@ namespace Features.Interactables_Namespace.Scripts
         private List<GameObject> _popupChildren;
         
         // Start is called before the first frame update
+
+        /*
+         * Initializes variables 
+         */
         void Start()
         {
             _popupChildren = new List<GameObject>();
@@ -22,12 +26,18 @@ namespace Features.Interactables_Namespace.Scripts
             }
         }
 
+        /*
+         * Sets the PopUps visible
+         */
         public void ShowPopups()
         {
             popupWindow.SetActive(true);
             StartCoroutine(ShowAdWhenVirusHit());
         }
 
+        /*
+         * Sets the different Popups visible
+         */
         private IEnumerator ShowAdWhenVirusHit(){
             
             //show ad popups

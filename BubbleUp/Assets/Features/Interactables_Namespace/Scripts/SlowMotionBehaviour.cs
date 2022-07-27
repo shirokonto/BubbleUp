@@ -13,6 +13,7 @@ namespace Features.Interactables_Namespace.Scripts
         private List<Transform> _allItemsOnSameRoute;
         private float _defaultMoveSpeed;
 
+        // Start is called before the first frame update
         private void Start()
         {
             _allItemsOnSameRoute = new List<Transform>();
@@ -20,6 +21,10 @@ namespace Features.Interactables_Namespace.Scripts
             currentMoveSpeed.Set(_defaultMoveSpeed);
         }
 
+        // Update is called once per frame
+        /*
+         * Speed of second Wave is set
+         */
         private void Update()
         {
             if (isSecondWave.Get())
@@ -30,6 +35,9 @@ namespace Features.Interactables_Namespace.Scripts
             }
         }
 
+        /*
+         * Once Slow Motion Item collides with the bubble the speed slows down
+         */
         private void OnCollisionEnter(Collision collision)
         {
             if (collision.gameObject.CompareTag("Bubble"))
@@ -54,6 +62,9 @@ namespace Features.Interactables_Namespace.Scripts
             }
         }
     
+        /*
+         * Slow Motion speed is set
+         */
         private IEnumerator SlowDownFlowTemporary(List<Transform> itemsOnRoute)
         {
             SetSlowMoVisibility(false);
@@ -73,6 +84,9 @@ namespace Features.Interactables_Namespace.Scripts
             SelectedItem.timer = false;
         }
 
+        /*
+         * Slow motion gameObject is set true
+         */
         private void SetSlowMoVisibility(bool isVisible)
         {
             foreach (Transform child in transform)
