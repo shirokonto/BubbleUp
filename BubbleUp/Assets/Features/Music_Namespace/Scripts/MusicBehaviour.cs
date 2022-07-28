@@ -4,17 +4,27 @@ using UnityEngine;
 
 namespace Features.Audio_Namespace.Scripts
 {
+    /**
+     * Handles playing and stopping background music.
+     */
     public class MusicBehaviour : MonoBehaviour
     {
         [SerializeField] private List<AudioSource> soundTracks;
 
         private int _currentTrackIndex;
-    
+        
+        /**
+         * Starts the FadeTrack routine to disable current playing track
+         * @param musicFadeTime
+         */
         public void Disable(float musicFadeTime)
         {
             StartCoroutine(FadeTrack(soundTracks[_currentTrackIndex], 0, musicFadeTime));
         }
-    
+        
+        /**
+         * Starts the PlayNextTrack routine to enable/play next track
+         */
         public void Enable()
         {
             gameObject.SetActive(true);
@@ -31,7 +41,10 @@ namespace Features.Audio_Namespace.Scripts
             _currentTrackIndex = Random.Range(0, soundTracks.Count);
             StartCoroutine(PlayNextTrack());
         }
-
+        
+        /**
+         * Plays the next track in the list based on the index
+         */
         private IEnumerator PlayNextTrack()
         {
             while (true)
@@ -48,7 +61,13 @@ namespace Features.Audio_Namespace.Scripts
                 yield return new WaitForSeconds(soundTracks[_currentTrackIndex].clip.length);
             }
         }
-    
+        
+        /**
+         * Fades the currently playing track, slowly decreasing volume over a certain duration
+         * @param audioSource
+         * @param toVal
+         * @param duration
+         */
         private IEnumerator FadeTrack(AudioSource audioSource, float toVal, float duration)
         {
             float counter = 0f;

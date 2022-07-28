@@ -3,7 +3,10 @@ using TMPro;
 using UnityEngine;
 
 namespace Features.UI_Namespace.Script
-{
+{   
+    /**
+     * Handles initializing and updating the score view during playtime
+     */
     public class ScoreManager : MonoBehaviour
     {
         public static ScoreManager instance;
@@ -16,7 +19,7 @@ namespace Features.UI_Namespace.Script
             instance = this;
             points.Set(0);
         }
-
+        
         private void Start()
         {
             scoreText.text = points.Get() + " POINTS";

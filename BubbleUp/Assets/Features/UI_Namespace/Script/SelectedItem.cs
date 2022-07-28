@@ -3,11 +3,14 @@ using DataStructures.Variables;
 using UnityEngine;
 
 namespace Features.UI_Namespace.Script
-{
+{   
+    /**
+     * Handles enabling and disabling the Power-Up and Blocker icons
+     * during playtime to indicate whether a power-up or a blocker
+     * object is currently active or not.
+     */
     public class SelectedItem : MonoBehaviour
     {
-        public static SelectedItem instance;
-
         [SerializeField] private BoolVariable showAntiVirus;
         private static bool _antiVirus;
         public GameObject AntiVirus;
@@ -71,25 +74,43 @@ namespace Features.UI_Namespace.Script
                 Timer.SetActive(false);
             }
         }
-
+        
+        /**
+         * Starts the ShowAntiVirusActive routine
+         */
         private void ShowAntiVirus()
         {
             StartCoroutine(ShowAntiVirusActive());
         }
+        
+        /**
+         * Sets the virus blocker object UI-icon active
+         */
         private void ShowVirus()
         {
             Virus.SetActive(true);
         }
 
+        /**
+         * Sets the minimize bubble power-up UI-icon active
+         */
         private void ShowMinimize()
         {
             Minimize.SetActive(true);
         }
-
+        
+        /**
+         * Sets the timer power-up UI-icon active
+         */
         private void ShowTimer()
         {
             Timer.SetActive(true);
         }
+        
+        /**
+         * Sets the anti virus power-up UI-icon active
+         * and waits for 3 seconds before disabling it again
+         */
         private IEnumerator ShowAntiVirusActive()
         {
             AntiVirus.SetActive(true);
