@@ -5,6 +5,9 @@ using UnityEngine;
 
 namespace Features.Interactables_Namespace.Scripts
 {
+    /// <summary>
+    /// Describes the popup behaviour and when it should appear
+    /// </summary>
     public class PopupBehaviour : MonoBehaviour
     {
         [SerializeField] private GameObject popupWindow;

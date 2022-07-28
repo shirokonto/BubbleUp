@@ -4,6 +4,11 @@ using UnityEngine;
 
 namespace Features.Interactables_Namespace.Scripts
 {
+    /// <summary>
+    /// Responsible for the movement and speed of the interactables 
+    /// that are coming towards the player
+    /// </summary>
+
     public class ItemMover : MonoBehaviour
     {
         [SerializeField] private BoolVariable isSecondWave;
@@ -60,6 +65,7 @@ namespace Features.Interactables_Namespace.Scripts
 
         /// <summary>
         /// Sets the current route on which the item should spawn
+        /// @param  Transform route sets the location of the route
         /// </summary>
         public void SetCurrentRoute(Transform route)
         {

@@ -6,6 +6,9 @@ using UnityEngine;
 
 namespace Features.Interactables_Namespace.Scripts
 {
+    /// <summary>
+    /// Describes the speed of the slow motion behaviour 
+    /// </summary>
     public class SlowMotionBehaviour : MonoBehaviour
     {
         [SerializeField] private FloatVariable currentMoveSpeed;
