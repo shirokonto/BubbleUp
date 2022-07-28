@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Features.Audio_Namespace.Scripts
+namespace Features.Music_Namespace.Scripts
 {
     /**
      * Handles playing and stopping background music.

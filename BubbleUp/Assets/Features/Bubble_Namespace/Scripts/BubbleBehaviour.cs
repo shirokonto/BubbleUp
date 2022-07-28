@@ -11,7 +11,6 @@ using Random = System.Random;
 namespace Features.Bubble_Namespace.Scripts
 {   
     /// <summary>
-    /// @file
     /// Takes care of the behaviour of the bubble such as resizing,
     /// setting an correct infoItem and takes care of the action of the
     /// collided items InfoItem, MinimizeBubble, Virus and AntiVirus

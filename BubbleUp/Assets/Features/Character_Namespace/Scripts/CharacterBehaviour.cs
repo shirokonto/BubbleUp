@@ -4,7 +4,6 @@ using UnityEngine;
 namespace Features.Character_Namespace.Scripts
 {
     /**
-     * @file CharacterBehaviour.cs
      * Takes care of the characters' animation such as
      * walking during gameplay and falling when the bubble
      * bursts
@@ -15,7 +14,6 @@ namespace Features.Character_Namespace.Scripts
         [SerializeField] private BoolVariable bubbleIsPopped;
         [SerializeField] private Rigidbody rigidBody;
         
-        ///< References getter and setter
         private Animator Animator { get; set; }
         private static readonly int IsFalling = Animator.StringToHash("IsFalling");
 
