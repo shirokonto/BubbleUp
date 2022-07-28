@@ -7,6 +7,9 @@ using TMPro;
 
 namespace Features.Menu_Namespace.Scripts
 {
+    /**
+     * Handles the menu interactions for main menu, pause and game over screen.
+     */
     public class Menu : MonoBehaviour
     {
         [SerializeField] private BoolVariable isPauseIButtonHit;
@@ -16,8 +19,8 @@ namespace Features.Menu_Namespace.Scripts
         [SerializeField] private int countdownTime;
         [SerializeField] private TextMeshProUGUI countdownDisplay;
         [SerializeField] private GameObject countdownAfterPause;
-        public static Menu instance;
-        public static bool IsGameOver;
+        public static Menu instance; ///< the menu instance
+        public static bool IsGameOver; ///< checks if game has finished or not
         private static bool _gameIsPaused = false;
         private static bool _resumeGame;
 
@@ -28,9 +31,6 @@ namespace Features.Menu_Namespace.Scripts
             SceneManager.LoadScene(3, LoadSceneMode.Additive);
         }
  
-        /*
-         * Calls the Pausemenu
-         */
         // Update is called once per frame
         private void Update()
         {
