@@ -8,11 +8,12 @@ namespace Features.UI_Namespace.Script
      * Handles initializing and updating the score view during playtime
      */
     public class ScoreManager : MonoBehaviour
-    {
-        public static ScoreManager instance;
+    {   
+        
+        public static ScoreManager instance; ///< The ScoreManager instance
         [SerializeField] private IntVariable points;
-        public TextMeshProUGUI scoreText;
-        public TextMeshProUGUI scoreTextGO;
+        public TextMeshProUGUI scoreText;///< Gameplay GUI Text mesh
+        public TextMeshProUGUI scoreTextGO; ///< Game Over GUI Text mesh
 
         private void Awake()
         {

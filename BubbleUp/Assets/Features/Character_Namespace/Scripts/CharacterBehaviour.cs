@@ -4,9 +4,10 @@ using UnityEngine;
 namespace Features.Character_Namespace.Scripts
 {
     /**
+     * @file CharacterBehaviour.cs
      * Takes care of the characters' animation such as
      * walking during gameplay and falling when the bubble
-     * burts
+     * bursts
      */
 
     public class CharacterBehaviour : MonoBehaviour
