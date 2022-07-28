@@ -23,6 +23,8 @@ namespace Features.Bubble_Namespace.Scripts
         [SerializeField] private IntVariable points;
         [SerializeField] private BoolVariable antiVirusEnabled;
         [SerializeField] private AudioClip bubblePopSound;
+        [SerializeField] private BoolVariable showVirus;
+        [SerializeField] private BoolVariable showMinimize;
         public ParticleSystem bubblePop;
         private Vector3 _scaleChange;
         private int _hit;
@@ -131,7 +133,7 @@ namespace Features.Bubble_Namespace.Scripts
             if (!antiVirusEnabled.Get())
             {
                 showPopup.Raise();
-                SelectedItem.virus = true;
+                showVirus.Set(true);
             }
         }
 
@@ -156,9 +158,9 @@ namespace Features.Bubble_Namespace.Scripts
          */
         private IEnumerator ShowIconWhenMinimizeHit()
         {
-            SelectedItem.minimize = true;
+            showMinimize.Set(true);
             yield return new WaitForSeconds(0.3f);
-            SelectedItem.minimize = false;
+            showMinimize.Set(false);
         }
         
         private void SetCorrectInfoItemRandomly()

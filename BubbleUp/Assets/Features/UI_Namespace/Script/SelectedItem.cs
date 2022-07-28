@@ -12,28 +12,21 @@ namespace Features.UI_Namespace.Script
     public class SelectedItem : MonoBehaviour
     {
         [SerializeField] private BoolVariable showAntiVirus;
-        private static bool _antiVirus;
-        public GameObject AntiVirus;
-
-        public static bool virus;
-        public GameObject Virus;
-
-        public static bool minimize;
-        public GameObject Minimize;
-
-        public static bool timer;
-        public GameObject Timer;
-
-        
+        [SerializeField] private BoolVariable showVirus;
+        [SerializeField] private BoolVariable showMinimize;
+        [SerializeField] private BoolVariable showSlowMo;
+        [SerializeField] private GameObject antiVirus;
+        [SerializeField] private GameObject virus;
+        [SerializeField] private GameObject minimize;
+        [SerializeField] private GameObject slowMo;
 
         // Start is called before the first frame update
         void Start()
         {
             showAntiVirus.Set(false);
-            _antiVirus = false;
-            virus = false;
-            minimize = false;
-            timer = false;
+            showVirus.Set(false);
+            showMinimize.Set(false);
+            showSlowMo.Set(false);
         }
 
         // Update is called once per frame
@@ -44,34 +37,34 @@ namespace Features.UI_Namespace.Script
                 ShowAntiVirus();
             } else
             {
-                AntiVirus.SetActive(false);
+                antiVirus.SetActive(false);
             }
 
-            if (virus && !showAntiVirus.Get())
+            if (showVirus.Get() && !showAntiVirus.Get())
             {
                 ShowVirus();
             }
             else
             {
-                Virus.SetActive(false);
+                virus.SetActive(false);
             }
             
-            if (minimize)
+            if (showMinimize.Get())
             {
                 ShowMinimize();
             }
             else
             {
-                Minimize.SetActive(false);
+                minimize.SetActive(false);
             }
             
-            if (timer)
+            if (showSlowMo.Get())
             {
                 ShowTimer();
             }
             else
             {
-                Timer.SetActive(false);
+                slowMo.SetActive(false);
             }
         }
         
@@ -88,7 +81,7 @@ namespace Features.UI_Namespace.Script
          */
         private void ShowVirus()
         {
-            Virus.SetActive(true);
+            virus.SetActive(true);
         }
 
         /**
@@ -96,7 +89,7 @@ namespace Features.UI_Namespace.Script
          */
         private void ShowMinimize()
         {
-            Minimize.SetActive(true);
+            minimize.SetActive(true);
         }
         
         /**
@@ -104,7 +97,7 @@ namespace Features.UI_Namespace.Script
          */
         private void ShowTimer()
         {
-            Timer.SetActive(true);
+            slowMo.SetActive(true);
         }
         
         /**
@@ -113,7 +106,7 @@ namespace Features.UI_Namespace.Script
          */
         private IEnumerator ShowAntiVirusActive()
         {
-            AntiVirus.SetActive(true);
+            antiVirus.SetActive(true);
             yield return new WaitForSeconds(3f);
             showAntiVirus.Set(false);
         }

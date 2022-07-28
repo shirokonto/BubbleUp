@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DataStructures.Variables;
 using Features.UI_Namespace.Script;
 using UnityEngine;
 
@@ -11,17 +12,15 @@ namespace Features.Interactables_Namespace.Scripts
     public class PopupBehaviour : MonoBehaviour
     {
         [SerializeField] private GameObject popupWindow;
+        [SerializeField] private BoolVariable showVirus;
         private List<GameObject> _popupChildren;
         
         // Start is called before the first frame update
-
-        /*
-         * Initializes variables 
-         */
         void Start()
         {
             _popupChildren = new List<GameObject>();
             popupWindow.SetActive(false);
+            showVirus.Set(false);
             foreach (Transform child in popupWindow.transform)
             {
                 _popupChildren.Add(child.gameObject);
@@ -66,7 +65,7 @@ namespace Features.Interactables_Namespace.Scripts
             yield return new WaitForSeconds(0.3f);
             _popupChildren[0].SetActive(false);
 
-            SelectedItem.virus = false;
+            showVirus.Set(false);
         }
     }
 }

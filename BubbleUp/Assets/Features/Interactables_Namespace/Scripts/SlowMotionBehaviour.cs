@@ -13,6 +13,7 @@ namespace Features.Interactables_Namespace.Scripts
     {
         [SerializeField] private FloatVariable currentMoveSpeed;
         [SerializeField] private BoolVariable isSecondWave;
+        [SerializeField] private BoolVariable showSlowMo;
         private List<Transform> _allItemsOnSameRoute;
         private float _defaultMoveSpeed;
 
@@ -55,12 +56,12 @@ namespace Features.Interactables_Namespace.Scripts
                         _allItemsOnSameRoute.Add(path.GetChild(i));
                     }
                     StartCoroutine(SlowDownFlowTemporary(_allItemsOnSameRoute));
-                    SelectedItem.timer = true;
+                    showSlowMo.Set(true);
                 }
                 else
                 {
                     GetComponent<ItemMover>().ResetPositionAndRotationBeforeRespawn();
-                    SelectedItem.timer = false;
+                    showSlowMo.Set(false);
                 }
             }
         }
@@ -84,7 +85,7 @@ namespace Features.Interactables_Namespace.Scripts
             }
             SetSlowMoVisibility(true);
             GetComponent<ItemMover>().ResetPositionAndRotationBeforeRespawn();
-            SelectedItem.timer = false;
+            showSlowMo.Set(false);
         }
 
         /*

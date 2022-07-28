@@ -147,6 +147,8 @@ MonoBehaviour:
   points: {fileID: 11400000, guid: 5dcebee57bc04964b84d2b727e558f7d, type: 2}
   antiVirusEnabled: {fileID: 11400000, guid: f1c2aa0f4b91e924a8f7e046438c65e2, type: 2}
   bubblePopSound: {fileID: 8300000, guid: 13af1d8b4fc997548baf47ba5a76392e, type: 3}
+  showVirus: {fileID: 11400000, guid: 4a403044e2659414b8cdb298de29d356, type: 2}
+  showMinimize: {fileID: 11400000, guid: 7351cb286ea12b34ba53bb79f1a6d999, type: 2}
   bubblePop: {fileID: 2053911444}
 --- !u!82 &1031780921
 AudioSource:
