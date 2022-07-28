@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Features.Audio_Namespace.Scripts
+namespace Features.Music_Namespace.Scripts
 {
     /**
      * Handles playing and stopping background music.
@@ -15,7 +15,7 @@ namespace Features.Audio_Namespace.Scripts
         
         /**
          * Starts the FadeTrack routine to disable current playing track
-         * @param musicFadeTime
+         * @param musicFadeTime the time it takes to fade the current track
          */
         public void Disable(float musicFadeTime)
         {
@@ -64,9 +64,9 @@ namespace Features.Audio_Namespace.Scripts
         
         /**
          * Fades the currently playing track, slowly decreasing volume over a certain duration
-         * @param audioSource
-         * @param toVal
-         * @param duration
+         * @param audioSource the selected audio source to fade
+         * @param toVal the value to bring the volume down to
+         * @param duration the duration over which the fade happens
          */
         private IEnumerator FadeTrack(AudioSource audioSource, float toVal, float duration)
         {
