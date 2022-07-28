@@ -1,0 +1,54 @@
+\hypertarget{_wave_controller_8cs_source}{}\doxysection{Wave\+Controller.\+cs}
+\label{_wave_controller_8cs_source}\index{WaveController.cs@{WaveController.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_wave_controller_8cs_source_l00001}00001 \textcolor{keyword}{using }System;}
+\DoxyCodeLine{\Hypertarget{_wave_controller_8cs_source_l00002}00002 \textcolor{keyword}{using }DataStructures.Variables;}
+\DoxyCodeLine{\Hypertarget{_wave_controller_8cs_source_l00003}00003 \textcolor{keyword}{using }TMPro;}
+\DoxyCodeLine{\Hypertarget{_wave_controller_8cs_source_l00004}00004 \textcolor{keyword}{using }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_wave_controller_8cs_source_l00005}00005 }
+\DoxyCodeLine{\Hypertarget{_wave_controller_8cs_source_l00006}00006 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespace_features_1_1_u_i___namespace_1_1_script}{Features.UI\_Namespace.Script}}}
+\DoxyCodeLine{\Hypertarget{_wave_controller_8cs_source_l00007}00007 \{}
+\DoxyCodeLine{\Hypertarget{_wave_controller_8cs_source_l00014}\mbox{\hyperlink{class_features_1_1_u_i___namespace_1_1_script_1_1_wave_controller}{00014}}     \textcolor{keyword}{public} \textcolor{keyword}{class }\mbox{\hyperlink{class_features_1_1_u_i___namespace_1_1_script_1_1_wave_controller}{WaveController}} : MonoBehaviour}
+\DoxyCodeLine{\Hypertarget{_wave_controller_8cs_source_l00015}00015     \{}
+\DoxyCodeLine{\Hypertarget{_wave_controller_8cs_source_l00016}00016         [SerializeField] \textcolor{keyword}{private} BoolVariable secondWave;}
+\DoxyCodeLine{\Hypertarget{_wave_controller_8cs_source_l00017}00017         [SerializeField] \textcolor{keyword}{private} FloatVariable currentTime;}
+\DoxyCodeLine{\Hypertarget{_wave_controller_8cs_source_l00018}00018         [SerializeField] \textcolor{keyword}{private} TextMeshProUGUI waveText;}
+\DoxyCodeLine{\Hypertarget{_wave_controller_8cs_source_l00019}00019         [SerializeField] \textcolor{keyword}{private} TextMeshProUGUI countdownText;}
+\DoxyCodeLine{\Hypertarget{_wave_controller_8cs_source_l00020}00020         \textcolor{keyword}{private} \textcolor{keyword}{const} \textcolor{keywordtype}{float} STARTING\_TIME = 30f;}
+\DoxyCodeLine{\Hypertarget{_wave_controller_8cs_source_l00021}00021         \textcolor{keyword}{private} \textcolor{keywordtype}{bool} \_triggeredSecondWave;}
+\DoxyCodeLine{\Hypertarget{_wave_controller_8cs_source_l00022}00022         \textcolor{keyword}{private} \textcolor{keywordtype}{bool} \_isInitialized;}
+\DoxyCodeLine{\Hypertarget{_wave_controller_8cs_source_l00023}00023         }
+\DoxyCodeLine{\Hypertarget{_wave_controller_8cs_source_l00024}00024         \textcolor{keyword}{private} \textcolor{keywordtype}{void} Awake()}
+\DoxyCodeLine{\Hypertarget{_wave_controller_8cs_source_l00025}00025         \{}
+\DoxyCodeLine{\Hypertarget{_wave_controller_8cs_source_l00026}00026             countdownText.text = \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{_wave_controller_8cs_source_l00027}00027             waveText.text = \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{_wave_controller_8cs_source_l00028}00028         \}}
+\DoxyCodeLine{\Hypertarget{_wave_controller_8cs_source_l00029}00029     }
+\DoxyCodeLine{\Hypertarget{_wave_controller_8cs_source_l00034}\mbox{\hyperlink{class_features_1_1_u_i___namespace_1_1_script_1_1_wave_controller_af930c510901adce3389bf882877fae30}{00034}}         \textcolor{keyword}{public} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_features_1_1_u_i___namespace_1_1_script_1_1_wave_controller_af930c510901adce3389bf882877fae30}{Initialize}}()}
+\DoxyCodeLine{\Hypertarget{_wave_controller_8cs_source_l00035}00035         \{}
+\DoxyCodeLine{\Hypertarget{_wave_controller_8cs_source_l00036}00036             \_isInitialized = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_wave_controller_8cs_source_l00037}00037             currentTime.Set(STARTING\_TIME);}
+\DoxyCodeLine{\Hypertarget{_wave_controller_8cs_source_l00038}00038             waveText.text = \textcolor{stringliteral}{"{}Wave 1/2"{}};}
+\DoxyCodeLine{\Hypertarget{_wave_controller_8cs_source_l00039}00039         \}}
+\DoxyCodeLine{\Hypertarget{_wave_controller_8cs_source_l00040}00040 }
+\DoxyCodeLine{\Hypertarget{_wave_controller_8cs_source_l00042}00042         \textcolor{keyword}{private} \textcolor{keywordtype}{void} Update ()}
+\DoxyCodeLine{\Hypertarget{_wave_controller_8cs_source_l00043}00043         \{}
+\DoxyCodeLine{\Hypertarget{_wave_controller_8cs_source_l00044}00044             \textcolor{comment}{// sets the UI countdown component }}
+\DoxyCodeLine{\Hypertarget{_wave_controller_8cs_source_l00045}00045             \textcolor{keywordflow}{if} (!\_isInitialized) \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_wave_controller_8cs_source_l00046}00046             \textcolor{keywordflow}{if} (\_triggeredSecondWave) \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_wave_controller_8cs_source_l00047}00047             currentTime.Add(-\/1 * Time.deltaTime);}
+\DoxyCodeLine{\Hypertarget{_wave_controller_8cs_source_l00048}00048             countdownText.text = Math.Floor(currentTime.Get()/60).ToString(\textcolor{stringliteral}{"{}0"{}}) + \textcolor{stringliteral}{"{}:"{}} + Math.Floor(currentTime.Get() \% 60).ToString(\textcolor{stringliteral}{"{}00"{}});}
+\DoxyCodeLine{\Hypertarget{_wave_controller_8cs_source_l00049}00049             \textcolor{comment}{// triggers the second wave }}
+\DoxyCodeLine{\Hypertarget{_wave_controller_8cs_source_l00050}00050             \textcolor{keywordflow}{if} (currentTime.Get() <= 0) }
+\DoxyCodeLine{\Hypertarget{_wave_controller_8cs_source_l00051}00051             \{}
+\DoxyCodeLine{\Hypertarget{_wave_controller_8cs_source_l00052}00052                 countdownText.text = \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{_wave_controller_8cs_source_l00053}00053                 waveText.text = \textcolor{stringliteral}{"{}Wave 2/2"{}};}
+\DoxyCodeLine{\Hypertarget{_wave_controller_8cs_source_l00054}00054                 secondWave.Set(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_wave_controller_8cs_source_l00055}00055                 \_triggeredSecondWave = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_wave_controller_8cs_source_l00056}00056             \}}
+\DoxyCodeLine{\Hypertarget{_wave_controller_8cs_source_l00057}00057         \}}
+\DoxyCodeLine{\Hypertarget{_wave_controller_8cs_source_l00058}00058     \}}
+\DoxyCodeLine{\Hypertarget{_wave_controller_8cs_source_l00059}00059 \}}
+
+\end{DoxyCode}

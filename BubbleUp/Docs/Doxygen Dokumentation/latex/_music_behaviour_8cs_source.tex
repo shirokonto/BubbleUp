@@ -1,0 +1,79 @@
+\hypertarget{_music_behaviour_8cs_source}{}\doxysection{Music\+Behaviour.\+cs}
+\label{_music_behaviour_8cs_source}\index{MusicBehaviour.cs@{MusicBehaviour.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_music_behaviour_8cs_source_l00001}00001 \textcolor{keyword}{using }System.Collections;}
+\DoxyCodeLine{\Hypertarget{_music_behaviour_8cs_source_l00002}00002 \textcolor{keyword}{using }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_music_behaviour_8cs_source_l00003}00003 \textcolor{keyword}{using }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_music_behaviour_8cs_source_l00004}00004 }
+\DoxyCodeLine{\Hypertarget{_music_behaviour_8cs_source_l00005}\mbox{\hyperlink{namespace_features_1_1_music___namespace}{00005}} \textcolor{keyword}{namespace }\mbox{\hyperlink{namespace_features_1_1_music___namespace_1_1_scripts}{Features.Music\_Namespace.Scripts}}}
+\DoxyCodeLine{\Hypertarget{_music_behaviour_8cs_source_l00006}00006 \{}
+\DoxyCodeLine{\Hypertarget{_music_behaviour_8cs_source_l00010}\mbox{\hyperlink{class_features_1_1_music___namespace_1_1_scripts_1_1_music_behaviour}{00010}}     \textcolor{keyword}{public} \textcolor{keyword}{class }\mbox{\hyperlink{class_features_1_1_music___namespace_1_1_scripts_1_1_music_behaviour}{MusicBehaviour}} : MonoBehaviour}
+\DoxyCodeLine{\Hypertarget{_music_behaviour_8cs_source_l00011}00011     \{}
+\DoxyCodeLine{\Hypertarget{_music_behaviour_8cs_source_l00012}00012         [SerializeField] \textcolor{keyword}{private} List<AudioSource> soundTracks;}
+\DoxyCodeLine{\Hypertarget{_music_behaviour_8cs_source_l00013}00013 }
+\DoxyCodeLine{\Hypertarget{_music_behaviour_8cs_source_l00014}00014         \textcolor{keyword}{private} \textcolor{keywordtype}{int} \_currentTrackIndex;}
+\DoxyCodeLine{\Hypertarget{_music_behaviour_8cs_source_l00015}00015         }
+\DoxyCodeLine{\Hypertarget{_music_behaviour_8cs_source_l00020}\mbox{\hyperlink{class_features_1_1_music___namespace_1_1_scripts_1_1_music_behaviour_a3d6f219f32a581c263e87ead189a42fe}{00020}}         \textcolor{keyword}{public} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_features_1_1_music___namespace_1_1_scripts_1_1_music_behaviour_a3d6f219f32a581c263e87ead189a42fe}{Disable}}(\textcolor{keywordtype}{float} musicFadeTime)}
+\DoxyCodeLine{\Hypertarget{_music_behaviour_8cs_source_l00021}00021         \{}
+\DoxyCodeLine{\Hypertarget{_music_behaviour_8cs_source_l00022}00022             StartCoroutine(FadeTrack(soundTracks[\_currentTrackIndex], 0, musicFadeTime));}
+\DoxyCodeLine{\Hypertarget{_music_behaviour_8cs_source_l00023}00023         \}}
+\DoxyCodeLine{\Hypertarget{_music_behaviour_8cs_source_l00024}00024         }
+\DoxyCodeLine{\Hypertarget{_music_behaviour_8cs_source_l00028}\mbox{\hyperlink{class_features_1_1_music___namespace_1_1_scripts_1_1_music_behaviour_af1ce462b3a3a1df8b47317f8e0313d6c}{00028}}         \textcolor{keyword}{public} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_features_1_1_music___namespace_1_1_scripts_1_1_music_behaviour_af1ce462b3a3a1df8b47317f8e0313d6c}{Enable}}()}
+\DoxyCodeLine{\Hypertarget{_music_behaviour_8cs_source_l00029}00029         \{}
+\DoxyCodeLine{\Hypertarget{_music_behaviour_8cs_source_l00030}00030             gameObject.SetActive(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_music_behaviour_8cs_source_l00031}00031         }
+\DoxyCodeLine{\Hypertarget{_music_behaviour_8cs_source_l00032}00032             StartCoroutine(PlayNextTrack());}
+\DoxyCodeLine{\Hypertarget{_music_behaviour_8cs_source_l00033}00033         \}}
+\DoxyCodeLine{\Hypertarget{_music_behaviour_8cs_source_l00034}00034 }
+\DoxyCodeLine{\Hypertarget{_music_behaviour_8cs_source_l00035}00035         \textcolor{keyword}{private} \textcolor{keywordtype}{void} Awake()}
+\DoxyCodeLine{\Hypertarget{_music_behaviour_8cs_source_l00036}00036         \{}
+\DoxyCodeLine{\Hypertarget{_music_behaviour_8cs_source_l00037}00037             \textcolor{keywordflow}{foreach} (AudioSource track \textcolor{keywordflow}{in} soundTracks)}
+\DoxyCodeLine{\Hypertarget{_music_behaviour_8cs_source_l00038}00038             \{}
+\DoxyCodeLine{\Hypertarget{_music_behaviour_8cs_source_l00039}00039                 track.volume = 0.01f;}
+\DoxyCodeLine{\Hypertarget{_music_behaviour_8cs_source_l00040}00040             \}}
+\DoxyCodeLine{\Hypertarget{_music_behaviour_8cs_source_l00041}00041             \_currentTrackIndex = Random.Range(0, soundTracks.Count);}
+\DoxyCodeLine{\Hypertarget{_music_behaviour_8cs_source_l00042}00042             StartCoroutine(PlayNextTrack());}
+\DoxyCodeLine{\Hypertarget{_music_behaviour_8cs_source_l00043}00043         \}}
+\DoxyCodeLine{\Hypertarget{_music_behaviour_8cs_source_l00044}00044         }
+\DoxyCodeLine{\Hypertarget{_music_behaviour_8cs_source_l00048}00048         \textcolor{keyword}{private} IEnumerator PlayNextTrack()}
+\DoxyCodeLine{\Hypertarget{_music_behaviour_8cs_source_l00049}00049         \{}
+\DoxyCodeLine{\Hypertarget{_music_behaviour_8cs_source_l00050}00050             \textcolor{keywordflow}{while} (\textcolor{keyword}{true})}
+\DoxyCodeLine{\Hypertarget{_music_behaviour_8cs_source_l00051}00051             \{}
+\DoxyCodeLine{\Hypertarget{_music_behaviour_8cs_source_l00052}00052                 \textcolor{keywordflow}{if} (\_currentTrackIndex >= soundTracks.Count -\/ 1)}
+\DoxyCodeLine{\Hypertarget{_music_behaviour_8cs_source_l00053}00053                 \{}
+\DoxyCodeLine{\Hypertarget{_music_behaviour_8cs_source_l00054}00054                     \_currentTrackIndex = 0;}
+\DoxyCodeLine{\Hypertarget{_music_behaviour_8cs_source_l00055}00055                 \}}
+\DoxyCodeLine{\Hypertarget{_music_behaviour_8cs_source_l00056}00056                 \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_music_behaviour_8cs_source_l00057}00057                 \{}
+\DoxyCodeLine{\Hypertarget{_music_behaviour_8cs_source_l00058}00058                     \_currentTrackIndex++;}
+\DoxyCodeLine{\Hypertarget{_music_behaviour_8cs_source_l00059}00059                 \}}
+\DoxyCodeLine{\Hypertarget{_music_behaviour_8cs_source_l00060}00060                 soundTracks[\_currentTrackIndex].Play();}
+\DoxyCodeLine{\Hypertarget{_music_behaviour_8cs_source_l00061}00061                 yield \textcolor{keywordflow}{return} \textcolor{keyword}{new} WaitForSeconds(soundTracks[\_currentTrackIndex].clip.length);}
+\DoxyCodeLine{\Hypertarget{_music_behaviour_8cs_source_l00062}00062             \}}
+\DoxyCodeLine{\Hypertarget{_music_behaviour_8cs_source_l00063}00063         \}}
+\DoxyCodeLine{\Hypertarget{_music_behaviour_8cs_source_l00064}00064         }
+\DoxyCodeLine{\Hypertarget{_music_behaviour_8cs_source_l00071}00071         \textcolor{keyword}{private} IEnumerator FadeTrack(AudioSource audioSource, \textcolor{keywordtype}{float} toVal, \textcolor{keywordtype}{float} duration)}
+\DoxyCodeLine{\Hypertarget{_music_behaviour_8cs_source_l00072}00072         \{}
+\DoxyCodeLine{\Hypertarget{_music_behaviour_8cs_source_l00073}00073             \textcolor{keywordtype}{float} counter = 0f;}
+\DoxyCodeLine{\Hypertarget{_music_behaviour_8cs_source_l00074}00074             \textcolor{keywordtype}{float} startVolume = audioSource.volume;}
+\DoxyCodeLine{\Hypertarget{_music_behaviour_8cs_source_l00075}00075 }
+\DoxyCodeLine{\Hypertarget{_music_behaviour_8cs_source_l00076}00076             \textcolor{keywordflow}{while} (counter < duration)}
+\DoxyCodeLine{\Hypertarget{_music_behaviour_8cs_source_l00077}00077             \{}
+\DoxyCodeLine{\Hypertarget{_music_behaviour_8cs_source_l00078}00078                 \textcolor{keywordflow}{if} (Time.timeScale == 0)}
+\DoxyCodeLine{\Hypertarget{_music_behaviour_8cs_source_l00079}00079                     counter += Time.unscaledDeltaTime;}
+\DoxyCodeLine{\Hypertarget{_music_behaviour_8cs_source_l00080}00080                 \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_music_behaviour_8cs_source_l00081}00081                     counter += Time.deltaTime;}
+\DoxyCodeLine{\Hypertarget{_music_behaviour_8cs_source_l00082}00082             }
+\DoxyCodeLine{\Hypertarget{_music_behaviour_8cs_source_l00083}00083                 audioSource.volume = Mathf.Lerp(startVolume, toVal, counter / duration);}
+\DoxyCodeLine{\Hypertarget{_music_behaviour_8cs_source_l00084}00084                 yield \textcolor{keywordflow}{return} \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_music_behaviour_8cs_source_l00085}00085             \}}
+\DoxyCodeLine{\Hypertarget{_music_behaviour_8cs_source_l00086}00086         }
+\DoxyCodeLine{\Hypertarget{_music_behaviour_8cs_source_l00087}00087             gameObject.SetActive(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_music_behaviour_8cs_source_l00088}00088             audioSource.volume = startVolume;}
+\DoxyCodeLine{\Hypertarget{_music_behaviour_8cs_source_l00089}00089             StopAllCoroutines();}
+\DoxyCodeLine{\Hypertarget{_music_behaviour_8cs_source_l00090}00090         \}}
+\DoxyCodeLine{\Hypertarget{_music_behaviour_8cs_source_l00091}00091     \}}
+\DoxyCodeLine{\Hypertarget{_music_behaviour_8cs_source_l00092}00092 \}}
+
+\end{DoxyCode}

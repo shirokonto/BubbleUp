@@ -1,0 +1,97 @@
+\hypertarget{_item_mover_8cs_source}{}\doxysection{Item\+Mover.\+cs}
+\label{_item_mover_8cs_source}\index{ItemMover.cs@{ItemMover.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_item_mover_8cs_source_l00001}00001 \textcolor{keyword}{using }DataStructures.Variables;}
+\DoxyCodeLine{\Hypertarget{_item_mover_8cs_source_l00002}00002 \textcolor{keyword}{using }Unity.Mathematics;}
+\DoxyCodeLine{\Hypertarget{_item_mover_8cs_source_l00003}00003 \textcolor{keyword}{using }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_item_mover_8cs_source_l00004}00004 }
+\DoxyCodeLine{\Hypertarget{_item_mover_8cs_source_l00005}\mbox{\hyperlink{namespace_features_1_1_interactables___namespace}{00005}} \textcolor{keyword}{namespace }\mbox{\hyperlink{namespace_features_1_1_interactables___namespace_1_1_scripts}{Features.Interactables\_Namespace.Scripts}}}
+\DoxyCodeLine{\Hypertarget{_item_mover_8cs_source_l00006}00006 \{}
+\DoxyCodeLine{\Hypertarget{_item_mover_8cs_source_l00011}00011 }
+\DoxyCodeLine{\Hypertarget{_item_mover_8cs_source_l00012}\mbox{\hyperlink{class_features_1_1_interactables___namespace_1_1_scripts_1_1_item_mover}{00012}}     \textcolor{keyword}{public} \textcolor{keyword}{class }\mbox{\hyperlink{class_features_1_1_interactables___namespace_1_1_scripts_1_1_item_mover}{ItemMover}} : MonoBehaviour}
+\DoxyCodeLine{\Hypertarget{_item_mover_8cs_source_l00013}00013     \{}
+\DoxyCodeLine{\Hypertarget{_item_mover_8cs_source_l00014}00014         [SerializeField] \textcolor{keyword}{private} BoolVariable isSecondWave;}
+\DoxyCodeLine{\Hypertarget{_item_mover_8cs_source_l00015}00015         [SerializeField] \textcolor{keyword}{private} FloatVariable moveSpeed;}
+\DoxyCodeLine{\Hypertarget{_item_mover_8cs_source_l00016}00016         [SerializeField] \textcolor{keyword}{private} Transform player;}
+\DoxyCodeLine{\Hypertarget{_item_mover_8cs_source_l00017}00017         [SerializeField] \textcolor{keyword}{private} \textcolor{keywordtype}{float} distanceFromPlayer;}
+\DoxyCodeLine{\Hypertarget{_item_mover_8cs_source_l00018}00018         \textcolor{keyword}{private} Transform \_startPosition;}
+\DoxyCodeLine{\Hypertarget{_item_mover_8cs_source_l00019}00019         \textcolor{keyword}{private} Quaternion \_startRotation;}
+\DoxyCodeLine{\Hypertarget{_item_mover_8cs_source_l00020}00020         \textcolor{keyword}{private} Transform \_currentPoint;}
+\DoxyCodeLine{\Hypertarget{_item_mover_8cs_source_l00021}00021         \textcolor{keyword}{private} \mbox{\hyperlink{class_features_1_1_interactables___namespace_1_1_scripts_1_1_route}{Route}} \_currentRoute;}
+\DoxyCodeLine{\Hypertarget{_item_mover_8cs_source_l00022}00022         \textcolor{keyword}{private} Rigidbody \_rigidbody;}
+\DoxyCodeLine{\Hypertarget{_item_mover_8cs_source_l00023}00023         \textcolor{keyword}{private} Transform \_transform;}
+\DoxyCodeLine{\Hypertarget{_item_mover_8cs_source_l00024}00024         \textcolor{keyword}{private} \mbox{\hyperlink{class_features_1_1_interactables___namespace_1_1_scripts_1_1_object_pool}{ObjectPool}} \_objectPool;}
+\DoxyCodeLine{\Hypertarget{_item_mover_8cs_source_l00025}00025 }
+\DoxyCodeLine{\Hypertarget{_item_mover_8cs_source_l00026}00026         \textcolor{keyword}{private} \textcolor{keywordtype}{void} Awake()}
+\DoxyCodeLine{\Hypertarget{_item_mover_8cs_source_l00027}00027         \{}
+\DoxyCodeLine{\Hypertarget{_item_mover_8cs_source_l00028}00028             \_rigidbody = GetComponent<Rigidbody>();}
+\DoxyCodeLine{\Hypertarget{_item_mover_8cs_source_l00029}00029             \_transform = GetComponent<Transform>();}
+\DoxyCodeLine{\Hypertarget{_item_mover_8cs_source_l00030}00030         \}}
+\DoxyCodeLine{\Hypertarget{_item_mover_8cs_source_l00031}00031 }
+\DoxyCodeLine{\Hypertarget{_item_mover_8cs_source_l00033}00033         \textcolor{keyword}{private} \textcolor{keywordtype}{void} Start()}
+\DoxyCodeLine{\Hypertarget{_item_mover_8cs_source_l00034}00034         \{}
+\DoxyCodeLine{\Hypertarget{_item_mover_8cs_source_l00035}00035             \textcolor{comment}{//Set initial position to first point of current route}}
+\DoxyCodeLine{\Hypertarget{_item_mover_8cs_source_l00036}00036             \textcolor{keywordflow}{if} (!gameObject.transform.name.Contains(\textcolor{stringliteral}{"{}Clone"{}})) \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_item_mover_8cs_source_l00037}00037             }
+\DoxyCodeLine{\Hypertarget{_item_mover_8cs_source_l00038}00038             \_objectPool = gameObject.transform.GetComponentInParent<\mbox{\hyperlink{class_features_1_1_interactables___namespace_1_1_scripts_1_1_object_pool}{ObjectPool}}>();}
+\DoxyCodeLine{\Hypertarget{_item_mover_8cs_source_l00039}00039             \_startPosition = \_currentRoute.gameObject.transform.GetChild(0).gameObject.transform; }
+\DoxyCodeLine{\Hypertarget{_item_mover_8cs_source_l00040}00040             \_currentPoint = \_currentRoute.\mbox{\hyperlink{class_features_1_1_interactables___namespace_1_1_scripts_1_1_route_ac5d19ca47b2180b4969df552d6f2d5ad}{GetNextWayPoint}}(\_currentPoint);}
+\DoxyCodeLine{\Hypertarget{_item_mover_8cs_source_l00041}00041             \_startRotation = transform.rotation;}
+\DoxyCodeLine{\Hypertarget{_item_mover_8cs_source_l00042}00042             transform.position = \_currentPoint.position;}
+\DoxyCodeLine{\Hypertarget{_item_mover_8cs_source_l00043}00043         }
+\DoxyCodeLine{\Hypertarget{_item_mover_8cs_source_l00044}00044             \textcolor{comment}{//Set next waypoint target}}
+\DoxyCodeLine{\Hypertarget{_item_mover_8cs_source_l00045}00045             \_currentPoint = \_currentRoute.\mbox{\hyperlink{class_features_1_1_interactables___namespace_1_1_scripts_1_1_route_ac5d19ca47b2180b4969df552d6f2d5ad}{GetNextWayPoint}}(\_currentPoint);}
+\DoxyCodeLine{\Hypertarget{_item_mover_8cs_source_l00046}00046         \}}
+\DoxyCodeLine{\Hypertarget{_item_mover_8cs_source_l00047}00047 }
+\DoxyCodeLine{\Hypertarget{_item_mover_8cs_source_l00049}00049         \textcolor{keyword}{private} \textcolor{keywordtype}{void} Update()}
+\DoxyCodeLine{\Hypertarget{_item_mover_8cs_source_l00050}00050         \{}
+\DoxyCodeLine{\Hypertarget{_item_mover_8cs_source_l00051}00051             \textcolor{keywordflow}{if} (gameObject.transform.name.Contains(\textcolor{stringliteral}{"{}Clone"{}}))}
+\DoxyCodeLine{\Hypertarget{_item_mover_8cs_source_l00052}00052             \{}
+\DoxyCodeLine{\Hypertarget{_item_mover_8cs_source_l00053}00053                 \textcolor{keywordflow}{if} (isSecondWave.Get())}
+\DoxyCodeLine{\Hypertarget{_item_mover_8cs_source_l00054}00054                 \{}
+\DoxyCodeLine{\Hypertarget{_item_mover_8cs_source_l00055}00055                     moveSpeed.Set(0.7f);}
+\DoxyCodeLine{\Hypertarget{_item_mover_8cs_source_l00056}00056                 \}}
+\DoxyCodeLine{\Hypertarget{_item_mover_8cs_source_l00057}00057 }
+\DoxyCodeLine{\Hypertarget{_item_mover_8cs_source_l00058}00058                 MoveItemTowardsBubble();}
+\DoxyCodeLine{\Hypertarget{_item_mover_8cs_source_l00059}00059                 \textcolor{keywordflow}{if} (Vector3.Distance(player.position, gameObject.transform.position) > distanceFromPlayer)}
+\DoxyCodeLine{\Hypertarget{_item_mover_8cs_source_l00060}00060                 \{}
+\DoxyCodeLine{\Hypertarget{_item_mover_8cs_source_l00061}00061                     \mbox{\hyperlink{class_features_1_1_interactables___namespace_1_1_scripts_1_1_item_mover_a3406495f06aeaf34a7edecd2c79c3f8b}{ResetPositionAndRotationBeforeRespawn}}();}
+\DoxyCodeLine{\Hypertarget{_item_mover_8cs_source_l00062}00062                 \}}
+\DoxyCodeLine{\Hypertarget{_item_mover_8cs_source_l00063}00063             \}}
+\DoxyCodeLine{\Hypertarget{_item_mover_8cs_source_l00064}00064         \}}
+\DoxyCodeLine{\Hypertarget{_item_mover_8cs_source_l00065}00065 }
+\DoxyCodeLine{\Hypertarget{_item_mover_8cs_source_l00070}\mbox{\hyperlink{class_features_1_1_interactables___namespace_1_1_scripts_1_1_item_mover_a067346d74fcee9f72dd1c7aa31bee8f5}{00070}}         \textcolor{keyword}{public} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_features_1_1_interactables___namespace_1_1_scripts_1_1_item_mover_a067346d74fcee9f72dd1c7aa31bee8f5}{SetCurrentRoute}}(Transform route)}
+\DoxyCodeLine{\Hypertarget{_item_mover_8cs_source_l00071}00071         \{}
+\DoxyCodeLine{\Hypertarget{_item_mover_8cs_source_l00072}00072             \_currentRoute = route.GetComponent<\mbox{\hyperlink{class_features_1_1_interactables___namespace_1_1_scripts_1_1_spawner}{Spawner}}>().GetCurrentRoute();}
+\DoxyCodeLine{\Hypertarget{_item_mover_8cs_source_l00073}00073         \}}
+\DoxyCodeLine{\Hypertarget{_item_mover_8cs_source_l00074}00074 }
+\DoxyCodeLine{\Hypertarget{_item_mover_8cs_source_l00078}\mbox{\hyperlink{class_features_1_1_interactables___namespace_1_1_scripts_1_1_item_mover_a3406495f06aeaf34a7edecd2c79c3f8b}{00078}}         \textcolor{keyword}{public} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_features_1_1_interactables___namespace_1_1_scripts_1_1_item_mover_a3406495f06aeaf34a7edecd2c79c3f8b}{ResetPositionAndRotationBeforeRespawn}}()}
+\DoxyCodeLine{\Hypertarget{_item_mover_8cs_source_l00079}00079         \{}
+\DoxyCodeLine{\Hypertarget{_item_mover_8cs_source_l00080}00080             gameObject.SetActive(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_item_mover_8cs_source_l00081}00081             \_transform.position = \_startPosition.position;}
+\DoxyCodeLine{\Hypertarget{_item_mover_8cs_source_l00082}00082             \_rigidbody.velocity = Vector3.zero;}
+\DoxyCodeLine{\Hypertarget{_item_mover_8cs_source_l00083}00083         }
+\DoxyCodeLine{\Hypertarget{_item_mover_8cs_source_l00084}00084             \textcolor{comment}{//reset rotation}}
+\DoxyCodeLine{\Hypertarget{_item_mover_8cs_source_l00085}00085             \_transform.eulerAngles = Vector3.zero;}
+\DoxyCodeLine{\Hypertarget{_item_mover_8cs_source_l00086}00086             \_transform.localRotation = quaternion.Euler(Vector3.zero);}
+\DoxyCodeLine{\Hypertarget{_item_mover_8cs_source_l00087}00087             \_transform.rotation = Quaternion.identity;}
+\DoxyCodeLine{\Hypertarget{_item_mover_8cs_source_l00088}00088             \_rigidbody.freezeRotation = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_item_mover_8cs_source_l00089}00089             \_objectPool.\mbox{\hyperlink{class_features_1_1_interactables___namespace_1_1_scripts_1_1_object_pool_a956a38b00e5523b1cab7ff407972aec3}{ReturnItemToPool}}(gameObject);}
+\DoxyCodeLine{\Hypertarget{_item_mover_8cs_source_l00090}00090         \}}
+\DoxyCodeLine{\Hypertarget{_item_mover_8cs_source_l00091}00091         }
+\DoxyCodeLine{\Hypertarget{_item_mover_8cs_source_l00096}\mbox{\hyperlink{class_features_1_1_interactables___namespace_1_1_scripts_1_1_item_mover_a0ed180f960003a581c91b4e66a68185a}{00096}}         \textcolor{keyword}{public} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_features_1_1_interactables___namespace_1_1_scripts_1_1_item_mover_a0ed180f960003a581c91b4e66a68185a}{SetMoveSpeed}}(\textcolor{keywordtype}{float} newMoveSpeed)}
+\DoxyCodeLine{\Hypertarget{_item_mover_8cs_source_l00097}00097         \{}
+\DoxyCodeLine{\Hypertarget{_item_mover_8cs_source_l00098}00098             moveSpeed.Set(newMoveSpeed);}
+\DoxyCodeLine{\Hypertarget{_item_mover_8cs_source_l00099}00099         \}}
+\DoxyCodeLine{\Hypertarget{_item_mover_8cs_source_l00100}00100         }
+\DoxyCodeLine{\Hypertarget{_item_mover_8cs_source_l00104}00104         \textcolor{keyword}{private} \textcolor{keywordtype}{void} MoveItemTowardsBubble()}
+\DoxyCodeLine{\Hypertarget{_item_mover_8cs_source_l00105}00105         \{}
+\DoxyCodeLine{\Hypertarget{_item_mover_8cs_source_l00106}00106             var position = \_currentPoint.position;}
+\DoxyCodeLine{\Hypertarget{_item_mover_8cs_source_l00107}00107             transform.position =}
+\DoxyCodeLine{\Hypertarget{_item_mover_8cs_source_l00108}00108                 Vector3.MoveTowards(transform.position, position, moveSpeed.Get() * Time.deltaTime);}
+\DoxyCodeLine{\Hypertarget{_item_mover_8cs_source_l00109}00109         \}}
+\DoxyCodeLine{\Hypertarget{_item_mover_8cs_source_l00110}00110     \}}
+\DoxyCodeLine{\Hypertarget{_item_mover_8cs_source_l00111}00111 \}}
+
+\end{DoxyCode}

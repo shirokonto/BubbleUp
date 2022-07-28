@@ -1,0 +1,37 @@
+\hypertarget{_character_behaviour_8cs_source}{}\doxysection{Character\+Behaviour.\+cs}
+\label{_character_behaviour_8cs_source}\index{CharacterBehaviour.cs@{CharacterBehaviour.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_character_behaviour_8cs_source_l00001}00001 \textcolor{keyword}{using }DataStructures.Variables;}
+\DoxyCodeLine{\Hypertarget{_character_behaviour_8cs_source_l00002}00002 \textcolor{keyword}{using }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_character_behaviour_8cs_source_l00003}00003 }
+\DoxyCodeLine{\Hypertarget{_character_behaviour_8cs_source_l00004}\mbox{\hyperlink{namespace_features_1_1_character___namespace}{00004}} \textcolor{keyword}{namespace }\mbox{\hyperlink{namespace_features_1_1_character___namespace_1_1_scripts}{Features.Character\_Namespace.Scripts}}}
+\DoxyCodeLine{\Hypertarget{_character_behaviour_8cs_source_l00005}00005 \{}
+\DoxyCodeLine{\Hypertarget{_character_behaviour_8cs_source_l00012}\mbox{\hyperlink{class_features_1_1_character___namespace_1_1_scripts_1_1_character_behaviour}{00012}}     \textcolor{keyword}{public} \textcolor{keyword}{class }\mbox{\hyperlink{class_features_1_1_character___namespace_1_1_scripts_1_1_character_behaviour}{CharacterBehaviour}} : MonoBehaviour}
+\DoxyCodeLine{\Hypertarget{_character_behaviour_8cs_source_l00013}00013     \{}
+\DoxyCodeLine{\Hypertarget{_character_behaviour_8cs_source_l00014}00014         [SerializeField] \textcolor{keyword}{private} BoolVariable bubbleIsPopped;}
+\DoxyCodeLine{\Hypertarget{_character_behaviour_8cs_source_l00015}00015         [SerializeField] \textcolor{keyword}{private} Rigidbody rigidBody;}
+\DoxyCodeLine{\Hypertarget{_character_behaviour_8cs_source_l00016}00016         }
+\DoxyCodeLine{\Hypertarget{_character_behaviour_8cs_source_l00017}00017         \textcolor{keyword}{private} Animator Animator \{ \textcolor{keyword}{get}; \textcolor{keyword}{set}; \}}
+\DoxyCodeLine{\Hypertarget{_character_behaviour_8cs_source_l00018}00018         \textcolor{keyword}{private} \textcolor{keyword}{static} readonly \textcolor{keywordtype}{int} IsFalling = Animator.StringToHash(\textcolor{stringliteral}{"{}IsFalling"{}});}
+\DoxyCodeLine{\Hypertarget{_character_behaviour_8cs_source_l00019}00019 }
+\DoxyCodeLine{\Hypertarget{_character_behaviour_8cs_source_l00020}00020         \textcolor{keyword}{private} \textcolor{keywordtype}{void} Awake()}
+\DoxyCodeLine{\Hypertarget{_character_behaviour_8cs_source_l00021}00021         \{}
+\DoxyCodeLine{\Hypertarget{_character_behaviour_8cs_source_l00022}00022             bubbleIsPopped.Set(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_character_behaviour_8cs_source_l00023}00023             Animator = GetComponent<Animator>();}
+\DoxyCodeLine{\Hypertarget{_character_behaviour_8cs_source_l00024}00024             rigidBody = GetComponent<Rigidbody>();}
+\DoxyCodeLine{\Hypertarget{_character_behaviour_8cs_source_l00025}00025         \}}
+\DoxyCodeLine{\Hypertarget{_character_behaviour_8cs_source_l00026}00026         }
+\DoxyCodeLine{\Hypertarget{_character_behaviour_8cs_source_l00027}00027         \textcolor{keyword}{private} \textcolor{keywordtype}{void} Update()}
+\DoxyCodeLine{\Hypertarget{_character_behaviour_8cs_source_l00028}00028         \{}
+\DoxyCodeLine{\Hypertarget{_character_behaviour_8cs_source_l00029}00029             Animator.SetBool(IsFalling, \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_character_behaviour_8cs_source_l00030}00030             \textcolor{keywordflow}{if} (bubbleIsPopped.Get())}
+\DoxyCodeLine{\Hypertarget{_character_behaviour_8cs_source_l00031}00031             \{}
+\DoxyCodeLine{\Hypertarget{_character_behaviour_8cs_source_l00032}00032                 Animator.SetBool(IsFalling, \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_character_behaviour_8cs_source_l00033}00033                 rigidBody.useGravity = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_character_behaviour_8cs_source_l00034}00034             \} }
+\DoxyCodeLine{\Hypertarget{_character_behaviour_8cs_source_l00035}00035         \}}
+\DoxyCodeLine{\Hypertarget{_character_behaviour_8cs_source_l00036}00036     \}}
+\DoxyCodeLine{\Hypertarget{_character_behaviour_8cs_source_l00037}00037 \}}
+
+\end{DoxyCode}

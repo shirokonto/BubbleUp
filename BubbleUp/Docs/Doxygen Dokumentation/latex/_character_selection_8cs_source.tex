@@ -1,0 +1,56 @@
+\hypertarget{_character_selection_8cs_source}{}\doxysection{Character\+Selection.\+cs}
+\label{_character_selection_8cs_source}\index{CharacterSelection.cs@{CharacterSelection.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_character_selection_8cs_source_l00001}00001 \textcolor{keyword}{using }DataStructures.Variables;}
+\DoxyCodeLine{\Hypertarget{_character_selection_8cs_source_l00002}00002 \textcolor{keyword}{using }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_character_selection_8cs_source_l00003}00003 \textcolor{keyword}{using }UnityEngine.SceneManagement;}
+\DoxyCodeLine{\Hypertarget{_character_selection_8cs_source_l00004}00004 }
+\DoxyCodeLine{\Hypertarget{_character_selection_8cs_source_l00005}\mbox{\hyperlink{namespace_features_1_1_menu___namespace}{00005}} \textcolor{keyword}{namespace }\mbox{\hyperlink{namespace_features_1_1_menu___namespace_1_1_scripts}{Features.Menu\_Namespace.Scripts}}}
+\DoxyCodeLine{\Hypertarget{_character_selection_8cs_source_l00006}00006 \{}
+\DoxyCodeLine{\Hypertarget{_character_selection_8cs_source_l00010}\mbox{\hyperlink{class_features_1_1_menu___namespace_1_1_scripts_1_1_character_selection}{00010}}     \textcolor{keyword}{public} \textcolor{keyword}{class }\mbox{\hyperlink{class_features_1_1_menu___namespace_1_1_scripts_1_1_character_selection}{CharacterSelection}} : MonoBehaviour}
+\DoxyCodeLine{\Hypertarget{_character_selection_8cs_source_l00011}00011     \{}
+\DoxyCodeLine{\Hypertarget{_character_selection_8cs_source_l00012}00012         [SerializeField] \textcolor{keyword}{private} IntVariable points;}
+\DoxyCodeLine{\Hypertarget{_character_selection_8cs_source_l00013}00013         [SerializeField] \textcolor{keyword}{private} BoolVariable antiVirusEnabled;}
+\DoxyCodeLine{\Hypertarget{_character_selection_8cs_source_l00014}\mbox{\hyperlink{class_features_1_1_menu___namespace_1_1_scripts_1_1_character_selection_a1c3eaf6381b087cd22616dd7375ee8f7}{00014}}         \textcolor{keyword}{public} GameObject[] \mbox{\hyperlink{class_features_1_1_menu___namespace_1_1_scripts_1_1_character_selection_a1c3eaf6381b087cd22616dd7375ee8f7}{characters}}; }
+\DoxyCodeLine{\Hypertarget{_character_selection_8cs_source_l00015}\mbox{\hyperlink{class_features_1_1_menu___namespace_1_1_scripts_1_1_character_selection_aa8a6842b31b6401db2b89cdfb5a8c2b4}{00015}}         \textcolor{keyword}{public} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_features_1_1_menu___namespace_1_1_scripts_1_1_character_selection_aa8a6842b31b6401db2b89cdfb5a8c2b4}{selectedCharacter}} = 0; }
+\DoxyCodeLine{\Hypertarget{_character_selection_8cs_source_l00016}00016 }
+\DoxyCodeLine{\Hypertarget{_character_selection_8cs_source_l00020}\mbox{\hyperlink{class_features_1_1_menu___namespace_1_1_scripts_1_1_character_selection_a796b0dd2768b309a02131dce61abc067}{00020}}         \textcolor{keyword}{public} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_features_1_1_menu___namespace_1_1_scripts_1_1_character_selection_a796b0dd2768b309a02131dce61abc067}{NextCharacter}}()}
+\DoxyCodeLine{\Hypertarget{_character_selection_8cs_source_l00021}00021         \{}
+\DoxyCodeLine{\Hypertarget{_character_selection_8cs_source_l00022}00022             \mbox{\hyperlink{class_features_1_1_menu___namespace_1_1_scripts_1_1_character_selection_a1c3eaf6381b087cd22616dd7375ee8f7}{characters}}[\mbox{\hyperlink{class_features_1_1_menu___namespace_1_1_scripts_1_1_character_selection_aa8a6842b31b6401db2b89cdfb5a8c2b4}{selectedCharacter}}].SetActive(\textcolor{keyword}{false}); }
+\DoxyCodeLine{\Hypertarget{_character_selection_8cs_source_l00023}00023             \mbox{\hyperlink{class_features_1_1_menu___namespace_1_1_scripts_1_1_character_selection_aa8a6842b31b6401db2b89cdfb5a8c2b4}{selectedCharacter}} = (\mbox{\hyperlink{class_features_1_1_menu___namespace_1_1_scripts_1_1_character_selection_aa8a6842b31b6401db2b89cdfb5a8c2b4}{selectedCharacter}} + 1) \% \mbox{\hyperlink{class_features_1_1_menu___namespace_1_1_scripts_1_1_character_selection_a1c3eaf6381b087cd22616dd7375ee8f7}{characters}}.Length; }
+\DoxyCodeLine{\Hypertarget{_character_selection_8cs_source_l00024}00024             \mbox{\hyperlink{class_features_1_1_menu___namespace_1_1_scripts_1_1_character_selection_a1c3eaf6381b087cd22616dd7375ee8f7}{characters}}[\mbox{\hyperlink{class_features_1_1_menu___namespace_1_1_scripts_1_1_character_selection_aa8a6842b31b6401db2b89cdfb5a8c2b4}{selectedCharacter}}].SetActive(\textcolor{keyword}{true}); }
+\DoxyCodeLine{\Hypertarget{_character_selection_8cs_source_l00025}00025         \}}
+\DoxyCodeLine{\Hypertarget{_character_selection_8cs_source_l00026}00026 }
+\DoxyCodeLine{\Hypertarget{_character_selection_8cs_source_l00030}\mbox{\hyperlink{class_features_1_1_menu___namespace_1_1_scripts_1_1_character_selection_aafa2c7b521ac8f4081d154ede8ca138a}{00030}}         \textcolor{keyword}{public} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_features_1_1_menu___namespace_1_1_scripts_1_1_character_selection_aafa2c7b521ac8f4081d154ede8ca138a}{PreviousCharacter}}()}
+\DoxyCodeLine{\Hypertarget{_character_selection_8cs_source_l00031}00031         \{}
+\DoxyCodeLine{\Hypertarget{_character_selection_8cs_source_l00032}00032             \mbox{\hyperlink{class_features_1_1_menu___namespace_1_1_scripts_1_1_character_selection_a1c3eaf6381b087cd22616dd7375ee8f7}{characters}}[\mbox{\hyperlink{class_features_1_1_menu___namespace_1_1_scripts_1_1_character_selection_aa8a6842b31b6401db2b89cdfb5a8c2b4}{selectedCharacter}}].SetActive(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_character_selection_8cs_source_l00033}00033             \mbox{\hyperlink{class_features_1_1_menu___namespace_1_1_scripts_1_1_character_selection_aa8a6842b31b6401db2b89cdfb5a8c2b4}{selectedCharacter}}-\/-\/;}
+\DoxyCodeLine{\Hypertarget{_character_selection_8cs_source_l00034}00034             \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_features_1_1_menu___namespace_1_1_scripts_1_1_character_selection_aa8a6842b31b6401db2b89cdfb5a8c2b4}{selectedCharacter}} < 0)}
+\DoxyCodeLine{\Hypertarget{_character_selection_8cs_source_l00035}00035             \{}
+\DoxyCodeLine{\Hypertarget{_character_selection_8cs_source_l00036}00036                 \mbox{\hyperlink{class_features_1_1_menu___namespace_1_1_scripts_1_1_character_selection_aa8a6842b31b6401db2b89cdfb5a8c2b4}{selectedCharacter}} += \mbox{\hyperlink{class_features_1_1_menu___namespace_1_1_scripts_1_1_character_selection_a1c3eaf6381b087cd22616dd7375ee8f7}{characters}}.Length;}
+\DoxyCodeLine{\Hypertarget{_character_selection_8cs_source_l00037}00037             \}}
+\DoxyCodeLine{\Hypertarget{_character_selection_8cs_source_l00038}00038             \mbox{\hyperlink{class_features_1_1_menu___namespace_1_1_scripts_1_1_character_selection_a1c3eaf6381b087cd22616dd7375ee8f7}{characters}}[\mbox{\hyperlink{class_features_1_1_menu___namespace_1_1_scripts_1_1_character_selection_aa8a6842b31b6401db2b89cdfb5a8c2b4}{selectedCharacter}}].SetActive(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_character_selection_8cs_source_l00039}00039         \}}
+\DoxyCodeLine{\Hypertarget{_character_selection_8cs_source_l00040}00040 }
+\DoxyCodeLine{\Hypertarget{_character_selection_8cs_source_l00046}\mbox{\hyperlink{class_features_1_1_menu___namespace_1_1_scripts_1_1_character_selection_aa954cacad2e354f02671e3894ba4d4f4}{00046}}         \textcolor{keyword}{public} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_features_1_1_menu___namespace_1_1_scripts_1_1_character_selection_aa954cacad2e354f02671e3894ba4d4f4}{StartGame}}()}
+\DoxyCodeLine{\Hypertarget{_character_selection_8cs_source_l00047}00047         \{}
+\DoxyCodeLine{\Hypertarget{_character_selection_8cs_source_l00048}00048             PlayerPrefs.SetInt(\textcolor{stringliteral}{"{}selectedCharacter"{}}, \mbox{\hyperlink{class_features_1_1_menu___namespace_1_1_scripts_1_1_character_selection_aa8a6842b31b6401db2b89cdfb5a8c2b4}{selectedCharacter}}); \textcolor{comment}{// save data}}
+\DoxyCodeLine{\Hypertarget{_character_selection_8cs_source_l00049}00049             points.Set(0);}
+\DoxyCodeLine{\Hypertarget{_character_selection_8cs_source_l00050}00050             antiVirusEnabled.Set(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_character_selection_8cs_source_l00051}00051             LoadScenes();}
+\DoxyCodeLine{\Hypertarget{_character_selection_8cs_source_l00052}00052         \}}
+\DoxyCodeLine{\Hypertarget{_character_selection_8cs_source_l00053}00053 }
+\DoxyCodeLine{\Hypertarget{_character_selection_8cs_source_l00058}00058         \textcolor{keyword}{private} \textcolor{keywordtype}{void} LoadScenes()}
+\DoxyCodeLine{\Hypertarget{_character_selection_8cs_source_l00059}00059         \{}
+\DoxyCodeLine{\Hypertarget{_character_selection_8cs_source_l00060}00060             SceneManager.LoadScene(1, LoadSceneMode.Single);}
+\DoxyCodeLine{\Hypertarget{_character_selection_8cs_source_l00061}00061             SceneManager.LoadScene(2, LoadSceneMode.Additive);}
+\DoxyCodeLine{\Hypertarget{_character_selection_8cs_source_l00062}00062             SceneManager.LoadScene(3, LoadSceneMode.Additive);}
+\DoxyCodeLine{\Hypertarget{_character_selection_8cs_source_l00063}00063             SceneManager.LoadScene(4, LoadSceneMode.Additive);}
+\DoxyCodeLine{\Hypertarget{_character_selection_8cs_source_l00064}00064             SceneManager.LoadScene(5, LoadSceneMode.Additive);}
+\DoxyCodeLine{\Hypertarget{_character_selection_8cs_source_l00065}00065             SceneManager.LoadScene(6, LoadSceneMode.Additive);}
+\DoxyCodeLine{\Hypertarget{_character_selection_8cs_source_l00066}00066         \}}
+\DoxyCodeLine{\Hypertarget{_character_selection_8cs_source_l00067}00067     \}}
+\DoxyCodeLine{\Hypertarget{_character_selection_8cs_source_l00068}00068 \}}
+
+\end{DoxyCode}

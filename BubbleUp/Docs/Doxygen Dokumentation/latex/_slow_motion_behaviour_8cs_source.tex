@@ -1,0 +1,105 @@
+\hypertarget{_slow_motion_behaviour_8cs_source}{}\doxysection{Slow\+Motion\+Behaviour.\+cs}
+\label{_slow_motion_behaviour_8cs_source}\index{SlowMotionBehaviour.cs@{SlowMotionBehaviour.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_slow_motion_behaviour_8cs_source_l00001}00001 \textcolor{keyword}{using }System.Collections;}
+\DoxyCodeLine{\Hypertarget{_slow_motion_behaviour_8cs_source_l00002}00002 \textcolor{keyword}{using }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_slow_motion_behaviour_8cs_source_l00003}00003 \textcolor{keyword}{using }DataStructures.Variables;}
+\DoxyCodeLine{\Hypertarget{_slow_motion_behaviour_8cs_source_l00004}00004 \textcolor{keyword}{using }\mbox{\hyperlink{namespace_features_1_1_u_i___namespace_1_1_script}{Features.UI\_Namespace.Script}};}
+\DoxyCodeLine{\Hypertarget{_slow_motion_behaviour_8cs_source_l00005}00005 \textcolor{keyword}{using }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_slow_motion_behaviour_8cs_source_l00006}00006 }
+\DoxyCodeLine{\Hypertarget{_slow_motion_behaviour_8cs_source_l00007}00007 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespace_features_1_1_interactables___namespace_1_1_scripts}{Features.Interactables\_Namespace.Scripts}}}
+\DoxyCodeLine{\Hypertarget{_slow_motion_behaviour_8cs_source_l00008}00008 \{}
+\DoxyCodeLine{\Hypertarget{_slow_motion_behaviour_8cs_source_l00012}\mbox{\hyperlink{class_features_1_1_interactables___namespace_1_1_scripts_1_1_slow_motion_behaviour}{00012}}     \textcolor{keyword}{public} \textcolor{keyword}{class }\mbox{\hyperlink{class_features_1_1_interactables___namespace_1_1_scripts_1_1_slow_motion_behaviour}{SlowMotionBehaviour}} : MonoBehaviour}
+\DoxyCodeLine{\Hypertarget{_slow_motion_behaviour_8cs_source_l00013}00013     \{}
+\DoxyCodeLine{\Hypertarget{_slow_motion_behaviour_8cs_source_l00014}00014         [SerializeField] \textcolor{keyword}{private} FloatVariable currentMoveSpeed;}
+\DoxyCodeLine{\Hypertarget{_slow_motion_behaviour_8cs_source_l00015}00015         [SerializeField] \textcolor{keyword}{private} BoolVariable isSecondWave;}
+\DoxyCodeLine{\Hypertarget{_slow_motion_behaviour_8cs_source_l00016}00016         [SerializeField] \textcolor{keyword}{private} BoolVariable showSlowMo;}
+\DoxyCodeLine{\Hypertarget{_slow_motion_behaviour_8cs_source_l00017}00017         \textcolor{keyword}{private} List<Transform> \_allItemsOnSameRoute;}
+\DoxyCodeLine{\Hypertarget{_slow_motion_behaviour_8cs_source_l00018}00018         \textcolor{keyword}{private} \textcolor{keywordtype}{float} \_defaultMoveSpeed;}
+\DoxyCodeLine{\Hypertarget{_slow_motion_behaviour_8cs_source_l00019}00019 }
+\DoxyCodeLine{\Hypertarget{_slow_motion_behaviour_8cs_source_l00020}00020         \textcolor{comment}{// Start is called before the first frame update}}
+\DoxyCodeLine{\Hypertarget{_slow_motion_behaviour_8cs_source_l00021}00021         \textcolor{keyword}{private} \textcolor{keywordtype}{void} Start()}
+\DoxyCodeLine{\Hypertarget{_slow_motion_behaviour_8cs_source_l00022}00022         \{}
+\DoxyCodeLine{\Hypertarget{_slow_motion_behaviour_8cs_source_l00023}00023             \_allItemsOnSameRoute = \textcolor{keyword}{new} List<Transform>();}
+\DoxyCodeLine{\Hypertarget{_slow_motion_behaviour_8cs_source_l00024}00024             \_defaultMoveSpeed = 0.4f;}
+\DoxyCodeLine{\Hypertarget{_slow_motion_behaviour_8cs_source_l00025}00025             currentMoveSpeed.Set(\_defaultMoveSpeed);}
+\DoxyCodeLine{\Hypertarget{_slow_motion_behaviour_8cs_source_l00026}00026         \}}
+\DoxyCodeLine{\Hypertarget{_slow_motion_behaviour_8cs_source_l00027}00027 }
+\DoxyCodeLine{\Hypertarget{_slow_motion_behaviour_8cs_source_l00028}00028         \textcolor{comment}{// Update is called once per frame}}
+\DoxyCodeLine{\Hypertarget{_slow_motion_behaviour_8cs_source_l00029}00029         \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{_slow_motion_behaviour_8cs_source_l00030}00030 \textcolor{comment}{         * Speed of second Wave is set}}
+\DoxyCodeLine{\Hypertarget{_slow_motion_behaviour_8cs_source_l00031}00031 \textcolor{comment}{         */}}
+\DoxyCodeLine{\Hypertarget{_slow_motion_behaviour_8cs_source_l00032}00032         \textcolor{keyword}{private} \textcolor{keywordtype}{void} Update()}
+\DoxyCodeLine{\Hypertarget{_slow_motion_behaviour_8cs_source_l00033}00033         \{}
+\DoxyCodeLine{\Hypertarget{_slow_motion_behaviour_8cs_source_l00034}00034             \textcolor{keywordflow}{if} (isSecondWave.Get())}
+\DoxyCodeLine{\Hypertarget{_slow_motion_behaviour_8cs_source_l00035}00035             \{}
+\DoxyCodeLine{\Hypertarget{_slow_motion_behaviour_8cs_source_l00036}00036                 \_defaultMoveSpeed = 0.7f;}
+\DoxyCodeLine{\Hypertarget{_slow_motion_behaviour_8cs_source_l00037}00037                 currentMoveSpeed.Set(\_defaultMoveSpeed);}
+\DoxyCodeLine{\Hypertarget{_slow_motion_behaviour_8cs_source_l00038}00038                 isSecondWave.Set(\textcolor{keyword}{false}); \textcolor{comment}{//if not set false it will override the slowMo functionality}}
+\DoxyCodeLine{\Hypertarget{_slow_motion_behaviour_8cs_source_l00039}00039             \}}
+\DoxyCodeLine{\Hypertarget{_slow_motion_behaviour_8cs_source_l00040}00040         \}}
+\DoxyCodeLine{\Hypertarget{_slow_motion_behaviour_8cs_source_l00041}00041 }
+\DoxyCodeLine{\Hypertarget{_slow_motion_behaviour_8cs_source_l00042}00042         \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{_slow_motion_behaviour_8cs_source_l00043}00043 \textcolor{comment}{         * Once Slow Motion Item collides with the bubble the speed slows down}}
+\DoxyCodeLine{\Hypertarget{_slow_motion_behaviour_8cs_source_l00044}00044 \textcolor{comment}{         */}}
+\DoxyCodeLine{\Hypertarget{_slow_motion_behaviour_8cs_source_l00045}00045         \textcolor{keyword}{private} \textcolor{keywordtype}{void} OnCollisionEnter(Collision collision)}
+\DoxyCodeLine{\Hypertarget{_slow_motion_behaviour_8cs_source_l00046}00046         \{}
+\DoxyCodeLine{\Hypertarget{_slow_motion_behaviour_8cs_source_l00047}00047             \textcolor{keywordflow}{if} (collision.gameObject.CompareTag(\textcolor{stringliteral}{"{}Bubble"{}}))}
+\DoxyCodeLine{\Hypertarget{_slow_motion_behaviour_8cs_source_l00048}00048             \{}
+\DoxyCodeLine{\Hypertarget{_slow_motion_behaviour_8cs_source_l00049}00049                 \textcolor{comment}{//Trigger slowMo only if the current speed is as the default value}}
+\DoxyCodeLine{\Hypertarget{_slow_motion_behaviour_8cs_source_l00050}00050                 \textcolor{keywordflow}{if} (currentMoveSpeed.Get() == \_defaultMoveSpeed)}
+\DoxyCodeLine{\Hypertarget{_slow_motion_behaviour_8cs_source_l00051}00051                 \{}
+\DoxyCodeLine{\Hypertarget{_slow_motion_behaviour_8cs_source_l00052}00052                     Debug.Log(\textcolor{stringliteral}{"{}defaultMoveSpeed: "{}} + \_defaultMoveSpeed + \textcolor{stringliteral}{"{} currentMoveSpeed: "{}} + currentMoveSpeed.Get());}
+\DoxyCodeLine{\Hypertarget{_slow_motion_behaviour_8cs_source_l00053}00053                     Transform path = transform.parent.gameObject.transform;}
+\DoxyCodeLine{\Hypertarget{_slow_motion_behaviour_8cs_source_l00054}00054                     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < path.childCount; i++)}
+\DoxyCodeLine{\Hypertarget{_slow_motion_behaviour_8cs_source_l00055}00055                     \{}
+\DoxyCodeLine{\Hypertarget{_slow_motion_behaviour_8cs_source_l00056}00056                         \_allItemsOnSameRoute.Add(path.GetChild(i));}
+\DoxyCodeLine{\Hypertarget{_slow_motion_behaviour_8cs_source_l00057}00057                     \}}
+\DoxyCodeLine{\Hypertarget{_slow_motion_behaviour_8cs_source_l00058}00058                     StartCoroutine(SlowDownFlowTemporary(\_allItemsOnSameRoute));}
+\DoxyCodeLine{\Hypertarget{_slow_motion_behaviour_8cs_source_l00059}00059                     showSlowMo.Set(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_slow_motion_behaviour_8cs_source_l00060}00060                 \}}
+\DoxyCodeLine{\Hypertarget{_slow_motion_behaviour_8cs_source_l00061}00061                 \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_slow_motion_behaviour_8cs_source_l00062}00062                 \{}
+\DoxyCodeLine{\Hypertarget{_slow_motion_behaviour_8cs_source_l00063}00063                     GetComponent<ItemMover>().ResetPositionAndRotationBeforeRespawn();}
+\DoxyCodeLine{\Hypertarget{_slow_motion_behaviour_8cs_source_l00064}00064                     showSlowMo.Set(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_slow_motion_behaviour_8cs_source_l00065}00065                 \}}
+\DoxyCodeLine{\Hypertarget{_slow_motion_behaviour_8cs_source_l00066}00066             \}}
+\DoxyCodeLine{\Hypertarget{_slow_motion_behaviour_8cs_source_l00067}00067         \}}
+\DoxyCodeLine{\Hypertarget{_slow_motion_behaviour_8cs_source_l00068}00068     }
+\DoxyCodeLine{\Hypertarget{_slow_motion_behaviour_8cs_source_l00069}00069         \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{_slow_motion_behaviour_8cs_source_l00070}00070 \textcolor{comment}{         * Slow Motion speed is set}}
+\DoxyCodeLine{\Hypertarget{_slow_motion_behaviour_8cs_source_l00071}00071 \textcolor{comment}{         */}}
+\DoxyCodeLine{\Hypertarget{_slow_motion_behaviour_8cs_source_l00072}00072         \textcolor{keyword}{private} IEnumerator SlowDownFlowTemporary(List<Transform> itemsOnRoute)}
+\DoxyCodeLine{\Hypertarget{_slow_motion_behaviour_8cs_source_l00073}00073         \{}
+\DoxyCodeLine{\Hypertarget{_slow_motion_behaviour_8cs_source_l00074}00074             SetSlowMoVisibility(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_slow_motion_behaviour_8cs_source_l00075}00075             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < itemsOnRoute.Count; i++)}
+\DoxyCodeLine{\Hypertarget{_slow_motion_behaviour_8cs_source_l00076}00076             \{}
+\DoxyCodeLine{\Hypertarget{_slow_motion_behaviour_8cs_source_l00077}00077                 \textcolor{comment}{//slow down speed by 20\%}}
+\DoxyCodeLine{\Hypertarget{_slow_motion_behaviour_8cs_source_l00078}00078                 itemsOnRoute[i].GetComponent<\mbox{\hyperlink{class_features_1_1_interactables___namespace_1_1_scripts_1_1_item_mover}{ItemMover}}>().SetMoveSpeed(\_defaultMoveSpeed * 0.4f);}
+\DoxyCodeLine{\Hypertarget{_slow_motion_behaviour_8cs_source_l00079}00079             \}}
+\DoxyCodeLine{\Hypertarget{_slow_motion_behaviour_8cs_source_l00080}00080             yield \textcolor{keywordflow}{return} \textcolor{keyword}{new} WaitForSeconds(1f);}
+\DoxyCodeLine{\Hypertarget{_slow_motion_behaviour_8cs_source_l00081}00081             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < itemsOnRoute.Count; i++)}
+\DoxyCodeLine{\Hypertarget{_slow_motion_behaviour_8cs_source_l00082}00082             \{}
+\DoxyCodeLine{\Hypertarget{_slow_motion_behaviour_8cs_source_l00083}00083                 \textcolor{comment}{//increase speed by 20\%}}
+\DoxyCodeLine{\Hypertarget{_slow_motion_behaviour_8cs_source_l00084}00084                 itemsOnRoute[i].GetComponent<\mbox{\hyperlink{class_features_1_1_interactables___namespace_1_1_scripts_1_1_item_mover}{ItemMover}}>().SetMoveSpeed(\_defaultMoveSpeed);}
+\DoxyCodeLine{\Hypertarget{_slow_motion_behaviour_8cs_source_l00085}00085             \}}
+\DoxyCodeLine{\Hypertarget{_slow_motion_behaviour_8cs_source_l00086}00086             SetSlowMoVisibility(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_slow_motion_behaviour_8cs_source_l00087}00087             GetComponent<ItemMover>().ResetPositionAndRotationBeforeRespawn();}
+\DoxyCodeLine{\Hypertarget{_slow_motion_behaviour_8cs_source_l00088}00088             showSlowMo.Set(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_slow_motion_behaviour_8cs_source_l00089}00089         \}}
+\DoxyCodeLine{\Hypertarget{_slow_motion_behaviour_8cs_source_l00090}00090 }
+\DoxyCodeLine{\Hypertarget{_slow_motion_behaviour_8cs_source_l00091}00091         \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{_slow_motion_behaviour_8cs_source_l00092}00092 \textcolor{comment}{         * Slow motion gameObject is set true}}
+\DoxyCodeLine{\Hypertarget{_slow_motion_behaviour_8cs_source_l00093}00093 \textcolor{comment}{         */}}
+\DoxyCodeLine{\Hypertarget{_slow_motion_behaviour_8cs_source_l00094}00094         \textcolor{keyword}{private} \textcolor{keywordtype}{void} SetSlowMoVisibility(\textcolor{keywordtype}{bool} isVisible)}
+\DoxyCodeLine{\Hypertarget{_slow_motion_behaviour_8cs_source_l00095}00095         \{}
+\DoxyCodeLine{\Hypertarget{_slow_motion_behaviour_8cs_source_l00096}00096             \textcolor{keywordflow}{foreach} (Transform child \textcolor{keywordflow}{in} transform)}
+\DoxyCodeLine{\Hypertarget{_slow_motion_behaviour_8cs_source_l00097}00097             \{}
+\DoxyCodeLine{\Hypertarget{_slow_motion_behaviour_8cs_source_l00098}00098                 child.gameObject.SetActive(isVisible); \textcolor{comment}{// or false}}
+\DoxyCodeLine{\Hypertarget{_slow_motion_behaviour_8cs_source_l00099}00099             \}}
+\DoxyCodeLine{\Hypertarget{_slow_motion_behaviour_8cs_source_l00100}00100         \}}
+\DoxyCodeLine{\Hypertarget{_slow_motion_behaviour_8cs_source_l00101}00101     \}}
+\DoxyCodeLine{\Hypertarget{_slow_motion_behaviour_8cs_source_l00102}00102 \}}
+
+\end{DoxyCode}

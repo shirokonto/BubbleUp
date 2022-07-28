@@ -1,0 +1,168 @@
+\hypertarget{_menu_8cs_source}{}\doxysection{Menu.\+cs}
+\label{_menu_8cs_source}\index{Menu.cs@{Menu.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00001}00001 \textcolor{keyword}{using }System.Collections;}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00002}00002 \textcolor{keyword}{using }DataStructures.Variables;}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00003}00003 \textcolor{keyword}{using }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00004}00004 \textcolor{keyword}{using }UnityEngine.SceneManagement;}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00005}00005 \textcolor{keyword}{using }TMPro;}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00006}00006 }
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00007}00007 }
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00008}00008 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespace_features_1_1_menu___namespace_1_1_scripts}{Features.Menu\_Namespace.Scripts}}}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00009}00009 \{}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00013}\mbox{\hyperlink{class_features_1_1_menu___namespace_1_1_scripts_1_1_menu}{00013}}     \textcolor{keyword}{public} \textcolor{keyword}{class }\mbox{\hyperlink{class_features_1_1_menu___namespace_1_1_scripts_1_1_menu}{Menu}} : MonoBehaviour}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00014}00014     \{}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00015}00015         [SerializeField] \textcolor{keyword}{private} BoolVariable isPauseIButtonHit;}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00016}00016         [SerializeField] \textcolor{keyword}{private} BoolVariable isInfoItemViewShown;}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00017}00017         [SerializeField] \textcolor{keyword}{private} GameObject pauseMenuUI;}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00018}00018         [SerializeField] \textcolor{keyword}{private} GameObject gameOverScreen;}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00019}00019         [SerializeField] \textcolor{keyword}{private} \textcolor{keywordtype}{int} countdownTime;}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00020}00020         [SerializeField] \textcolor{keyword}{private} TextMeshProUGUI countdownDisplay;}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00021}00021         [SerializeField] \textcolor{keyword}{private} GameObject countdownAfterPause;}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00022}\mbox{\hyperlink{class_features_1_1_menu___namespace_1_1_scripts_1_1_menu_a8d2a1a48b7194c40c3d3a5c07d356878}{00022}}         \textcolor{keyword}{public} \textcolor{keyword}{static} \mbox{\hyperlink{class_features_1_1_menu___namespace_1_1_scripts_1_1_menu}{Menu}} \mbox{\hyperlink{class_features_1_1_menu___namespace_1_1_scripts_1_1_menu_a8d2a1a48b7194c40c3d3a5c07d356878}{instance}}; }
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00023}\mbox{\hyperlink{class_features_1_1_menu___namespace_1_1_scripts_1_1_menu_ada9f69e88f243fa2e64d78e3ac0b2ea7}{00023}}         \textcolor{keyword}{public} \textcolor{keyword}{static} \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_features_1_1_menu___namespace_1_1_scripts_1_1_menu_ada9f69e88f243fa2e64d78e3ac0b2ea7}{IsGameOver}}; }
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00024}00024         \textcolor{keyword}{private} \textcolor{keyword}{static} \textcolor{keywordtype}{bool} \_gameIsPaused = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00025}00025         \textcolor{keyword}{private} \textcolor{keyword}{static} \textcolor{keywordtype}{bool} \_resumeGame;}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00026}00026 }
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00027}00027         \textcolor{keyword}{private} \textcolor{keywordtype}{void} Awake()}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00028}00028         \{}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00029}00029             isPauseIButtonHit.Set(\textcolor{keyword}{true}); \textcolor{comment}{//for hand gesture}}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00030}00030             \mbox{\hyperlink{class_features_1_1_menu___namespace_1_1_scripts_1_1_menu_ada9f69e88f243fa2e64d78e3ac0b2ea7}{IsGameOver}} = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00031}00031             SceneManager.LoadScene(3, LoadSceneMode.Additive);}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00032}00032         \}}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00033}00033  }
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00034}00034         \textcolor{comment}{// Update is called once per frame}}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00035}00035         \textcolor{keyword}{private} \textcolor{keywordtype}{void} Update()}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00036}00036         \{}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00037}00037             \textcolor{keywordflow}{if} (Input.GetKeyDown(KeyCode.Escape))}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00038}00038             \{}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00039}00039                 \textcolor{keywordflow}{if} (\_gameIsPaused)}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00040}00040                 \{}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00041}00041                     \mbox{\hyperlink{class_features_1_1_menu___namespace_1_1_scripts_1_1_menu_a496c8bb3f736db1ed5dbeeac708ad511}{Resume}}();}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00042}00042                     Countdown();}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00043}00043                     countdownAfterPause.SetActive(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00044}00044                 \}}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00045}00045                 \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00046}00046                 \{}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00047}00047                     Pause();}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00048}00048                 \}}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00049}00049             \}}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00050}00050 }
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00051}00051             \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_features_1_1_menu___namespace_1_1_scripts_1_1_menu_ada9f69e88f243fa2e64d78e3ac0b2ea7}{IsGameOver}})}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00052}00052             \{}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00053}00053                 GOScreen();}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00054}00054             \}}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00055}00055             }
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00056}00056             \textcolor{keywordflow}{if} (!\mbox{\hyperlink{class_features_1_1_menu___namespace_1_1_scripts_1_1_menu_ada9f69e88f243fa2e64d78e3ac0b2ea7}{IsGameOver}} \&\& !\_gameIsPaused \&\& !isInfoItemViewShown.Get())}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00057}00057             \{}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00058}00058                 Time.timeScale = 1f;}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00059}00059             \}}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00060}00060 }
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00061}00061             \textcolor{keywordflow}{if} (\_resumeGame)}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00062}00062             \{}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00063}00063                 Time.timeScale = 0f;}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00064}00064             \}}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00065}00065         \}}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00066}00066         }
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00067}00067 }
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00072}\mbox{\hyperlink{class_features_1_1_menu___namespace_1_1_scripts_1_1_menu_ac3a768de1f6b67b10e81c70cc139b6d0}{00072}}         \textcolor{keyword}{public} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_features_1_1_menu___namespace_1_1_scripts_1_1_menu_ac3a768de1f6b67b10e81c70cc139b6d0}{TryAgain}}()}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00073}00073         \{}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00074}00074             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00075}00075             SceneManager.LoadScene(2, LoadSceneMode.Additive);}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00076}00076             SceneManager.LoadScene(3, LoadSceneMode.Additive);}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00077}00077             SceneManager.LoadScene(4, LoadSceneMode.Additive);}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00078}00078             SceneManager.LoadScene(5, LoadSceneMode.Additive);}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00079}00079             SceneManager.LoadScene(6, LoadSceneMode.Additive);}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00080}00080             \_gameIsPaused = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00081}00081             Time.timeScale = 1f;}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00082}00082         \}}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00083}00083         }
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00087}\mbox{\hyperlink{class_features_1_1_menu___namespace_1_1_scripts_1_1_menu_a969a8102fa7f899945865bb038a2f1b2}{00087}}         \textcolor{keyword}{public} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_features_1_1_menu___namespace_1_1_scripts_1_1_menu_a969a8102fa7f899945865bb038a2f1b2}{TogglePauseMenu}}()}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00088}00088         \{}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00089}00089             \textcolor{keywordflow}{if} (isPauseIButtonHit.Get())}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00090}00090             \{}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00091}00091                 Pause();}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00092}00092             \}}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00093}00093             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00094}00094             \{}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00095}00095                 \mbox{\hyperlink{class_features_1_1_menu___namespace_1_1_scripts_1_1_menu_a496c8bb3f736db1ed5dbeeac708ad511}{Resume}}();}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00096}00096                 countdownAfterPause.SetActive(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00097}00097                 Countdown();}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00098}00098             \}}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00099}00099         \}}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00100}00100 }
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00104}\mbox{\hyperlink{class_features_1_1_menu___namespace_1_1_scripts_1_1_menu_a496c8bb3f736db1ed5dbeeac708ad511}{00104}}         \textcolor{keyword}{public} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_features_1_1_menu___namespace_1_1_scripts_1_1_menu_a496c8bb3f736db1ed5dbeeac708ad511}{Resume}}()}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00105}00105         \{            }
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00106}00106             pauseMenuUI.SetActive(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00107}00107             SetVariablesConditions(\textcolor{keyword}{false}, \textcolor{keyword}{false}, \textcolor{keyword}{true}, 1f);}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00108}00108         \}}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00109}00109     }
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00113}00113         \textcolor{keyword}{private} \textcolor{keywordtype}{void} Pause()}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00114}00114         \{}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00115}00115             pauseMenuUI.SetActive(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00116}00116             SetVariablesConditions(\textcolor{keyword}{true}, \textcolor{keyword}{false}, \textcolor{keyword}{false}, 0f);}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00117}00117         \}}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00118}00118 }
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00122}\mbox{\hyperlink{class_features_1_1_menu___namespace_1_1_scripts_1_1_menu_ad74f81ff95e00c608ff966a883bc1bdf}{00122}}         \textcolor{keyword}{public} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_features_1_1_menu___namespace_1_1_scripts_1_1_menu_ad74f81ff95e00c608ff966a883bc1bdf}{LoadMenu}}()}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00123}00123         \{}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00124}00124             SetVariablesConditions(\textcolor{keyword}{false}, \textcolor{keyword}{true}, \textcolor{keyword}{false}, 1f);}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00125}00125             SceneManager.LoadScene(\textcolor{stringliteral}{"{}MainMenu"{}});}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00126}00126         \}}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00127}00127         }
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00132}00132         \textcolor{keyword}{private} \textcolor{keywordtype}{void} SetVariablesConditions(\textcolor{keywordtype}{bool} gamePaused, \textcolor{keywordtype}{bool} infoItemViewShown, \textcolor{keywordtype}{bool} iBtnPauseHit, \textcolor{keywordtype}{float} timeScale)}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00133}00133         \{}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00134}00134             isPauseIButtonHit.Set(iBtnPauseHit);}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00135}00135             \_gameIsPaused = gamePaused;}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00136}00136             isInfoItemViewShown.Set(infoItemViewShown);}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00137}00137             Time.timeScale = timeScale;}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00138}00138         \}}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00139}00139 }
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00143}00143         \textcolor{keyword}{private} IEnumerator CountdownCoroutine()}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00144}00144         \{}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00145}00145             \textcolor{keywordflow}{while} (countdownTime > 0)}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00146}00146             \{}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00147}00147                 \_resumeGame = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00148}00148                 countdownDisplay.text = countdownTime.ToString();}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00149}00149                 yield \textcolor{keywordflow}{return} \textcolor{keyword}{new} WaitForSecondsRealtime(1f);}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00150}00150                 countdownTime-\/-\/;}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00151}00151             \}}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00152}00152             countdownTime = 3;}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00153}00153             \_resumeGame = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00154}00154             countdownDisplay.gameObject.SetActive(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00155}00155         \}}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00156}00156 }
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00157}00157         \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00158}00158 \textcolor{comment}{         * Calls the Ienumerator in a new class}}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00159}00159 \textcolor{comment}{         */}}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00160}00160         \textcolor{keyword}{public} \textcolor{keywordtype}{void} Countdown()}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00161}00161         \{}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00162}00162             StartCoroutine(CountdownCoroutine());}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00163}00163         \}}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00164}00164 }
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00168}00168         \textcolor{keyword}{private} \textcolor{keywordtype}{void} GOScreen()}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00169}00169         \{}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00170}00170             StartCoroutine(ShowGOScreen());}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00171}00171             pauseMenuUI.SetActive(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00172}00172 }
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00173}00173         \}}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00174}00174 }
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00175}00175         \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00176}00176 \textcolor{comment}{         * Shows GameOver Screen}}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00177}00177 \textcolor{comment}{         */}}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00178}00178         \textcolor{keyword}{private} IEnumerator ShowGOScreen()}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00179}00179         \{}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00180}00180             yield \textcolor{keywordflow}{return} \textcolor{keyword}{new} WaitForSeconds(0.7f);}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00181}00181             gameOverScreen.SetActive(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00182}00182             Time.timeScale = 0f;}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00183}00183         \}}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00184}00184 }
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00188}\mbox{\hyperlink{class_features_1_1_menu___namespace_1_1_scripts_1_1_menu_adf5408301515ce381ef6f339d5b4c944}{00188}}         \textcolor{keyword}{public} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_features_1_1_menu___namespace_1_1_scripts_1_1_menu_adf5408301515ce381ef6f339d5b4c944}{Quit}}()}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00189}00189         \{}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00190}00190             Application.Quit();}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00191}00191         \}}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00192}00192     \}}
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00193}00193 }
+\DoxyCodeLine{\Hypertarget{_menu_8cs_source_l00194}00194 \}}
+
+\end{DoxyCode}

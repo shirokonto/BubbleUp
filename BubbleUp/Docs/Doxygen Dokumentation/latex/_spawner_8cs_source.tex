@@ -1,0 +1,106 @@
+\hypertarget{_spawner_8cs_source}{}\doxysection{Spawner.\+cs}
+\label{_spawner_8cs_source}\index{Spawner.cs@{Spawner.cs}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00001}00001 \textcolor{keyword}{using }System.Collections;}
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00002}00002 \textcolor{keyword}{using }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00003}00003 \textcolor{keyword}{using }System.Linq;}
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00004}00004 \textcolor{keyword}{using }DataStructures.Variables;}
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00005}00005 \textcolor{keyword}{using }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00006}00006 \textcolor{keyword}{using }Random = System.Random;}
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00007}00007 \textcolor{keyword}{using }RandomUnityEngine = UnityEngine.Random;}
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00008}00008 }
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00009}00009 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespace_features_1_1_interactables___namespace_1_1_scripts}{Features.Interactables\_Namespace.Scripts}}}
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00010}00010 \{}
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00016}\mbox{\hyperlink{class_features_1_1_interactables___namespace_1_1_scripts_1_1_spawner}{00016}}     \textcolor{keyword}{public} \textcolor{keyword}{class }\mbox{\hyperlink{class_features_1_1_interactables___namespace_1_1_scripts_1_1_spawner}{Spawner}} : MonoBehaviour}
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00017}00017     \{}
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00018}00018         [SerializeField] \textcolor{keyword}{private} GameObject spawnRoute;}
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00019}00019         [SerializeField] \textcolor{keyword}{private} List<GameObject> incomingInfoItems;}
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00020}00020         [SerializeField] \textcolor{keyword}{private} List<GameObject> incomingBlockerItems;}
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00021}00021         [SerializeField] \textcolor{keyword}{private} List<GameObject> incomingPowerUpItems;}
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00022}00022         [SerializeField] \textcolor{keyword}{private} FloatVariable infoItemAppearingPercentage;}
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00023}00023         [SerializeField] \textcolor{keyword}{private} FloatVariable powerUpItemAppearingPercentage;}
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00024}00024         [SerializeField] \textcolor{keyword}{private} BoolVariable isSecondWave;}
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00025}00025         [SerializeField] \textcolor{keyword}{private} BoolVariable spawnRateBeginning;}
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00026}00026         [SerializeField][Range(1f, 3f)] \textcolor{keyword}{private} \textcolor{keywordtype}{float} minRespawnTime;}
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00027}00027         [SerializeField][Range(1f, 3f)] \textcolor{keyword}{private} \textcolor{keywordtype}{float} maxRespawnTime; }
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00028}00028         \textcolor{keyword}{private} \mbox{\hyperlink{class_features_1_1_interactables___namespace_1_1_scripts_1_1_object_pool}{ObjectPool}} \_objectPool;}
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00029}00029         \textcolor{keyword}{private} \textcolor{keywordtype}{float} \_spawningItemDeterminer;}
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00030}00030         \textcolor{keyword}{private} Random \_random;}
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00031}00031         \textcolor{keyword}{private} List<GameObject> \_currentlySpawningItems;}
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00032}00032 }
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00033}00033         \textcolor{keyword}{private} \textcolor{keywordtype}{void} Awake()}
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00034}00034         \{}
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00035}00035             \_objectPool = gameObject.GetComponent<\mbox{\hyperlink{class_features_1_1_interactables___namespace_1_1_scripts_1_1_object_pool}{ObjectPool}}>();}
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00036}00036             \_random = \textcolor{keyword}{new} Random();}
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00037}00037         \}}
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00038}00038 }
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00040}00040         \textcolor{keyword}{private} \textcolor{keywordtype}{void} Start()}
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00041}00041         \{}
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00042}00042             spawnRateBeginning.Set(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00043}00043             infoItemAppearingPercentage.Set(0.8f);}
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00044}00044             powerUpItemAppearingPercentage.Set(0.9f);}
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00045}00045             StartCoroutine(Spawn());}
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00046}00046         \}}
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00047}00047         }
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00052}\mbox{\hyperlink{class_features_1_1_interactables___namespace_1_1_scripts_1_1_spawner_a804a415416c7a2d85750f61e2bd811ef}{00052}}         \textcolor{keyword}{public} \mbox{\hyperlink{class_features_1_1_interactables___namespace_1_1_scripts_1_1_route}{Route}} \mbox{\hyperlink{class_features_1_1_interactables___namespace_1_1_scripts_1_1_spawner_a804a415416c7a2d85750f61e2bd811ef}{GetCurrentRoute}}()}
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00053}00053         \{}
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00054}00054             \textcolor{keywordflow}{return} spawnRoute.GetComponent<\mbox{\hyperlink{class_features_1_1_interactables___namespace_1_1_scripts_1_1_route}{Route}}>();}
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00055}00055         \}}
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00056}00056 }
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00060}00060         \textcolor{keyword}{private} \textcolor{keywordtype}{void} Instantiate()}
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00061}00061         \{}
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00062}00062             DetermineSpawningItem();}
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00063}00063             GameObject newCritter = \_objectPool.\mbox{\hyperlink{class_features_1_1_interactables___namespace_1_1_scripts_1_1_object_pool_ab4277280cf4996abb4538c694d8d5b0a}{GetItem}}(ChooseRandomItemFromList(\_currentlySpawningItems), spawnRoute.transform.GetChild(0).gameObject.transform);}
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00064}00064         \}}
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00065}00065 }
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00070}00070         \textcolor{keyword}{private} IEnumerator Spawn()}
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00071}00071         \{}
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00072}00072             Instantiate();}
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00073}00073             yield \textcolor{keywordflow}{return} \textcolor{keyword}{new} WaitForSeconds(RandomUnityEngine.Range(minRespawnTime, maxRespawnTime));}
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00074}00074             StartCoroutine(Spawn());}
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00075}00075         \}}
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00076}00076 }
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00080}00080         \textcolor{keyword}{private} IEnumerator SpawnRateBeginning()}
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00081}00081         \{}
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00082}00082             yield \textcolor{keywordflow}{return} \textcolor{keyword}{new} WaitForSeconds(5f);}
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00083}00083             spawnRateBeginning.Set(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00084}00084         \}}
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00085}00085         }
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00091}00091         \textcolor{keyword}{private} GameObject ChooseRandomItemFromList(List<GameObject> items)}
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00092}00092         \{}
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00093}00093             \textcolor{keywordtype}{int} index = \_random.Next(items.Count);}
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00094}00094             \textcolor{keywordflow}{return} items[index];}
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00095}00095         \}}
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00096}00096         }
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00101}00101         \textcolor{keyword}{private} \textcolor{keywordtype}{void} DetermineSpawningItem()}
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00102}00102         \{}
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00103}00103             \textcolor{keywordflow}{if} (spawnRateBeginning)}
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00104}00104             \{}
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00105}00105                 \_currentlySpawningItems = incomingInfoItems.ToList();}
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00106}00106             \}}
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00107}00107             StartCoroutine(SpawnRateBeginning());}
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00108}00108             }
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00109}00109             \textcolor{keywordflow}{if} (isSecondWave.Get())}
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00110}00110             \{}
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00111}00111                 infoItemAppearingPercentage.Set(0.6f);}
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00112}00112                 powerUpItemAppearingPercentage.Set(0.8f);}
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00113}00113             \}}
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00114}00114             \_spawningItemDeterminer = RandomUnityEngine.Range(0f, 1f);}
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00115}00115             \textcolor{keywordflow}{if} (\_spawningItemDeterminer <= infoItemAppearingPercentage.Get())}
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00116}00116             \{}
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00117}00117                 \_currentlySpawningItems = incomingInfoItems.ToList();}
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00118}00118             \}}
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00119}00119             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(\_spawningItemDeterminer > infoItemAppearingPercentage.Get() \&\&  \_spawningItemDeterminer <= powerUpItemAppearingPercentage.Get())}
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00120}00120             \{}
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00121}00121                 \_currentlySpawningItems = incomingPowerUpItems.ToList();}
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00122}00122             \}}
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00123}00123             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00124}00124             \{}
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00125}00125                 \_currentlySpawningItems = incomingBlockerItems.ToList();}
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00126}00126             \}}
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00127}00127         \}}
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00128}00128     \}}
+\DoxyCodeLine{\Hypertarget{_spawner_8cs_source_l00129}00129 \}}
+
+\end{DoxyCode}

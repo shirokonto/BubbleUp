@@ -1,0 +1,78 @@
+\hypertarget{class_features_1_1_interactables___namespace_1_1_scripts_1_1_object_pool}{}\doxysection{Features.\+Interactables\+\_\+\+Namespace.\+Scripts.\+Object\+Pool Class Reference}
+\label{class_features_1_1_interactables___namespace_1_1_scripts_1_1_object_pool}\index{Features.Interactables\_Namespace.Scripts.ObjectPool@{Features.Interactables\_Namespace.Scripts.ObjectPool}}
+
+
+Takes care of the creation, modification and item returning of Object Pools for a given route.  
+
+
+Inheritance diagram for Features.\+Interactables\+\_\+\+Namespace.\+Scripts.\+Object\+Pool\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_features_1_1_interactables___namespace_1_1_scripts_1_1_object_pool}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+Game\+Object \mbox{\hyperlink{class_features_1_1_interactables___namespace_1_1_scripts_1_1_object_pool_ab4277280cf4996abb4538c694d8d5b0a}{Get\+Item}} (Game\+Object item, Transform route)
+\begin{DoxyCompactList}\small\item\em Returns a clone of the passed item. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_features_1_1_interactables___namespace_1_1_scripts_1_1_object_pool_a956a38b00e5523b1cab7ff407972aec3}{Return\+Item\+To\+Pool}} (Game\+Object item)
+\begin{DoxyCompactList}\small\item\em Returns the passed item to an existing pool. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Takes care of the creation, modification and item returning of Object Pools for a given route. 
+
+Definition at line \mbox{\hyperlink{_object_pool_8cs_source_l00010}{10}} of file \mbox{\hyperlink{_object_pool_8cs_source}{Object\+Pool.\+cs}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_features_1_1_interactables___namespace_1_1_scripts_1_1_object_pool_ab4277280cf4996abb4538c694d8d5b0a}\label{class_features_1_1_interactables___namespace_1_1_scripts_1_1_object_pool_ab4277280cf4996abb4538c694d8d5b0a}} 
+\index{Features.Interactables\_Namespace.Scripts.ObjectPool@{Features.Interactables\_Namespace.Scripts.ObjectPool}!GetItem@{GetItem}}
+\index{GetItem@{GetItem}!Features.Interactables\_Namespace.Scripts.ObjectPool@{Features.Interactables\_Namespace.Scripts.ObjectPool}}
+\doxysubsubsection{\texorpdfstring{GetItem()}{GetItem()}}
+{\footnotesize\ttfamily Game\+Object Features.\+Interactables\+\_\+\+Namespace.\+Scripts.\+Object\+Pool.\+Get\+Item (\begin{DoxyParamCaption}\item[{Game\+Object}]{item,  }\item[{Transform}]{route }\end{DoxyParamCaption})}
+
+
+
+Returns a clone of the passed item. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em item} & The item which should be cloned \\
+\hline
+{\em route} & The route on which the cloned item should be spawned \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the next item either from the pool or a new one 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_object_pool_8cs_source_l00026}{26}} of file \mbox{\hyperlink{_object_pool_8cs_source}{Object\+Pool.\+cs}}.
+
+\mbox{\Hypertarget{class_features_1_1_interactables___namespace_1_1_scripts_1_1_object_pool_a956a38b00e5523b1cab7ff407972aec3}\label{class_features_1_1_interactables___namespace_1_1_scripts_1_1_object_pool_a956a38b00e5523b1cab7ff407972aec3}} 
+\index{Features.Interactables\_Namespace.Scripts.ObjectPool@{Features.Interactables\_Namespace.Scripts.ObjectPool}!ReturnItemToPool@{ReturnItemToPool}}
+\index{ReturnItemToPool@{ReturnItemToPool}!Features.Interactables\_Namespace.Scripts.ObjectPool@{Features.Interactables\_Namespace.Scripts.ObjectPool}}
+\doxysubsubsection{\texorpdfstring{ReturnItemToPool()}{ReturnItemToPool()}}
+{\footnotesize\ttfamily void Features.\+Interactables\+\_\+\+Namespace.\+Scripts.\+Object\+Pool.\+Return\+Item\+To\+Pool (\begin{DoxyParamCaption}\item[{Game\+Object}]{item }\end{DoxyParamCaption})}
+
+
+
+Returns the passed item to an existing pool. 
+
+If none exists a new pool will be created. 
+\begin{DoxyParams}{Parameters}
+{\em item} & The item which should be returned to the object pool \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_object_pool_8cs_source_l00057}{57}} of file \mbox{\hyperlink{_object_pool_8cs_source}{Object\+Pool.\+cs}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Object\+Pool.\+cs\end{DoxyCompactItemize}
