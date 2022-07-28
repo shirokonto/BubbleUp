@@ -8,7 +8,7 @@ namespace Features.Menu_Namespace.Scripts
      */
     public class LoadCharacter : MonoBehaviour
     {
-        public GameObject[] characterPrefabs; // stores reference to all possible Prefabs that can be chosen
+        public GameObject[] characterPrefabs; ///< stores reference to all possible Prefabs that can be chosen
         public Transform spawnPoint;
 
     /**
