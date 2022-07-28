@@ -11,8 +11,8 @@ namespace Features.Menu_Namespace.Scripts
     {
         [SerializeField] private IntVariable points;
         [SerializeField] private BoolVariable antiVirusEnabled;
-        public GameObject[] characters; // Character variable to switch between characters
-        public int selectedCharacter = 0; // saves which character is currently chosen
+        public GameObject[] characters; //< Character variable to switch between characters
+        public int selectedCharacter = 0; //< saves which character is currently chosen
 
         /**
          * Called when the ">" button is clicked to set the next character in the index active

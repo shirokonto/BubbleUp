@@ -14,7 +14,7 @@ namespace Features.Character_Namespace.Scripts
         [SerializeField] private BoolVariable bubbleIsPopped;
         [SerializeField] private Rigidbody rigidBody;
         
-        //References getter and setter
+        ///< References getter and setter
         private Animator Animator { get; set; }
         private static readonly int IsFalling = Animator.StringToHash("IsFalling");
 
