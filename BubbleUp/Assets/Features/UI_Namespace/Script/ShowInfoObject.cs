@@ -2,7 +2,11 @@ using DataStructures.Variables;
 using UnityEngine;
 
 namespace Features.UI_Namespace.Script
-{
+{   
+    /**
+     * Shows the UI-Window at the beginning of the game
+     * which tells the player what info object to collect
+     */
     public class ShowInfoObject : MonoBehaviour
     {
         [SerializeField] private StringVariable correctInfoType;
